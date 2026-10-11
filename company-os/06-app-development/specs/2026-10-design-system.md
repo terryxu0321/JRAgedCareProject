@@ -89,8 +89,8 @@
 
 ### 5.6 交付物与位置
 
-- 规范文档：`company-os/06-app-development/design-system/`（建立时补 README / AGENTS / CLAUDE 三件套）
-- Token JSON 与构建脚本：随代码仓库（技术栈 DR 后确定）
+- 规范与 token：**[design-system/DESIGN.md](../design-system/DESIGN.md)**（唯一来源，YAML token + 用法）。风格由 Terry 于 2026-10-11 选定（极简、单一蓝色强调色、浅 / 近黑表面），并按 §5.2 的无障碍要求调整
+- 平台产物与构建脚本：由 DESIGN.md 生成，随代码仓库（技术栈 DR 后确定，T-0007）
 - 设计稿工具：待定（如需新 SaaS，按[运营规范](../../11-rules/operations-rules.md)审批支出；**只放合成数据**）
 
 ## 6. 法律依据 Legal References

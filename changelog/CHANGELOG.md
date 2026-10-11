@@ -5,6 +5,20 @@
 
 ---
 
+## 2026-10-11 · Claude Code · DESIGN.md：设计规范唯一来源（Terry 选定的极简风格）
+
+- **请求人**：Terry
+- **请求**：把 Terry 选定的设计风格（参考 Apple 网站视觉语言的规范文本）保存为 CareKind 的 design system 与 design md，作为设计规范的唯一来源
+- **改动**：
+  - 新增 `company-os/06-app-development/design-system/DESIGN.md` —— YAML token（36 色、字体、间距、尺寸、圆角、层次、动效、27 个组件）+ 用法说明、Do / Don't、响应式、偏差表；新增同目录 README / AGENTS / CLAUDE
+  - 修改 SPEC-003 §5.6（交付物指向 DESIGN.md）；T-0001 标记 `done`（Terry 直接选定方向）；T-0002 背景改为在 DESIGN.md 上校验与补全
+  - 修改根目录 `AGENTS.md`（规则表：任何 UI 工作先读 DESIGN.md）、`06-app-development/AGENTS.md`、`07-marketing-operations/brand-and-messaging.md`（视觉一节指向 DESIGN.md）
+- **原因与决策**：保留参考风格的核心（单一蓝色强调色、近黑文字、浅 / 近黑表面、胶囊按钮、无阴影无渐变），按 SPEC-003 与 WCAG 调整：次要灰字 #7a7a7a → #6e6e73（原 4.29:1 不达标）、控件边界改用 #86868b（原 1.32:1）、触控 44 → 48px、App 禁用 300 细体与 < 14px 文字、新增状态色层（草稿 / 已确认 / 错误 / 需核对 / 离线，全部 ≥ 4.5:1，浅色与夜班两套）并禁止用于临床风险；不打包 SF Pro（许可面向 Apple 平台，未经律师核实），用 system-ui + Inter 后备；不使用他人商标。token 只存在 DESIGN.md 一处（DRY），平台产物由 T-0007 生成
+- **检查**：脚本计算 33 组颜色对比度；YAML 解析通过、全部 `{token}` 引用可解析（脚本放在会话临时目录，未入库）；`check_rules.py` 通过（exit 0，仅既有 ASSIGN 警告）
+- **待确认**：SF Pro 许可结论待核实；图标集选型；Dave 在 T-0002 / T-0005 中按 DESIGN.md 继续
+
+---
+
 ## 2026-10-11 · Claude Code · Design System spec（SPEC-003）、任务分配给 Dave，规则改为"整份 PRD 归一人"
 
 - **请求人**：Terry

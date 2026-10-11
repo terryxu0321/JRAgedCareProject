@@ -5,7 +5,7 @@ task:
   prd: SPEC-003
   requirements: [SPEC-003 §5.1]
   type: design
-  status: ready
+  status: done
   priority: P0
   owner: dave
   executor: dave
@@ -30,4 +30,8 @@ task:
 
 ## 执行记录（只追加）
 
+- 2026-10-11 · Claude Code（Terry 请求）· Terry 直接选定视觉方向（极简、界面隐身、单一蓝色强调色、浅 / 近黑表面交替），不再需要两套方向比较；按 SPEC-003 §5.2 调整对比度、触控与字号后写入 [DESIGN.md](../../design-system/DESIGN.md) · 改动文件：`design-system/DESIGN.md`、`README.md`、`AGENTS.md`、`CLAUDE.md` · 检查：YAML 解析与 token 引用校验、对比度计算、`check_rules.py`
+
 ## 评审结论
+
+- 2026-10-11 · Terry · 通过 —— 方向由 Terry 选定；验收标准中"两套方向"由 Terry 的直接决定替代

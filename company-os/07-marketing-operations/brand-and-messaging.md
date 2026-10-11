@@ -32,8 +32,9 @@
 - 尊重长者：用 "older people / residents / the people you care for"，避免 "the elderly"、"patients"（机构语境）
 - 所有数字宣称附出处（见 [市场合规](marketing-compliance.md)）
 
-## 视觉（待设计）
+## 视觉
 
-- 色彩：温暖但专业（待定）
+- 设计规范唯一来源：[DESIGN.md](../06-app-development/design-system/DESIGN.md)（Terry 2026-10-11 选定：极简、界面隐身、单一蓝色强调色 #0066cc、浅色 / 近黑表面交替、胶囊按钮）
+- 色彩与字体只引用 DESIGN.md 的 token；营销网站用其中 `scope: web` 的组件
 - 可访问性：符合 WCAG 2.2 AA
 - 图片：真实护理场景，获得书面授权；**绝不使用真实居民照片除非有书面同意**

@@ -20,7 +20,7 @@ task:
 ---
 
 ## 背景
-[SPEC-003](../../specs/2026-10-design-system.md) §5.2。依赖 T-0001 选定的视觉方向。
+[SPEC-003](../../specs/2026-10-design-system.md) §5.2。T-0001 已完成：基础 token 已在 [DESIGN.md](../../design-system/DESIGN.md) YAML 中（含首批对比度）。本任务负责校验、补全夜班主题与动态字号表现，并直接修改 DESIGN.md（唯一来源），不另建 token 文件。
 
 ## 验收标准
 - [ ] 平台无关的 token JSON（颜色、字体、间距、圆角、阴影、动效），浅色与深色两套主题

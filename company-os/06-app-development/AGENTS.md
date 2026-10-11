@@ -12,6 +12,8 @@
 - `engineering-standards.md`
 - `security/`
 - `specs/`
+- `design-system/DESIGN.md` —— 设计规范唯一来源（token + 组件）；任何 UI 工作先读
+- `adlc/tasks/` —— 任务文件
 - `rnd-log/`
 - `src/` —— 代码与模块说明
 
