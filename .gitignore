@@ -1,0 +1,26 @@
+# Secrets — never commit (code-rules.md CORE-03)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Dependencies and build output
+node_modules/
+dist/
+build/
+coverage/
+__pycache__/
+*.pyc
+.venv/
+
+# Local Claude Code overrides and scratch files
+.claude/settings.local.json
+.claude/hook-check.txt
+
+# Large downloaded reference PDFs (kept on OneDrive, not in git)
+company-os/03-legal-compliance/research/downloads/
+
+# OS / editor
+.DS_Store
+Thumbs.db

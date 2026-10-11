@@ -1,0 +1,35 @@
+{
+	"hooks": {
+		"SessionStart": [
+			{
+				"hooks": [
+					{
+						"type": "command",
+						"command": "python \"$CLAUDE_PROJECT_DIR/company-os/11-rules/work_items.py\" --me",
+						"timeout": 15,
+						"statusMessage": "Loading your open work and standup status (work-log-rules WL-4)"
+					}
+				]
+			}
+		],
+		"PostToolUse": [
+			{
+				"matcher": "Edit|Write|MultiEdit|NotebookEdit",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "python \"$CLAUDE_PROJECT_DIR/company-os/11-rules/hook_log_change.py\"",
+						"timeout": 15,
+						"statusMessage": "Logging AI change (changelog-rules CL-1)"
+					},
+					{
+						"type": "command",
+						"command": "python \"$CLAUDE_PROJECT_DIR/company-os/11-rules/hook_file_size.py\"",
+						"timeout": 30,
+						"statusMessage": "Checking file size (code-rules SIZE-1)"
+					}
+				]
+			}
+		]
+	}
+}
