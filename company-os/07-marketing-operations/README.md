@@ -13,6 +13,7 @@ company-os/07-marketing-operations/
 ├── pilot-playbook.md            付费试点手册（6–8 周）
 ├── customer-success.md          上线、培训、支持、续约
 ├── channels-and-events.md       渠道、行业协会、展会
+├── brand-assets/                Logo SVG 与使用规则
 └── competitor-research/         竞争对手与 AI 方案调研（调研 agent 生成）
 ```
 

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="240" height="240" role="img" aria-labelledby="t">
+	<title id="t">考拉小记 —— 完成</title>
+	<rect x="32" y="80" width="56" height="36" rx="18" fill="#A9B4B7"/>
+	<ellipse cx="56" cy="102" rx="14" ry="12" fill="#D3D9DA"/>
+	<rect x="36" y="82" width="48" height="8" rx="4" fill="#1F5F5B"/>
+	<circle cx="28" cy="36" r="19" fill="#98A3A6"/>
+	<circle cx="92" cy="36" r="19" fill="#98A3A6"/>
+	<circle cx="26" cy="35" r="11" fill="#F3E6E0"/>
+	<circle cx="94" cy="35" r="11" fill="#F3E6E0"/>
+	<ellipse cx="60" cy="58" rx="35" ry="31" fill="#A9B4B7"/>
+	<path d="M41 56 Q46 50 51 56" fill="none" stroke="#2C2C2A" stroke-width="3" stroke-linecap="round"/>
+	<path d="M69 56 Q74 50 79 56" fill="none" stroke="#2C2C2A" stroke-width="3" stroke-linecap="round"/>
+	<ellipse cx="60" cy="65" rx="8" ry="10" fill="#3D3A3A"/>
+	<ellipse cx="57" cy="61" rx="2" ry="3" fill="#6B6867"/>
+	<path d="M51 78 Q60 86 69 78" fill="none" stroke="#3D3A3A" stroke-width="2.5" stroke-linecap="round"/>
+	<circle cx="38" cy="67" r="4.5" fill="#F5C4B3"/>
+	<circle cx="82" cy="67" r="4.5" fill="#F5C4B3"/>
+	<circle cx="40" cy="104" r="6" fill="#98A3A6"/>
+	<rect x="68" y="82" width="26" height="30" rx="3" fill="#FFFFFF" stroke="#1F5F5B" stroke-width="2.5"/>
+	<path d="M74 97 L79 102 L88 91" fill="none" stroke="#1F5F5B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+	<circle cx="69" cy="100" r="6" fill="#98A3A6"/>
+	<path d="M100 76 l2 -5 l2 5 l5 2 l-5 2 l-2 5 l-2 -5 l-5 -2 z" fill="#E8875B"/>
+</svg>

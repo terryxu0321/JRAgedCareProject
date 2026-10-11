@@ -5,6 +5,36 @@
 
 ---
 
+## 2026-10-11 · Claude Code · 吉祥物「考拉小记」、透明 PNG、VI 手册与周边设计
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：设计吉祥物（三个方向中选定考拉），细化并导出 SVG；导出 logo 与吉祥物的透明背景 PNG；出一套吉祥物设计风格、VI 设计图和周边设计图
+- **改动**：
+  - 新增 `brand-assets/mascot-koala-hello.svg`、`-writing.svg`、`-done.svg`、`-avatar.svg`
+  - 通过脚本生成（hook 未捕获）：`brand-assets/png/` 下 8 个透明背景 PNG（headless Chrome 渲染，脚本在会话临时目录，未入库）
+  - 修改 `brand-assets/README.md` —— 吉祥物、PNG、VI 手册链接；`brand-and-messaging.md` —— 吉祥物一行
+  - 仓库外：设计画布 VI 手册（4 张图板：吉祥物风格、VI 规范、办公与数字应用、周边），私有
+- **原因与决策**：吉祥物定位为“记录助手”而非护士，不带医疗符号，不进入护理记录与面向长者的资料（TGA 边界、尊重长者语气规则）；名片、工牌等用 `[姓名]` 等占位，不编造人员信息；周边标语取自品牌文件中的候选
+- **检查**：PNG 已确认为 RGBA（透明）且尺寸正确；`check_rules.py` 通过（exit 0，仅既有 ASSIGN 警告）
+- **合并说明**：推送时远程 `main` 已合并 DESIGN.md（单一蓝色 #0066cc）。Terry 选定“两套并存”：DESIGN.md 管界面与网站 token，青绿 + 珊瑚只用于 logo、吉祥物、周边与印刷品 —— 已写入 `brand-and-messaging.md` 与 `brand-assets/README.md`
+- **待确认**：吉祥物英文名；标语定稿；商标检索；PNG 文字转轮廓后重导出
+
+---
+
+## 2026-10-11 · Claude Code · 设计 Logo（方案 C「声音里的心」）并导出 SVG
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：设计 logo；给出 A/B/C 三个方向后，选定方案 C（心形 + 声波），细化并导出 SVG
+- **改动**：
+  - 新增 `company-os/07-marketing-operations/brand-assets/` —— 6 个 SVG（横版、深色横版、图形标志、单色、App 图标、favicon）与 `README.md`（文件用途、颜色、使用规则）
+  - 修改 `company-os/07-marketing-operations/brand-and-messaging.md` —— "视觉（待设计）"改为草稿：logo 与色值
+  - 修改 `company-os/07-marketing-operations/README.md` —— 目录结构加入 `brand-assets/`
+- **原因与决策**：小尺寸下 5 条声波会糊在一起，所以 favicon 单独做了 3 条、加粗的版本；珊瑚色 `#E8875B` 在白底上对比度不足，文字改用 `#C2410C`（WCAG AA）；不使用医疗符号（TGA 措辞边界）。`brand-assets/` 是模块内子目录，按 AC-1 不要求三件套，只加 README（与 `competitor-research/` 一致）
+- **检查**：`check_rules.py` 通过（exit 0，仅既有 ASSIGN 警告）
+- **待确认**：商标检索（IP Australia）；文字转轮廓需在设计工具中完成；设置 `CAREKIND_MEMBER`
+
+---
+
 ## 2026-10-11 · Claude Code · DESIGN.md：设计规范唯一来源（Terry 选定的极简风格）
 
 - **请求人**：Terry
