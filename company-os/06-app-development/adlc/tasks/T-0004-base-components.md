@@ -20,7 +20,7 @@ task:
 ---
 
 ## 背景
-[SPEC-003](../../specs/2026-10-design-system.md) §5.4。依赖 T-0002（tokens）、T-0003（无障碍清单）。
+[SPEC-003](../../specs/2026-10-design-system.md) §5.4。依赖 T-0002（tokens）、T-0003（无障碍清单）。2026-10-11 Terry 要求把常用组件标准化：基础规格已写入 [DESIGN.md](../../design-system/DESIGN.md) v0.2.0 §7.1、§7.3（含 select、checkbox、radio、switch、textarea、date-time-input、file-upload、toast、dialog、bottom-sheet、progress、empty-state、status-tag、tabs、tab-bar、side-nav、menu、list-item、data-table、accordion），并有[可视页面](https://claude.ai/artifact/CbgRvJbxBDYAiVv3zZCa6k)。本任务改为：按 T-0003 走查清单逐个核对与补全（状态、读屏文案、动态字号 200% 表现），直接修改 DESIGN.md。
 
 ## 验收标准
 - [ ] 按钮、输入框、列表、卡片、对话框、底部操作栏、Toast、标签页、导航、空状态、加载状态

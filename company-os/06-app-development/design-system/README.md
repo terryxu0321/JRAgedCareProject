@@ -6,6 +6,8 @@
 
 风格：Terry 于 2026-10-11 选定的极简风格 —— 界面隐身、单一蓝色强调色、浅色 / 近黑表面交替、胶囊按钮；并为护理场景加强了无障碍（48px 触控、17px 正文、WCAG 2.2 AA 对比度）与安全状态（AI 草稿 / 已确认 / 需核对）。
 
+**给人看的版本**：[CareKind Design System 页面](https://claude.ai/artifact/CbgRvJbxBDYAiVv3zZCa6k)（色板、字体、35 个组件的实时预览与用法；私有，需从页面的 Share 菜单分享给他人）。它镜像 DESIGN.md v0.2.0；两者不一致时以 DESIGN.md 为准，DESIGN.md 更新后需同步页面。
+
 ## 怎么用
 
 - 设计稿、代码、AI 生成的界面：只引用 `{colors.primary}` 这类 token，不写十六进制颜色或像素字号

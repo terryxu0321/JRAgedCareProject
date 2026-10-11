@@ -5,6 +5,20 @@
 
 ---
 
+## 2026-10-11 · Claude Code · DESIGN.md v0.2.0 常用组件标准化 + 给人看的设计系统页面
+
+- **请求人**：Terry
+- **请求**：生成给人看的 HTML 版 design md；常用组件（如 dropdown、upload、toast）全部按 DESIGN.md 做标准化设计
+- **改动**：
+  - 修改 `company-os/06-app-development/design-system/DESIGN.md` → v0.2.0：新增 20 个组件的 YAML 规格与 §7.3 说明（select、menu、checkbox、radio、switch、textarea、date-time-input、file-upload、toast、dialog、bottom-sheet、progress、empty-state、status-tag、tabs、tab-bar、side-nav、list-item、data-table、accordion），共 47 个组件定义；新增规则：虚线只用于 AI 草稿、错误不用 toast、不可撤销操作用 dialog 且不用红色按钮
+  - 发布设计系统页面（claude.ai Design System 类型，私有）：https://claude.ai/artifact/CbgRvJbxBDYAiVv3zZCa6k —— 品牌手册、tokens（由脚本从 DESIGN.md YAML 生成，值完全一致）、35 个组件卡片（说明 + 静态实时预览，只用合成数据）、封面
+  - 修改 `design-system/README.md`（链接页面）、T-0004 背景（改为在 DESIGN.md 上核对与补全）
+- **原因与决策**：DESIGN.md 仍是唯一来源，页面是镜像；新组件只用现有 token，没有新增颜色；App 中无阴影，菜单与下拉用 `border-input` 细边分隔；`status-tag` 明确只表示记录 / 系统状态（TGA）；上传区用实线以保留"虚线 = AI 草稿"的信号；日期 DD/MM/YYYY、24 小时制
+- **检查**：DESIGN.md YAML 解析通过、全部 `{token}` 引用可解析（47 个组件）；tokens.json 由脚本生成（36 色、14 个文字样式）；页面发布成功（74 个文件）；`check_rules.py` 通过
+- **待确认**：页面为私有，需 Terry 从 Share 菜单分享给团队；图标集未选（预览中用文字符号代替）；夜班主题尚未作为独立主题（T-0002）；DESIGN.md 更新后需同步页面
+
+---
+
 ## 2026-10-11 · Claude Code · DESIGN.md：设计规范唯一来源（Terry 选定的极简风格）
 
 - **请求人**：Terry
