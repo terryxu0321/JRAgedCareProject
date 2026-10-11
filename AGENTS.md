@@ -55,6 +55,7 @@ Every level (root, `docs/`, `changelog/`, each `company-os/` module, each team, 
 | Customers, pilots, support, marketing, vendors, spending | `company-os/11-rules/operations-rules.md` |
 | Writing or reviewing code | `company-os/11-rules/code-rules.md` — KISS > DRY > premature abstraction; SOLID for boundaries; fail safe; **indent with tabs, width 4 (YAML: 2 spaces)** per root `.editorconfig` |
 | Product design, PRD (`docs/PRD.md`), specs | `company-os/11-rules/product-legal-rules.md` + `legal-reference-index.md` — **consult the local legal files in `company-os/03-legal-compliance/` first, and include a "法律依据 Legal References" section linking them** |
+| Any UI work (mobile-app, admin-web, web pages, prototypes, design docs) | `company-os/06-app-development/design-system/DESIGN.md` — the design source of truth: use only its `{token}`s and components; no inline colours or font sizes; no colours or badges for clinical risk/severity (TGA) |
 | Every session (who is working, open work, daily standup) | `company-os/11-rules/work-log-rules.md` — the member is `CAREKIND_MEMBER` (ask if unset) and is the CHANGELOG 请求人; open work comes only from PRD Assignee + ADLC tasks; standups via skill `standup`; reminders to others are drafts only; no per-person stats or rankings |
 | Assigning or reassigning a PRD / spec | `company-os/11-rules/prd-assignment-rules.md` — difficulty L1–L3 × member level/direction (from `team-roster.md`) × load; Terry confirms (skill `assign-prd`) |
 | Creating or restructuring folders | `company-os/11-rules/ai-context-rules.md` |
