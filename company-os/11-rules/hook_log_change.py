@@ -14,11 +14,12 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 LOG_FILE = ROOT / 'changelog' / 'ai-edits.jsonl'
 
 
-def relative_to_root(raw_path: str) -> str:
+def relative_to_root(raw_path: str) -> str | None:
+	"""Repo-relative path, or None for files outside the repo (the repo is public: never log local absolute paths)."""
 	path = pathlib.Path(raw_path).resolve()
 	if ROOT in path.parents:
 		return path.relative_to(ROOT).as_posix()
-	return path.as_posix()
+	return None
 
 
 def build_entry(payload: dict[str, object]) -> dict[str, object] | None:
@@ -26,12 +27,15 @@ def build_entry(payload: dict[str, object]) -> dict[str, object] | None:
 	raw_path = tool_input.get('file_path') or tool_input.get('notebook_path')
 	if not raw_path:
 		return None
+	file = relative_to_root(str(raw_path))
+	if file is None:
+		return None
 	return {
 		'timestamp': datetime.datetime.now(datetime.timezone.utc).isoformat(timespec='seconds'),
 		'agent': 'claude-code',
 		'session_id': payload.get('session_id'),
 		'tool': payload.get('tool_name'),
-		'file': relative_to_root(str(raw_path)),
+		'file': file,
 		'user': os.environ.get('USERNAME') or os.environ.get('USER'),
 		# Team-roster name set on each member's machine (work-log-rules.md WL-1); None when not set.
 		'member': os.environ.get('CAREKIND_MEMBER') or None,
