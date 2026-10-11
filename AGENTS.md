@@ -35,7 +35,7 @@ Root-level folders besides `company-os/`: `docs/` (PRD) and `changelog/` (AI cha
 
 There is **no build, lint or test command yet**: product code has not started — `company-os/06-app-development/src/` holds only module docs. The stack is proposed (not decided) in `company-os/06-app-development/engineering-standards.md`. When code starts, formatter/linter config must match `.editorconfig` (tabs, width 4) and add its commands here.
 
-Environment notes: Windows + OneDrive, not a git repository. Python printing Chinese needs `PYTHONIOENCODING=utf-8` (scripts here call `sys.stdout.reconfigure`). OneDrive may refuse directory removal, and in-place shell edits (`perl -pi`, Python rewrites from Bash) have silently failed here before — prefer the file edit tools and re-read to confirm.
+Environment notes: Windows + OneDrive; a local git repository (branch `main`, initialised 2026-10-11, no remote yet). `.gitignore` excludes secrets, caches, local Claude settings, `.claude/worktrees/` and `research/downloads/` PDFs; `.gitattributes` keeps LF line endings per `.editorconfig`. Commit or push only when the user asks. Python printing Chinese needs `PYTHONIOENCODING=utf-8` (scripts here call `sys.stdout.reconfigure`). OneDrive may refuse directory removal, and in-place shell edits (`perl -pi`, Python rewrites from Bash) have silently failed here before — prefer the file edit tools and re-read to confirm.
 
 ## How the pieces fit
 

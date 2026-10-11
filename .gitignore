@@ -17,6 +17,7 @@ __pycache__/
 # Local Claude Code overrides and scratch files
 .claude/settings.local.json
 .claude/hook-check.txt
+.claude/worktrees/
 
 # Large downloaded reference PDFs (kept on OneDrive, not in git)
 company-os/03-legal-compliance/research/downloads/

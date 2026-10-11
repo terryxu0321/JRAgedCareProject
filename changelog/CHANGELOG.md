@@ -5,6 +5,21 @@
 
 ---
 
+## 2026-10-11 · Claude Code · 初始化 git 仓库
+
+- **请求人**：Terry
+- **请求**：把本项目建成 git 仓库
+- **改动**：
+  - `git init -b main`，首次提交 `87d312e` 包含全部 271 个现有文件（通过命令执行，hook 未捕获）
+  - 新增 `.gitattributes` —— 统一 LF 换行（与 `.editorconfig` 一致，避免 Windows `core.autocrlf` 转成 CRLF）；PDF / 图片 / Office 文件按二进制处理
+  - 修改 `.gitignore` —— 忽略 `.claude/worktrees/`（Claude Code 后台会话的隔离工作区）
+  - 修改根目录 `AGENTS.md` 环境说明 —— 由"不是 git 仓库"改为本地 git 仓库说明
+- **原因与决策**：沿用已有 `.gitignore`（排除密钥、缓存、本地 Claude 设置、`research/downloads/` 中约 80MB 的法律 PDF）；暂存前确认无 `.env`、密钥、`__pycache__`、PDF 被纳入。成为 git 仓库后，后台会话须在 worktree 中修改，因此以上三处改动在分支 `worktree-git-setup` 上提交，待合并。未添加远程仓库、未推送（对外发布须先确认）
+- **检查**：`git status` / `git ls-files` 核对提交内容；`check_rules.py` 通过
+- **待确认**：合并分支 `worktree-git-setup`；是否创建 GitHub 私有仓库并推送（ADLC spec 中 GitHub 为 Phase 2，需登记子处理方）；仓库位于 OneDrive，`.git` 被同步可能产生冲突 —— 建议对本文件夹选"始终保留在此设备上"，或日后迁出 OneDrive
+
+---
+
 ## 2026-10-11 · Claude Code · 成员工作记录、待办提醒与 AI 每日站会（work-log-rules）
 
 - **请求人**：Terry
