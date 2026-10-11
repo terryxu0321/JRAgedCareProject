@@ -1,0 +1,43 @@
+<!-- @dsCard group="Safety-critical" height=440 subtitle="AI draft · edited · confirmed" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DraftCard — preview</title>
+<style>
+	body { margin: 0; padding: var(--spacing-md); background: var(--canvas); color: var(--ink); font-family: var(--font-text); }
+	.stack { display: grid; gap: var(--spacing-sm); max-width: 520px; }
+	.card { border-radius: var(--rounded-lg); padding: var(--spacing-md); display: grid; gap: var(--spacing-xs); }
+	.draft { background: var(--status-draft-bg); border: 2px dashed var(--status-draft); }
+	.edited { background: var(--status-draft-bg); border: 2px solid var(--status-draft); }
+	.confirmed { background: var(--status-confirmed-bg); border: 1px solid var(--status-confirmed); }
+	.head { display: flex; justify-content: space-between; gap: var(--spacing-sm); flex-wrap: wrap; }
+	.who { font: 600 17px/1.24 var(--font-text); letter-spacing: -0.374px; }
+	.who span { font-weight: 400; color: var(--ink-muted); }
+	.tag { font: 600 14px/1.29 var(--font-text); letter-spacing: -0.224px; }
+	.draft .tag, .edited .tag { color: var(--status-draft); }
+	.confirmed .tag { color: var(--status-confirmed); }
+	p { margin: 0; font: 400 17px/1.47 var(--font-text); letter-spacing: -0.374px; }
+	.meta { font: 400 14px/1.43 var(--font-text); color: var(--ink-muted); }
+</style>
+</head>
+<body>
+<div class="stack">
+	<div class="card draft">
+		<div class="head"><div class="who">Sample Resident A <span>· Room 12</span></div><div class="tag">◌ AI draft</div></div>
+		<p>Assisted with breakfast in the dining room. Ate most of the meal and drank one cup of tea.</p>
+		<div class="meta">Dictated 07:42 · not yet reviewed</div>
+	</div>
+	<div class="card edited">
+		<div class="head"><div class="who">Sample Resident A <span>· Room 12</span></div><div class="tag">✎ Edited draft</div></div>
+		<p>Assisted with breakfast in the dining room. Ate about half of the meal and drank one cup of tea.</p>
+		<div class="meta">Edited 07:45 · waiting for confirmation</div>
+	</div>
+	<div class="card confirmed">
+		<div class="head"><div class="who">Sample Resident A <span>· Room 12</span></div><div class="tag">✓ Confirmed</div></div>
+		<p>Assisted with breakfast in the dining room. Ate about half of the meal and drank one cup of tea.</p>
+		<div class="meta">Confirmed by Sample Nurse · 07:46</div>
+	</div>
+</div>
+</body>
+</html>

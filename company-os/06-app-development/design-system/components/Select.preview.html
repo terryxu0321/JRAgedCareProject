@@ -1,0 +1,38 @@
+<!-- @dsCard group="Inputs" height=330 subtitle="closed · open" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Select — preview</title>
+<style>
+	body { margin: 0; padding: var(--spacing-md); background: var(--canvas); color: var(--ink); font-family: var(--font-text); }
+	.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--spacing-lg); align-items: start; }
+	.field { display: grid; gap: var(--spacing-xs); }
+	label { font: 600 14px/1.29 var(--font-text); letter-spacing: -0.224px; }
+	.select { position: relative; display: flex; align-items: center; justify-content: space-between; min-height: var(--size-control-height); padding: 12px 16px; border: 1px solid var(--border-input); border-radius: var(--rounded-sm); background: var(--canvas); font: 400 17px/1.47 var(--font-text); letter-spacing: -0.374px; box-sizing: border-box; cursor: pointer; }
+	.select.open { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+	.chev { color: var(--ink-muted); font-size: 14px; }
+	.menu { margin-top: var(--spacing-xxs); background: var(--canvas); border: 1px solid var(--border-input); border-radius: var(--rounded-lg); padding: var(--spacing-xxs); }
+	.opt { display: flex; align-items: center; gap: var(--spacing-xs); min-height: var(--size-control-height); padding: 0 var(--spacing-sm); border-radius: var(--rounded-sm); font: 400 17px/1.47 var(--font-text); letter-spacing: -0.374px; }
+	.opt .tick { width: 16px; color: var(--primary); }
+	.opt.sel { color: var(--primary); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="grid">
+	<div class="field">
+		<label>Shift</label>
+		<div class="select" role="button" tabindex="0" aria-haspopup="listbox">Morning <span class="chev" aria-hidden="true">▾</span></div>
+	</div>
+	<div class="field">
+		<label>Shift</label>
+		<div class="select open" role="button" tabindex="0" aria-expanded="true">Afternoon <span class="chev" aria-hidden="true">▴</span></div>
+		<div class="menu" role="listbox">
+			<div class="opt" role="option"><span class="tick"></span>Morning</div>
+			<div class="opt sel" role="option" aria-selected="true"><span class="tick">✓</span>Afternoon</div>
+			<div class="opt" role="option"><span class="tick"></span>Night</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

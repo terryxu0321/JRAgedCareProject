@@ -7,6 +7,8 @@ CareKind 设计规范。`DESIGN.md` 是唯一来源（YAML token + 用法说明�
 
 ## 关键文件
 - `DESIGN.md` —— token 与组件规范（SoT）
+- `components/` —— 每个组件的用法说明与预览
+- `build_design_html.py` → `design-system.html` —— 生成的离线单文件页面，**不要手改**；修改 DESIGN.md 或 `components/` 后重新运行脚本并一起提交
 - `../specs/2026-10-design-system.md` —— SPEC-003 需求、法律依据、任务分配
 
 ## 在这里工作的规则

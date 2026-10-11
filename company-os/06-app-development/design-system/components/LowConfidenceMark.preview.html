@@ -1,0 +1,22 @@
+<!-- @dsCard group="Safety-critical" height=130 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LowConfidenceMark — preview</title>
+<style>
+	body { margin: 0; padding: var(--spacing-md); background: var(--canvas); color: var(--ink); font-family: var(--font-text); }
+	p { margin: 0; max-width: 560px; font: 400 17px/2 var(--font-text); letter-spacing: -0.374px; }
+	.mark { font: inherit; color: var(--ink); background: var(--status-attention-bg); border: 0; border-bottom: 2px dotted var(--status-attention); border-radius: 4px 4px 0 0; padding: 2px 4px; cursor: pointer; }
+	.mark:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+	.mark small { font: 600 14px/1 var(--font-text); color: var(--status-attention); margin-left: 4px; }
+</style>
+</head>
+<body>
+<p>Applied barrier cream to both heels. Repositioned at
+	<button class="mark" type="button" aria-label="10:30, needs checking">10:30<small>Check</small></button>
+	and offered
+	<button class="mark" type="button" aria-label="200 millilitres, needs checking">200 mL<small>Check</small></button>
+	of water.</p>
+</body>
+</html>

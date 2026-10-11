@@ -1,0 +1,26 @@
+<!-- @dsCard group="Safety-critical" height=250 subtitle="confirmed · to confirm · blocked" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SectionConfirm — preview</title>
+<style>
+	body { margin: 0; padding: var(--spacing-md); background: var(--canvas); color: var(--ink); font-family: var(--font-text); }
+	ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--spacing-xs); max-width: 520px; }
+	li { display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-sm); flex-wrap: wrap; padding: var(--spacing-sm) var(--spacing-md); background: var(--canvas-parchment); border-radius: var(--rounded-lg); }
+	.name { font: 600 17px/1.24 var(--font-text); letter-spacing: -0.374px; }
+	.why { display: block; font: 400 14px/1.43 var(--font-text); color: var(--ink-muted); }
+	.chip { font: 400 14px/1.43 var(--font-text); color: var(--ink); background: var(--canvas); min-height: var(--size-control-height); padding: 12px 16px; border: 1px solid var(--border-input); border-radius: var(--rounded-pill); cursor: pointer; }
+	.chip[aria-pressed="true"] { border: 2px solid var(--primary-focus); padding: 11px 15px; font-weight: 600; }
+	.chip:disabled { color: var(--ink-muted); background: var(--canvas-parchment); cursor: default; }
+	.chip:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<ul>
+	<li><span class="name">Meals and fluids</span><button class="chip" type="button" aria-pressed="true">✓ Confirmed</button></li>
+	<li><span class="name">Skin care</span><button class="chip" type="button" aria-pressed="false">Confirm</button></li>
+	<li><span><span class="name">Fall at 06:10</span><span class="why">Check 1 word first</span></span><button class="chip" type="button" disabled>Confirm</button></li>
+</ul>
+</body>
+</html>

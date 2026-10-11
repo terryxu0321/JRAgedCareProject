@@ -1,0 +1,27 @@
+<!-- @dsCard group="Navigation" height=300 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Menu — preview</title>
+<style>
+	body { margin: 0; padding: var(--spacing-md); background: var(--canvas-parchment); color: var(--ink); font-family: var(--font-text); }
+	.trigger { width: var(--size-touch-target-min); height: var(--size-touch-target-min); border-radius: var(--rounded-full); border: 0; background: var(--surface-chip-translucent); color: var(--ink); font-size: 20px; cursor: pointer; }
+	.menu { margin-top: var(--spacing-xxs); width: 240px; background: var(--canvas); border: 1px solid var(--border-input); border-radius: var(--rounded-lg); padding: 4px; }
+	.item { display: flex; align-items: center; gap: var(--spacing-xs); min-height: var(--size-control-height); padding: 0 var(--spacing-sm); border-radius: var(--rounded-sm); font: 400 17px/1.47 var(--font-text); letter-spacing: -0.374px; }
+	.item.active { background: var(--canvas-parchment); }
+	.sep { height: 1px; background: var(--hairline); margin: 4px 0; }
+	:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<button class="trigger" type="button" aria-label="More actions" aria-expanded="true">⋯</button>
+<div class="menu" role="menu">
+	<div class="item active" role="menuitem">Edit draft</div>
+	<div class="item" role="menuitem">Move to another resident</div>
+	<div class="item" role="menuitem">Play recording</div>
+	<div class="sep" role="separator"></div>
+	<div class="item" role="menuitem">Delete draft…</div>
+</div>
+</body>
+</html>

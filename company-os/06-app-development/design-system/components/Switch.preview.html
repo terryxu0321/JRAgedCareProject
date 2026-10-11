@@ -1,0 +1,27 @@
+<!-- @dsCard group="Inputs" height=150 subtitle="on · off" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Switch — preview</title>
+<style>
+	body { margin: 0; padding: var(--spacing-md); background: var(--canvas); color: var(--ink); font-family: var(--font-text); }
+	.row { display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-sm); min-height: var(--size-touch-target-min); max-width: 420px; font: 400 17px/1.47 var(--font-text); letter-spacing: -0.374px; border-bottom: 1px solid var(--hairline); }
+	.sw { position: relative; width: 51px; height: 31px; border-radius: var(--rounded-pill); border: 0; background: var(--border-input); cursor: pointer; flex: none; }
+	.sw::after { content: ""; position: absolute; top: 2px; left: 2px; width: 27px; height: 27px; border-radius: var(--rounded-full); background: var(--canvas); transition: transform 120ms; }
+	.sw[aria-checked="true"] { background: var(--primary); }
+	.sw[aria-checked="true"]::after { transform: translateX(20px); }
+	.sw:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+	@media (prefers-reduced-motion: reduce) { .sw::after { transition: none; } }
+</style>
+</head>
+<body>
+<div class="row"><span id="l1">Night theme</span><button class="sw" type="button" role="switch" aria-checked="true" aria-labelledby="l1"></button></div>
+<div class="row"><span id="l2">Sound on new draft</span><button class="sw" type="button" role="switch" aria-checked="false" aria-labelledby="l2"></button></div>
+<script>
+	document.querySelectorAll('.sw').forEach(function (sw) {
+		sw.addEventListener('click', function () { sw.setAttribute('aria-checked', sw.getAttribute('aria-checked') === 'true' ? 'false' : 'true'); });
+	});
+</script>
+</body>
+</html>

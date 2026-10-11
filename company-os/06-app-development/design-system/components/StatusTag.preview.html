@@ -1,0 +1,28 @@
+<!-- @dsCard group="Feedback" height=90 subtitle="record and system states only" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>StatusTag — preview</title>
+<style>
+	body { margin: 0; padding: var(--spacing-md); background: var(--canvas); color: var(--ink); font-family: var(--font-text); }
+	.row { display: flex; flex-wrap: wrap; gap: var(--spacing-xs); }
+	.tag { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: var(--rounded-pill); font: 600 14px/1.29 var(--font-text); letter-spacing: -0.224px; color: var(--ink); }
+	.draft { background: var(--status-draft-bg); } .draft i { color: var(--status-draft); }
+	.ok { background: var(--status-confirmed-bg); } .ok i { color: var(--status-confirmed); }
+	.err { background: var(--status-error-bg); } .err i { color: var(--status-error); }
+	.att { background: var(--status-attention-bg); } .att i { color: var(--status-attention); }
+	.off { background: var(--status-offline-bg); } .off i { color: var(--status-offline); }
+	i { font-style: normal; }
+</style>
+</head>
+<body>
+<div class="row">
+	<span class="tag draft"><i aria-hidden="true">◌</i>AI draft</span>
+	<span class="tag ok"><i aria-hidden="true">✓</i>Confirmed</span>
+	<span class="tag att"><i aria-hidden="true">!</i>Check 2 words</span>
+	<span class="tag err"><i aria-hidden="true">⚠</i>Not uploaded</span>
+	<span class="tag off"><i aria-hidden="true">⌁</i>Offline</span>
+</div>
+</body>
+</html>

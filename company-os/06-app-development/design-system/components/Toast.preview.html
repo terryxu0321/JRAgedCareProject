@@ -1,0 +1,23 @@
+<!-- @dsCard group="Feedback" height=150 subtitle="success · with undo" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Toast — preview</title>
+<style>
+	body { margin: 0; padding: var(--spacing-md); background: var(--canvas-parchment); font-family: var(--font-text); }
+	.stack { display: grid; gap: var(--spacing-sm); justify-items: start; }
+	.toast { display: flex; align-items: center; gap: var(--spacing-sm); max-width: 400px; background: var(--ink); color: var(--on-dark); border-radius: var(--rounded-lg); padding: 12px 16px; font: 400 14px/1.43 var(--font-text); letter-spacing: -0.224px; }
+	.icon { color: var(--status-confirmed-on-dark); font-weight: 600; }
+	.text { flex: 1; }
+	a { color: var(--primary-on-dark); font-weight: 600; padding: 8px 4px; }
+	a:focus-visible { outline: 2px solid var(--primary-on-dark); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="stack">
+	<div class="toast" role="status"><span class="icon" aria-hidden="true">✓</span><span class="text">Draft saved</span></div>
+	<div class="toast" role="status"><span class="icon" aria-hidden="true">✓</span><span class="text">Section confirmed</span><a href="#">Undo</a></div>
+</div>
+</body>
+</html>

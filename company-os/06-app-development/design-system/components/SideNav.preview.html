@@ -1,0 +1,32 @@
+<!-- @dsCard group="Navigation" height=300 subtitle="admin-web" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SideNav — preview</title>
+<style>
+	body { margin: 0; font-family: var(--font-text); background: var(--canvas); color: var(--ink); }
+	.layout { display: flex; min-height: 300px; }
+	nav { width: 240px; flex: none; background: var(--canvas-parchment); padding: var(--spacing-sm); box-sizing: border-box; display: grid; align-content: start; gap: 2px; }
+	.group { font: 600 14px/1.29 var(--font-text); color: var(--ink-muted); padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-xxs); }
+	a { display: flex; align-items: center; min-height: 40px; padding: 0 var(--spacing-sm); border-radius: var(--rounded-sm); color: var(--ink); text-decoration: none; font: 400 17px/1.47 var(--font-text); letter-spacing: -0.374px; }
+	a[aria-current="page"] { background: var(--canvas); color: var(--primary); font-weight: 600; }
+	a:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+	main { flex: 1; padding: var(--spacing-lg); color: var(--ink-muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="layout">
+	<nav aria-label="Admin">
+		<div class="group">Facility</div>
+		<a href="#" aria-current="page">Residents</a>
+		<a href="#">Consent</a>
+		<a href="#">Staff</a>
+		<div class="group">Records</div>
+		<a href="#">Audit log</a>
+		<a href="#">Exports</a>
+	</nav>
+	<main>Page content</main>
+</div>
+</body>
+</html>

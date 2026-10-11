@@ -5,6 +5,21 @@
 
 ---
 
+## 2026-10-11 · Claude Code · 离线单文件 design-system.html（由 DESIGN.md 生成）
+
+- **请求人**：Terry
+- **请求**：生成单文件 design-system.html 放进仓库；另：不要自动 push
+- **改动**：
+  - 新增 `company-os/06-app-development/design-system/build_design_html.py` —— 读取 DESIGN.md 的 YAML token 与正文、`components/` 的说明与预览，生成单文件页面（标准库 + PyYAML）
+  - 新增 `design-system/design-system.html`（生成文件，196 KB）—— 规范全文、颜色（生成时计算对比度）、字体、间距 / 圆角 / 尺寸 / 层次 / 动效、35 个组件（沙盒 iframe 实时预览 + 用法）、封面；无外部资源，可离线打开
+  - 新增 `design-system/components/`（README / AGENTS / CLAUDE + 35 个 `<Name>.md` 与 36 个 `<Name>.preview.html`）—— 从设计系统页面的源文件复制入库（通过命令复制，hook 未捕获）
+  - 修改 `design-system/README.md`、`design-system/AGENTS.md`、根目录 `AGENTS.md`（新增构建命令；写明"不自动 push，本地提交并列出改动，用户要求时才 push"）
+- **原因与决策**：HTML 不手写，由脚本从 DESIGN.md 生成，避免两份规范（DRY）；组件平铺在一个目录，只需一套三件套；预览放在沙盒 iframe 中，避免与页面样式冲突
+- **检查**：结构检查（35 个组件、36 个 iframe、23 个导航链接、无外部 URL、所有 `var(--…)` 已定义、标签闭合）；`check_rules.py` 通过
+- **待确认**：本次**未 push**，等 Terry 确认后再推送；浏览器中目视检查由 Terry 进行
+
+---
+
 ## 2026-10-11 · Claude Code · 仓库公开后的隐私检查与调整
 
 - **请求人**：Terry

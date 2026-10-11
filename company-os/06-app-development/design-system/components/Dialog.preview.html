@@ -1,0 +1,32 @@
+<!-- @dsCard group="Feedback" height=320 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dialog — preview</title>
+<style>
+	body { margin: 0; font-family: var(--font-text); background: var(--canvas); }
+	.stage { position: relative; min-height: 320px; display: grid; place-items: center; padding: var(--spacing-md); box-sizing: border-box; background: var(--scrim); }
+	.dialog { background: var(--canvas); color: var(--ink); border-radius: var(--rounded-lg); padding: var(--spacing-lg); max-width: 400px; width: 100%; box-sizing: border-box; display: grid; gap: var(--spacing-sm); }
+	h2 { margin: 0; font: 600 21px/1.19 var(--font-display); letter-spacing: 0.231px; }
+	p { margin: 0; font: 400 17px/1.47 var(--font-text); letter-spacing: -0.374px; }
+	.actions { display: grid; gap: var(--spacing-xs); margin-top: var(--spacing-xs); }
+	.btn { font: 600 17px/1.18 var(--font-text); letter-spacing: -0.374px; min-height: var(--size-control-height); padding: 12px 24px; border-radius: var(--rounded-pill); cursor: pointer; }
+	.primary { background: var(--primary); color: var(--on-primary); border: 0; }
+	.secondary { background: transparent; color: var(--primary); border: 1px solid var(--primary); }
+	.btn:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="stage">
+	<div class="dialog" role="dialog" aria-modal="true" aria-labelledby="t">
+		<h2 id="t">Delete this draft?</h2>
+		<p>The dictation and the AI draft will be removed from this device. This can't be undone.</p>
+		<div class="actions">
+			<button class="btn primary" type="button">Delete draft</button>
+			<button class="btn secondary" type="button">Keep draft</button>
+		</div>
+	</div>
+</div>
+</body>
+</html>

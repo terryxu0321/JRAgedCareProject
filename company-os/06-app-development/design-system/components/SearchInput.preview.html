@@ -1,0 +1,22 @@
+<!-- @dsCard group="Inputs" height=96 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SearchInput — preview</title>
+<style>
+	body { margin: 0; padding: var(--spacing-md); background: var(--canvas-parchment); color: var(--ink); font-family: var(--font-text); }
+	.search { position: relative; max-width: 420px; }
+	.glyph { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--ink-muted); font-size: 15px; }
+	input { font: 400 17px/1.47 var(--font-text); letter-spacing: -0.374px; width: 100%; box-sizing: border-box; min-height: var(--size-control-height); padding: 12px 20px 12px 44px; background: var(--canvas); color: var(--ink); border: 1px solid var(--border-input); border-radius: var(--rounded-pill); }
+	input::placeholder { color: var(--ink-muted); }
+	input:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="search">
+	<span class="glyph" aria-hidden="true">⌕</span>
+	<input type="search" aria-label="Search residents" placeholder="Search residents by name or room">
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!-- @dsCard group="Inputs" height=200 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Radio — preview</title>
+<style>
+	body { margin: 0; padding: var(--spacing-md); background: var(--canvas); color: var(--ink); font-family: var(--font-text); }
+	fieldset { border: 0; margin: 0; padding: 0; }
+	legend { font: 600 14px/1.29 var(--font-text); letter-spacing: -0.224px; margin-bottom: var(--spacing-xxs); }
+	.opt { display: flex; align-items: center; gap: var(--spacing-sm); min-height: var(--size-touch-target-min); font: 400 17px/1.47 var(--font-text); letter-spacing: -0.374px; cursor: pointer; }
+	input { appearance: none; margin: 0; width: 24px; height: 24px; border: 2px solid var(--border-input); border-radius: var(--rounded-full); display: grid; place-items: center; cursor: pointer; flex: none; }
+	input:checked { border-color: var(--primary); }
+	input:checked::after { content: ""; width: 12px; height: 12px; border-radius: var(--rounded-full); background: var(--primary); }
+	input:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<fieldset>
+	<legend>Where did this happen?</legend>
+	<label class="opt"><input type="radio" name="where" checked> Bedroom</label>
+	<label class="opt"><input type="radio" name="where"> Dining room</label>
+	<label class="opt"><input type="radio" name="where"> Garden</label>
+</fieldset>
+</body>
+</html>
