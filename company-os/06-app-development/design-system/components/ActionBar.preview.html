@@ -1,0 +1,24 @@
+<!-- @dsCard group="Navigation" height=120 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ActionBar — preview</title>
+<style>
+	body { margin: 0; font-family: var(--font-text); background: var(--canvas); color: var(--ink); }
+	.content { padding: var(--spacing-md); color: var(--ink-muted); font-size: 14px; }
+	.bar { display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-sm); min-height: var(--size-action-bar-height); padding: 12px 16px; box-sizing: border-box; background: rgba(245, 245, 247, 0.8); backdrop-filter: saturate(180%) blur(20px); box-shadow: var(--elevation-hairline); }
+	@media (prefers-reduced-transparency: reduce) { .bar { background: var(--canvas-parchment); backdrop-filter: none; } }
+	.progress { font: 400 14px/1.43 var(--font-text); letter-spacing: -0.224px; color: var(--ink-muted); }
+	.btn { font: 600 17px/1.18 var(--font-text); letter-spacing: -0.374px; min-height: var(--size-control-height); padding: 12px 24px; border-radius: var(--rounded-pill); border: 0; background: var(--primary); color: var(--on-primary); cursor: pointer; }
+	.btn:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="content">Record content above.</div>
+<div class="bar">
+	<span class="progress">2 of 3 sections confirmed</span>
+	<button class="btn" type="button">Confirm section</button>
+</div>
+</body>
+</html>

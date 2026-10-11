@@ -28,6 +28,7 @@ Root-level folders besides `company-os/`: `docs/` (PRD) and `changelog/` (AI cha
 | Command (run from repo root) | Purpose |
 |---|---|
 | `python company-os/11-rules/check_rules.py` | All automated rule checks — LEGAL, FORMAT, SIZE, SECRET, CATCH, PLACE, ANY, CONTEXT, ASSIGN (each PRD/spec has exactly one roster Assignee — skill `assign-prd`). Must pass after changing the PRD, a spec, code or folder structure; exit 1 on failure |
+| `python company-os/06-app-development/design-system/build_design_html.py` | Rebuild the offline `design-system.html` from `DESIGN.md` + `design-system/components/` after changing either (needs PyYAML) |
 | `python company-os/10-skills/sync_skills.py` | Copy skills from `company-os/10-skills/` to `.claude/skills/` and `.agents/skills/` after adding or editing a skill |
 | `python company-os/11-rules/work_items.py [--member Matt] [--log]` | Open work per member (PRD Assignee + ADLC tasks), or one member's work record (work-log-rules) |
 | `python company-os/11-rules/standup.py --context \| --summary [--date YYYY-MM-DD]` | Standup reminders for the current member, or the team's standups and blockers for a day |
@@ -35,7 +36,7 @@ Root-level folders besides `company-os/`: `docs/` (PRD) and `changelog/` (AI cha
 
 There is **no build, lint or test command yet**: product code has not started — `company-os/06-app-development/src/` holds only module docs. The stack is proposed (not decided) in `company-os/06-app-development/engineering-standards.md`. When code starts, formatter/linter config must match `.editorconfig` (tabs, width 4) and add its commands here.
 
-Environment notes: Windows + OneDrive; a local git repository (branch `main`, initialised 2026-10-11, no remote yet). `.gitignore` excludes secrets, caches, local Claude settings, `.claude/worktrees/` and `research/downloads/` PDFs; `.gitattributes` keeps LF line endings per `.editorconfig`. Commit or push only when the user asks. Python printing Chinese needs `PYTHONIOENCODING=utf-8` (scripts here call `sys.stdout.reconfigure`). OneDrive may refuse directory removal, and in-place shell edits (`perl -pi`, Python rewrites from Bash) have silently failed here before — prefer the file edit tools and re-read to confirm.
+Environment notes: Windows + OneDrive; a git repository (branch `main`) with a **public** GitHub remote `origin` (https://github.com/terryxu0321/JRAgedCareProject, public since 2026-10-11) — everything committed is world-readable: never commit secrets, real resident or personal data, local absolute paths, or licensed PDFs from `research/downloads/`. `.gitignore` excludes secrets, caches, local Claude settings, `.claude/worktrees/` and `research/downloads/` PDFs; `.gitattributes` keeps LF line endings per `.editorconfig`. **Never push automatically**: commit locally on a branch, tell the user the commit id and the changed files, and push only when the user explicitly asks (Terry, 2026-10-11). Python printing Chinese needs `PYTHONIOENCODING=utf-8` (scripts here call `sys.stdout.reconfigure`). OneDrive may refuse directory removal, and in-place shell edits (`perl -pi`, Python rewrites from Bash) have silently failed here before — prefer the file edit tools and re-read to confirm.
 
 ## How the pieces fit
 

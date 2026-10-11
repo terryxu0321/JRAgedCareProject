@@ -1,0 +1,23 @@
+<!-- @dsCard group="Feedback" height=230 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>EmptyState — preview</title>
+<style>
+	body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var(--font-text); }
+	.empty { display: grid; justify-items: center; gap: var(--spacing-xs); text-align: center; padding: var(--spacing-xl) var(--spacing-md); }
+	h2 { margin: 0; font: 600 21px/1.19 var(--font-display); letter-spacing: 0.231px; }
+	p { margin: 0 0 var(--spacing-xs); max-width: 320px; font: 400 17px/1.47 var(--font-text); letter-spacing: -0.374px; color: var(--ink-muted); }
+	.btn { font: 600 17px/1.18 var(--font-text); min-height: var(--size-control-height); padding: 12px 24px; border-radius: var(--rounded-pill); border: 1px solid var(--primary); background: transparent; color: var(--primary); cursor: pointer; }
+	.btn:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="empty">
+	<h2>No drafts yet</h2>
+	<p>Hold the button and describe the care you gave. A draft appears here for you to review.</p>
+	<button class="btn" type="button">Dictate a note</button>
+</div>
+</body>
+</html>

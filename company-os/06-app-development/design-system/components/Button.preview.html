@@ -1,0 +1,39 @@
+<!-- @dsCard group="Actions" height=200 subtitle="primary · secondary · pearl · utility · icon" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Button — preview</title>
+<style>
+	body { margin: 0; padding: var(--spacing-md); background: var(--canvas); color: var(--ink); font-family: var(--font-text); }
+	.rows { display: flex; flex-direction: column; gap: var(--spacing-md); }
+	.row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-sm); }
+	.label { font-size: 14px; color: var(--ink-muted); width: 100%; }
+	.btn { font: 600 17px/1.18 var(--font-text); letter-spacing: -0.374px; min-height: var(--size-control-height); padding: 12px 24px; border-radius: var(--rounded-pill); border: 0; cursor: pointer; }
+	.btn:active { transform: scale(0.95); }
+	.btn:focus-visible, .btn.focus { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+	.primary { background: var(--primary); color: var(--on-primary); }
+	.secondary { background: transparent; color: var(--primary); border: 1px solid var(--primary); }
+	.pearl { background: var(--surface-pearl); color: var(--ink-muted-80); border: 1px solid var(--border-input); border-radius: var(--rounded-md); font-weight: 400; font-size: 14px; padding: 12px 16px; }
+	.utility { background: var(--ink); color: var(--on-dark); border-radius: var(--rounded-sm); font-weight: 400; font-size: 14px; min-height: 40px; padding: 8px 16px; }
+	.icon { width: var(--size-touch-target-min); height: var(--size-touch-target-min); padding: 0; border-radius: var(--rounded-full); background: var(--surface-chip-translucent); color: var(--ink); font-size: 22px; line-height: 1; }
+	.disabled { color: var(--ink-muted); background: var(--canvas-parchment); cursor: default; }
+	@media (prefers-reduced-motion: reduce) { .btn:active { transform: none; } }
+</style>
+</head>
+<body>
+<div class="rows">
+	<div class="row">
+		<button class="btn primary" type="button">Confirm section</button>
+		<button class="btn secondary" type="button">Save draft</button>
+		<button class="btn primary focus" type="button">Focused</button>
+		<button class="btn primary disabled" type="button" disabled>Disabled</button>
+	</div>
+	<div class="row">
+		<button class="btn pearl" type="button">Edit text</button>
+		<button class="btn utility" type="button">Export (admin)</button>
+		<button class="btn icon" type="button" aria-label="Close">×</button>
+	</div>
+</div>
+</body>
+</html>

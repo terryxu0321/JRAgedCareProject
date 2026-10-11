@@ -1,0 +1,35 @@
+<!-- @dsCard group="Web" height=420 subtitle="light · dark" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MarketingTile — preview</title>
+<style>
+	body { margin: 0; font-family: var(--font-text); }
+	.tile { padding: var(--spacing-xxl) var(--spacing-md); text-align: center; display: grid; justify-items: center; gap: var(--spacing-xs); }
+	.light { background: var(--canvas); color: var(--ink); }
+	.dark { background: var(--surface-tile-1); color: var(--on-dark); }
+	h2 { margin: 0; font: 600 40px/1.10 var(--font-display); text-wrap: balance; }
+	p { margin: 0; font: 400 21px/1.3 var(--font-text); }
+	.dark p { color: var(--body-muted-on-dark); }
+	.ctas { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; justify-content: center; margin-top: var(--spacing-xs); }
+	.btn { font: 400 17px/1.18 var(--font-text); min-height: 44px; padding: 11px 22px; border-radius: var(--rounded-pill); text-decoration: none; }
+	.primary { background: var(--primary); color: var(--on-primary); }
+	.light .ghost { color: var(--primary); border: 1px solid var(--primary); }
+	.dark .ghost { color: var(--primary-on-dark); border: 1px solid var(--primary-on-dark); }
+	:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<section class="tile light">
+	<h2>Notes that write themselves.</h2>
+	<p>You speak. CareKind drafts. You confirm.</p>
+	<div class="ctas"><a class="btn primary" href="#">Book a pilot</a><a class="btn ghost" href="#">Learn more</a></div>
+</section>
+<section class="tile dark">
+	<h2>Built for the night shift.</h2>
+	<p>Large type, one-handed controls, a dark theme that's easy on tired eyes.</p>
+	<div class="ctas"><a class="btn primary" href="#">See how it works</a><a class="btn ghost" href="#">Privacy</a></div>
+</section>
+</body>
+</html>

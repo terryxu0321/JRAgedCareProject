@@ -1,0 +1,25 @@
+<!-- @dsCard group="Feedback" height=160 subtitle="determinate · indeterminate" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Progress — preview</title>
+<style>
+	body { margin: 0; padding: var(--spacing-md); background: var(--canvas); color: var(--ink); font-family: var(--font-text); }
+	.stack { display: grid; gap: var(--spacing-lg); max-width: 420px; }
+	.label { font: 400 14px/1.43 var(--font-text); color: var(--ink-muted); margin-bottom: var(--spacing-xs); }
+	.track { height: 4px; background: var(--canvas-parchment); border-radius: var(--rounded-pill); overflow: hidden; }
+	.fill { width: 40%; height: 100%; background: var(--primary); }
+	.busy { display: flex; align-items: center; gap: var(--spacing-sm); font: 400 17px/1.47 var(--font-text); letter-spacing: -0.374px; }
+	.spin { width: 24px; height: 24px; border-radius: var(--rounded-full); border: 3px solid var(--canvas-parchment); border-top-color: var(--primary); box-sizing: border-box; animation: spin 900ms linear infinite; }
+	@keyframes spin { to { transform: rotate(360deg); } }
+	@media (prefers-reduced-motion: reduce) { .spin { animation: none; } }
+</style>
+</head>
+<body>
+<div class="stack">
+	<div><div class="label">Uploading 2 of 5</div><div class="track" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" aria-label="Uploading drafts"><div class="fill"></div></div></div>
+	<div class="busy"><span class="spin" aria-hidden="true"></span>Writing draft…</div>
+</div>
+</body>
+</html>

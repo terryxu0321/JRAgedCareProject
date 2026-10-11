@@ -1,0 +1,26 @@
+<!-- @dsCard group="Navigation" height=90 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tabs — preview</title>
+<style>
+	body { margin: 0; padding: var(--spacing-md); background: var(--canvas); color: var(--ink); font-family: var(--font-text); }
+	.tabs { display: flex; padding: 2px; gap: 2px; background: var(--canvas-parchment); border-radius: var(--rounded-pill); max-width: 420px; }
+	.tab { flex: 1; min-height: 44px; border: 0; border-radius: var(--rounded-pill); background: transparent; color: var(--ink); font: 400 14px/1.43 var(--font-text); letter-spacing: -0.224px; cursor: pointer; }
+	.tab[aria-selected="true"] { background: var(--canvas); box-shadow: var(--elevation-hairline); font-weight: 600; }
+	.tab:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="tabs" role="tablist" aria-label="Drafts">
+	<button class="tab" role="tab" type="button" aria-selected="true">To review (2)</button>
+	<button class="tab" role="tab" type="button" aria-selected="false">Confirmed</button>
+	<button class="tab" role="tab" type="button" aria-selected="false">All</button>
+</div>
+<script>
+	var tabs = document.querySelectorAll('.tab');
+	tabs.forEach(function (t) { t.addEventListener('click', function () { tabs.forEach(function (o) { o.setAttribute('aria-selected', String(o === t)); }); }); });
+</script>
+</body>
+</html>

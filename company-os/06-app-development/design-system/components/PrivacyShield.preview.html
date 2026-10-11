@@ -1,0 +1,24 @@
+<!-- @dsCard group="Safety-critical" height=220 subtitle="app switcher · lock-screen notification" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PrivacyShield — preview</title>
+<style>
+	body { margin: 0; padding: var(--spacing-md); background: var(--surface-tile-3); color: var(--ink); font-family: var(--font-text); }
+	.row { display: flex; flex-wrap: wrap; gap: var(--spacing-md); align-items: flex-start; }
+	.shield { width: 150px; height: 180px; border-radius: var(--rounded-lg); background: var(--canvas-parchment); display: grid; place-content: center; text-align: center; gap: var(--spacing-xxs); }
+	.app { font: 600 21px/1.19 var(--font-display); letter-spacing: 0.231px; }
+	.hint { font: 400 14px/1.43 var(--font-text); color: var(--ink-muted); }
+	.note { flex: 1; min-width: 220px; max-width: 360px; background: var(--surface-tile-2); color: var(--on-dark); border-radius: var(--rounded-lg); padding: var(--spacing-sm) var(--spacing-md); }
+	.note b { font: 600 14px/1.29 var(--font-text); display: block; }
+	.note span { font: 400 14px/1.43 var(--font-text); color: var(--body-muted-on-dark); }
+</style>
+</head>
+<body>
+<div class="row">
+	<div class="shield"><div class="app">CareKind</div><div class="hint">Content hidden</div></div>
+	<div class="note"><b>CareKind</b><span>2 drafts are waiting for review</span></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!-- @dsCard group="Inputs" height=340 subtitle="drop zone · uploading · uploaded · failed" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FileUpload — preview</title>
+<style>
+	body { margin: 0; padding: var(--spacing-md); background: var(--canvas); color: var(--ink); font-family: var(--font-text); }
+	.wrap { display: grid; gap: var(--spacing-sm); max-width: 560px; }
+	.zone { background: var(--canvas-parchment); border: 1px solid var(--border-input); border-radius: var(--rounded-lg); padding: var(--spacing-lg); display: grid; justify-items: center; gap: var(--spacing-xs); text-align: center; }
+	.zone b { font: 600 17px/1.24 var(--font-text); }
+	.zone span { font: 400 14px/1.43 var(--font-text); color: var(--ink-muted); }
+	.btn { font: 600 17px/1.18 var(--font-text); min-height: var(--size-control-height); padding: 12px 24px; border-radius: var(--rounded-pill); border: 1px solid var(--primary); background: transparent; color: var(--primary); cursor: pointer; }
+	.file { display: grid; grid-template-columns: 1fr auto; gap: 4px var(--spacing-sm); align-items: center; padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--hairline); }
+	.name { font: 400 17px/1.47 var(--font-text); letter-spacing: -0.374px; min-width: 0; overflow-wrap: anywhere; }
+	.meta { font: 400 14px/1.43 var(--font-text); color: var(--ink-muted); }
+	.ok { color: var(--status-confirmed); font: 600 14px/1.29 var(--font-text); }
+	.err { color: var(--status-error); font: 400 14px/1.43 var(--font-text); }
+	.track { grid-column: 1 / -1; height: 4px; background: var(--canvas-parchment); border-radius: var(--rounded-pill); overflow: hidden; }
+	.fill { height: 100%; width: 60%; background: var(--primary); }
+	a { color: var(--primary); font: 600 14px/1.29 var(--font-text); padding: 12px 4px; }
+	:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+	<div class="zone"><b>Import resident roster</b><span>CSV, up to 5 MB. Drag a file here or choose one.</span><button class="btn" type="button">Choose file</button></div>
+	<div class="file"><span class="name">roster-wing-a.csv</span><span class="meta">Uploading 60%</span><div class="track" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><div class="fill"></div></div></div>
+	<div class="file"><span class="name">roster-wing-b.csv</span><span class="ok">✓ Uploaded</span></div>
+	<div class="file"><span class="name">photos.zip</span><a href="#">Retry</a><span class="err" style="grid-column:1/-1">⚠ File is larger than 5 MB. Choose a smaller file.</span></div>
+</div>
+</body>
+</html>

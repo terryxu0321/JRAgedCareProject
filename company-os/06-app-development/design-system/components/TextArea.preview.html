@@ -1,0 +1,23 @@
+<!-- @dsCard group="Inputs" height=230 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TextArea — preview</title>
+<style>
+	body { margin: 0; padding: var(--spacing-md); background: var(--canvas); color: var(--ink); font-family: var(--font-text); }
+	.field { display: grid; gap: var(--spacing-xs); max-width: 480px; }
+	label { font: 600 14px/1.29 var(--font-text); letter-spacing: -0.224px; }
+	textarea { font: 400 17px/1.47 var(--font-text); letter-spacing: -0.374px; color: var(--ink); background: var(--canvas); min-height: 120px; padding: 12px 16px; border: 1px solid var(--border-input); border-radius: var(--rounded-sm); resize: vertical; box-sizing: border-box; width: 100%; }
+	textarea:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+	.count { font: 400 14px/1.43 var(--font-text); color: var(--ink-muted); text-align: right; }
+</style>
+</head>
+<body>
+<div class="field">
+	<label for="note">Additional note</label>
+	<textarea id="note">Family visited in the afternoon and stayed for tea.</textarea>
+	<div class="count">51 / 500</div>
+</div>
+</body>
+</html>

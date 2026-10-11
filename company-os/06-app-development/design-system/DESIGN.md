@@ -1,6 +1,6 @@
 ---
 name: CareKind Design System
-version: 0.1.0
+version: 0.2.0
 updated: 2026-10-11
 source_of_truth: true
 style_reference: "Terry 选定（2026-10-11）：以摄影为主、界面隐身的极简风格（参考 Apple 网站视觉语言）；按 CareKind 护理场景调整，见 §10"
@@ -121,6 +121,27 @@ components:
   system-banner-offline: { bg: "{colors.status-offline-bg}", fg: "{colors.ink}", icon: offline, persistent: true }
   system-banner-error: { bg: "{colors.status-error-bg}", fg: "{colors.ink}", accent: "{colors.status-error}", icon: alert, persistent: true }
   privacy-shield: { bg: "{colors.canvas-parchment}", content: "app name only — no resident or health information" }
+  # Common components (v0.2.0)
+  select: { bg: "{colors.canvas}", fg: "{colors.ink}", border: "1px solid {colors.border-input}", type: "{typography.body}", radius: "{rounded.sm}", min-height: "{size.control-height}", padding: "12px 44px 12px 16px", chevron: "{colors.ink-muted}", options: "{component.menu}" }
+  menu: { bg: "{colors.canvas}", border: "1px solid {colors.border-input}", radius: "{rounded.lg}", padding: "{spacing.xxs}", item-min-height: "{size.control-height}", item-type: "{typography.body}", item-selected: "checkmark + {colors.primary} text", separator: "1px {colors.hairline}" }
+  checkbox: { box: "24px, 2px solid {colors.border-input}, radius {rounded.sm}", checked: "fill {colors.primary}, check {colors.on-primary}", target: "{size.touch-target-min}", label: "{typography.body}" }
+  radio: { circle: "24px, 2px solid {colors.border-input}, {rounded.full}", selected: "2px solid {colors.primary} ring + 12px {colors.primary} dot", target: "{size.touch-target-min}", label: "{typography.body}" }
+  switch: { track: "51x31 {rounded.pill}", off: "fill {colors.border-input}", on: "fill {colors.primary}", thumb: "27px {colors.canvas} {rounded.full}", target: "{size.touch-target-min}", label: "{typography.body}, label left, switch right" }
+  textarea: { bg: "{colors.canvas}", fg: "{colors.ink}", border: "1px solid {colors.border-input}", type: "{typography.body}", radius: "{rounded.sm}", min-height: 120px, padding: "12px 16px", counter: "{typography.caption} {colors.ink-muted}" }
+  date-time-input: { base: "{component.input}", date-format: "DD/MM/YYYY", time-format: "24-hour HH:MM", picker: "platform native" }
+  file-upload: { zone: "{colors.canvas-parchment}, 1px solid {colors.border-input}, {rounded.lg}, padding {spacing.lg}", file-row: "{component.list-item} + {component.progress}", error: "{colors.status-error} icon + text", scope: admin-web }
+  toast: { bg: "{colors.ink}", fg: "{colors.on-dark}", type: "{typography.caption}", radius: "{rounded.lg}", padding: "12px 16px", icon-success: "{colors.status-confirmed-on-dark}", action: "{colors.primary-on-dark}", duration: 4s, position: "bottom, above {component.action-bar}" }
+  dialog: { scrim: "{colors.scrim}", bg: "{colors.canvas}", radius: "{rounded.lg}", padding: "{spacing.lg}", title: "{typography.tagline}", body: "{typography.body}", max-width: 400px, actions: "{component.button-primary} + {component.button-secondary-pill}, stacked on phones" }
+  bottom-sheet: { scrim: "{colors.scrim}", bg: "{colors.canvas}", radius: "{rounded.lg} top corners", grabber: "36x5 {colors.border-input} {rounded.pill}", padding: "{spacing.md}" }
+  progress: { track: "{colors.canvas-parchment}, 4px, {rounded.pill}", fill: "{colors.primary}", spinner: "{colors.primary}, 24px", label: "{typography.caption} {colors.ink-muted}" }
+  empty-state: { title: "{typography.tagline}", body: "{typography.body} {colors.ink-muted}", action: "{component.button-secondary-pill}", align: center, padding: "{spacing.xl}" }
+  status-tag: { type: "{typography.caption-strong}", fg: "{colors.ink}", radius: "{rounded.pill}", padding: "4px 12px", variants: "draft / confirmed / error / attention / offline: status-*-bg fill + status-* icon", interactive: false }
+  tabs: { track: "{colors.canvas-parchment}", radius: "{rounded.pill}", padding: 2px, segment-min-height: 44px, selected: "{colors.canvas} + {elevation.hairline}, {typography.caption-strong}", unselected: "{typography.caption} {colors.ink}" }
+  tab-bar: { surface: "{elevation.frosted}", height: 56px, items: "3-5, icon + {typography.caption} label", selected: "{colors.primary}", unselected: "{colors.ink-muted}", scope: mobile-app }
+  side-nav: { bg: "{colors.canvas-parchment}", width: 240px, item-min-height: 40px, item-type: "{typography.body}", selected: "{colors.canvas} fill, {colors.primary} text, weight 600", radius: "{rounded.sm}", scope: admin-web }
+  list-item: { min-height: 56px, padding: "12px {spacing.md}", title: "{typography.body}", secondary: "{typography.caption} {colors.ink-muted}", trailing: "chevron {colors.ink-muted}", separator: "1px {colors.hairline}, inset {spacing.md}" }
+  data-table: { header: "{typography.caption-strong} {colors.ink-muted}", row-min-height: 48px, cell: "{typography.body}", numbers: tabular-nums, separator: "1px {colors.hairline}", pagination: "{component.button-secondary-pill}", scope: admin-web }
+  accordion: { header-min-height: "{size.control-height}", header: "{typography.body-strong}", chevron: "{colors.ink-muted}", body: "{typography.body}", separator: "1px {colors.hairline}" }
   marketing-tile-light: { bg: "{colors.canvas}", padding: "{spacing.section} 0", radius: "{rounded.none}", scope: web }
   marketing-tile-dark: { bg: "{colors.surface-tile-1}", fg: "{colors.on-dark}", padding: "{spacing.section} 0", radius: "{rounded.none}", scope: web }
 ---
@@ -269,7 +290,37 @@ components:
 | `system-banner-offline` / `-error` | 持续显示直到问题解决；说明内容是否已安全保存 | H-06 |
 | `privacy-shield` | App 进入后台时只显示应用名；锁屏通知不含居民或健康信息 | 隐私 |
 
-### 7.3 营销网站组件（scope: web）
+### 7.3 常用组件（v0.2.0）
+
+**输入**
+- **`select`**（下拉选择）—— 外观同 `input`，右侧 `ink-muted` 下拉箭头；选项列表用 `menu`。选项多于 7 个时改用带搜索的 `bottom-sheet`（App）或带 `search-input` 的菜单（管理后台）。手机上优先用系统原生选择器
+- **`checkbox`** —— 24px 方框在 48px 点击区内；选中 = `primary` 填充 + `on-primary` 勾。标签点击也能切换
+- **`radio`** —— 24px 圆；选中 = `primary` 外环 + 中心圆点。一组至少 2 项，默认不预选会影响记录内容的选项
+- **`switch`** —— 只用于立即生效的设置（如夜班主题）；标签在左、开关在右。关闭 = `border-input` 轨道，开启 = `primary`。不要用开关代替"确认"
+- **`textarea`** —— 外观同 `input`，最小 120px 高，可选字数提示（`caption`）
+- **`date-time-input`** —— 澳洲格式：日期 DD/MM/YYYY，时间 24 小时制 HH:MM；用系统原生选择器；"现在"一键填入
+- **`file-upload`**（管理后台）—— 米白上传区、**实线**边框（虚线只留给 AI 草稿）、说明可接受的格式和大小；每个文件一行：文件名 + 进度 + 移除；失败用 `status-error` 图标 + 原因 + 重试。上传的文件可能含个人信息：只上传到澳洲区域存储
+
+**反馈**
+- **`toast`** —— `ink` 底、`on-dark` 文字，底部、位于 `action-bar` 之上；4 秒后消失，同时只显示一个。只用于**已经完成**的结果（"Draft saved"），可带一个 `primary-on-dark` 的 "Undo"。需要处理的错误用 `system-banner-error`，不用 toast
+- **`dialog`** —— `scrim` 遮罩 + `canvas` 卡片，`tagline` 标题，`body` 正文写清后果；手机上按钮纵向堆叠，主操作在上。删除等不可撤销操作必须用对话框确认，按钮文字写动作本身（"Delete draft"），不用红色按钮
+- **`bottom-sheet`** —— App 中的选项列表、筛选、次要操作；顶部 36×5 拖动条，可下滑关闭
+- **`progress`** —— 进度条（已知进度）或圆形加载（未知进度），都配文字说明（"Uploading 2 of 5"）；超过 10 秒的等待必须显示进度条和剩余说明
+- **`empty-state`** —— 居中：一句标题 + 一句说明 + 一个次要按钮，告诉用户下一步做什么（"No drafts yet. Dictate your first note."）
+- **`status-tag`** —— 不可点击的小胶囊，表示**记录或系统**状态（Draft、Confirmed、Synced、Offline、Check）；状态色背景 + 状态色图标 + `ink` 文字。**绝不**用来标记居民的风险、病情或优先级
+
+**导航**
+- **`tabs`**（分段控件）—— 同一页面内 2–4 个视图切换（如 "To review / Confirmed"）；米白轨道，选中段为白底
+- **`tab-bar`**（App）—— 底部主导航，3–5 项，图标 + 文字；选中 `primary`。只出现在一级页面；详情页用 `action-bar`
+- **`side-nav`**（管理后台）—— 左侧 240px 米白导航；选中项白底 + `primary` 文字 + 600 字重（不用左侧色条）
+- **`menu`**（操作下拉菜单）—— `canvas` 底、`border-input` 细边、`rounded-lg`，每项 48px 高；不用阴影。也是 `select` 的选项列表
+
+**数据展示**
+- **`list-item`** —— 最小 56px 高；主文字 `body`、次要文字 `caption` + `ink-muted`、右侧箭头；分隔线 `hairline` 从左边距开始
+- **`data-table`**（管理后台）—— 表头 `caption-strong` + `ink-muted`，行高 48px，数字等宽对齐，只用横向 `hairline` 分隔，无斑马纹；分页用 `button-secondary-pill`。窄屏时表格在自己的容器内横向滚动
+- **`accordion`** —— 48px 标题行（`body-strong` + 箭头），展开显示正文；用于说明、设置分组，不用于隐藏需要审核的记录内容
+
+### 7.4 营销网站组件（scope: web）
 
 `marketing-tile-light` / `marketing-tile-dark`：全宽区块交替；标题 `display-lg`、一句话副标题、最多两个胶囊按钮、一张图。图片只用授权的真实护理场景，**不用真实居民照片**（除非有书面同意）。
 
@@ -290,6 +341,8 @@ components:
 - 不用 300 细体，不用 500 字重；App 中不出现小于 14px 的文字
 - 不把 `{colors.hairline}` 当作控件唯一边界
 - 不提供"全部一键确认"
+- 虚线边框只用于 AI 草稿（`draft-card`），其他组件（包括上传区）一律实线
+- 错误不用 toast：需要用户处理的问题用 `system-banner-error` 或行内错误；不可撤销的操作用 `dialog` 确认，不用红色按钮
 - 设计稿、组件文档、截图中不出现真实居民信息（只用合成数据）
 
 ## 9. Responsive 响应式

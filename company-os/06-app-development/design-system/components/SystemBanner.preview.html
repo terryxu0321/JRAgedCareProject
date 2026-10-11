@@ -1,0 +1,28 @@
+<!-- @dsCard group="Safety-critical" height=190 subtitle="offline · error" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SystemBanner — preview</title>
+<style>
+	body { margin: 0; padding: var(--spacing-md); background: var(--canvas); color: var(--ink); font-family: var(--font-text); }
+	.stack { display: grid; gap: var(--spacing-sm); max-width: 560px; }
+	.banner { display: flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-sm) var(--spacing-md); border-radius: var(--rounded-lg); font: 400 14px/1.43 var(--font-text); letter-spacing: -0.224px; }
+	.offline { background: var(--status-offline-bg); }
+	.offline .glyph { color: var(--status-offline); }
+	.error { background: var(--status-error-bg); }
+	.error .glyph { color: var(--status-error); }
+	.glyph { font-size: 20px; line-height: 1; }
+	.text { flex: 1; }
+	strong { font-weight: 600; }
+	a { color: var(--primary); font-weight: 600; padding: 12px 4px; }
+	a:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="stack">
+	<div class="banner offline" role="status"><span class="glyph" aria-hidden="true">⌁</span><span class="text"><strong>You're offline.</strong> Drafts are saved on this device and will upload when you reconnect.</span></div>
+	<div class="banner error" role="alert"><span class="glyph" aria-hidden="true">⚠</span><span class="text"><strong>Upload failed.</strong> Your draft is safe on this device.</span><a href="#">Retry</a></div>
+</div>
+</body>
+</html>

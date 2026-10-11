@@ -1,0 +1,20 @@
+<!-- @dsCard group="Inputs" height=150 subtitle="unchecked · checked" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Checkbox — preview</title>
+<style>
+	body { margin: 0; padding: var(--spacing-md); background: var(--canvas); color: var(--ink); font-family: var(--font-text); }
+	.opt { display: flex; align-items: center; gap: var(--spacing-sm); min-height: var(--size-touch-target-min); font: 400 17px/1.47 var(--font-text); letter-spacing: -0.374px; cursor: pointer; }
+	input { appearance: none; margin: 0; width: 24px; height: 24px; border: 2px solid var(--border-input); border-radius: var(--rounded-sm); display: grid; place-items: center; cursor: pointer; flex: none; }
+	input:checked { background: var(--primary); border-color: var(--primary); }
+	input:checked::after { content: "✓"; color: var(--on-primary); font: 600 15px/1 var(--font-text); }
+	input:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<label class="opt"><input type="checkbox" checked> Hearing aids checked</label>
+<label class="opt"><input type="checkbox"> Glasses cleaned</label>
+</body>
+</html>

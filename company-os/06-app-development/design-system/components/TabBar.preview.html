@@ -1,0 +1,27 @@
+<!-- @dsCard group="Navigation" height=110 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TabBar — preview</title>
+<style>
+	body { margin: 0; font-family: var(--font-text); background: var(--canvas); }
+	.content { height: 40px; }
+	nav { display: flex; height: 56px; background: rgba(245, 245, 247, 0.8); backdrop-filter: saturate(180%) blur(20px); box-shadow: var(--elevation-hairline); }
+	@media (prefers-reduced-transparency: reduce) { nav { background: var(--canvas-parchment); backdrop-filter: none; } }
+	a { flex: 1; min-width: var(--size-touch-target-min); display: grid; place-content: center; justify-items: center; gap: 2px; text-decoration: none; color: var(--ink-muted); font: 400 14px/1.2 var(--font-text); letter-spacing: -0.224px; }
+	a .ic { font-size: 18px; line-height: 1; }
+	a[aria-current="page"] { color: var(--primary); font-weight: 600; }
+	a:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: -2px; }
+</style>
+</head>
+<body>
+<div class="content"></div>
+<nav aria-label="Main">
+	<a href="#" aria-current="page"><span class="ic" aria-hidden="true">●</span>Dictate</a>
+	<a href="#"><span class="ic" aria-hidden="true">☰</span>Review</a>
+	<a href="#"><span class="ic" aria-hidden="true">◷</span>Shift</a>
+	<a href="#"><span class="ic" aria-hidden="true">⚙</span>Settings</a>
+</nav>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!-- @dsCard group="Data display" height=220 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Accordion — preview</title>
+<style>
+	body { margin: 0; padding: 0 var(--spacing-md); background: var(--canvas); color: var(--ink); font-family: var(--font-text); }
+	.item { border-bottom: 1px solid var(--hairline); }
+	button { width: 100%; display: flex; justify-content: space-between; align-items: center; min-height: var(--size-control-height); padding: 0; border: 0; background: transparent; color: var(--ink); font: 600 17px/1.24 var(--font-text); letter-spacing: -0.374px; text-align: left; cursor: pointer; }
+	.chev { color: var(--ink-muted); transition: transform 120ms; }
+	button[aria-expanded="true"] .chev { transform: rotate(90deg); }
+	.panel { padding: 0 0 var(--spacing-sm); font: 400 17px/1.47 var(--font-text); letter-spacing: -0.374px; color: var(--ink); max-width: 560px; }
+	button:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+	@media (prefers-reduced-motion: reduce) { .chev { transition: none; } }
+</style>
+</head>
+<body>
+<div class="item">
+	<button type="button" aria-expanded="true" aria-controls="p1">How dictation works <span class="chev" aria-hidden="true">›</span></button>
+	<div class="panel" id="p1">Hold the button and describe the care you gave. CareKind writes a draft. You review every draft before it becomes a record.</div>
+</div>
+<div class="item">
+	<button type="button" aria-expanded="false" aria-controls="p2">Working offline <span class="chev" aria-hidden="true">›</span></button>
+	<div class="panel" id="p2" hidden>Drafts are saved on this device and upload when you reconnect.</div>
+</div>
+<script>
+	document.querySelectorAll('.item button').forEach(function (b) {
+		b.addEventListener('click', function () {
+			var open = b.getAttribute('aria-expanded') === 'true';
+			b.setAttribute('aria-expanded', String(!open));
+			document.getElementById(b.getAttribute('aria-controls')).hidden = open;
+		});
+	});
+</script>
+</body>
+</html>

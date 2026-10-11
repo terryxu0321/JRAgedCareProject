@@ -1,0 +1,28 @@
+<!-- @dsCard group="Containers" height=210 subtitle="day · night" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Card — preview</title>
+<style>
+	body { margin: 0; font-family: var(--font-text); }
+	.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+	.pane { padding: var(--spacing-md); }
+	.day { background: var(--canvas-parchment); }
+	.night { background: var(--surface-tile-1); }
+	.card { border-radius: var(--rounded-lg); padding: var(--spacing-lg); display: grid; gap: var(--spacing-xxs); }
+	.day .card { background: var(--canvas); border: 1px solid var(--hairline); color: var(--ink); }
+	.night .card { background: var(--surface-tile-2); color: var(--on-dark); }
+	h3 { margin: 0; font: 600 17px/1.24 var(--font-text); letter-spacing: -0.374px; }
+	.meta { font: 400 14px/1.43 var(--font-text); letter-spacing: -0.224px; }
+	.day .meta { color: var(--ink-muted); }
+	.night .meta { color: var(--ink-muted-on-dark); }
+</style>
+</head>
+<body>
+<div class="grid">
+	<div class="pane day"><div class="card"><h3>Morning round</h3><div class="meta">6 residents · 2 drafts to review</div></div></div>
+	<div class="pane night"><div class="card"><h3>Night round</h3><div class="meta">4 residents · all confirmed</div></div></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!-- @dsCard group="Navigation" height=120 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TopBar — preview</title>
+<style>
+	body { margin: 0; font-family: var(--font-text); background: var(--canvas); color: var(--ink); }
+	.bar { display: flex; align-items: center; gap: var(--spacing-xs); height: var(--size-top-bar-height); padding: 0 var(--spacing-xs); background: rgba(245, 245, 247, 0.8); backdrop-filter: saturate(180%) blur(20px); box-shadow: var(--elevation-hairline); }
+	@media (prefers-reduced-transparency: reduce) { .bar { background: var(--canvas-parchment); backdrop-filter: none; } }
+	.back { width: var(--size-touch-target-min); height: var(--size-touch-target-min); border: 0; background: transparent; color: var(--primary); font-size: 24px; border-radius: var(--rounded-full); cursor: pointer; }
+	h1 { margin: 0; flex: 1; font: 600 21px/1.19 var(--font-display); letter-spacing: 0.231px; }
+	a { color: var(--primary); font: 400 17px/1.47 var(--font-text); padding: 12px; }
+	.content { padding: var(--spacing-md); color: var(--ink-muted); font-size: 14px; }
+	:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="bar">
+	<button class="back" type="button" aria-label="Back">‹</button>
+	<h1>Review drafts</h1>
+	<a href="#">Done</a>
+</div>
+<div class="content">Content scrolls under the bar.</div>
+</body>
+</html>
