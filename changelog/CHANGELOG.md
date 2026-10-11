@@ -5,6 +5,24 @@
 
 ---
 
+## 2026-10-11 · Claude Code · Design System spec（SPEC-003）、任务分配给 Dave，规则改为"整份 PRD 归一人"
+
+- **请求人**：Terry
+- **请求**：给 CareKind AI 做 design system，把任务分配好；追加：整份 PRD 与全部任务分配给一个人（Dave），并更新分配规则与 skill
+- **改动**：
+  - 新增 `company-os/06-app-development/specs/2026-10-design-system.md`（SPEC-003，L3）—— 原则、tokens、基础组件、安全关键组件（H-01/02/03/06/07/08/09）、文案、无障碍、法律依据、评测计划、任务表；`Assignee: Dave`（Terry 确认）
+  - 新增 `company-os/03-legal-compliance/checks/2026-10-11_design-system.md` —— 有条件通过
+  - 新增 `company-os/06-app-development/adlc/`、`adlc/tasks/`（各含 README / AGENTS / CLAUDE）与任务 T-0001 至 T-0009（ADLC §6.1 格式，状态 `ready`，Terry 确认）：负责人 / 执行者均为 Dave（T-0009 由 Claude Code 代执行），评审人 Terry
+  - 修改 `company-os/11-rules/prd-assignment-rules.md` —— 新增 §3a"整份 PRD 归一人（含全部任务）"；§4、§7 去掉"协作者 / 按任务分人"
+  - 修改 `company-os/10-skills/assign-prd/SKILL.md` —— 新增"同步任务"步骤；禁止把同一 PRD 的任务分给不同成员、禁止自审
+  - 修改 ADLC spec §6.3 新增 AS-7；DR-007 补充说明；`specs/README.md`、`10-skills/README.md`
+  - 通过脚本生成（hook 未捕获）：`sync_skills.py` → `.claude/skills/`、`.agents/skills/`
+- **原因与决策**：SPEC-003 含 HITL 审核安全组件，按分配规范定为 L3 → Senior（Dave）。无障碍法律本地未覆盖，按 L-4 不凭记忆引用，建 T-0009 先补充本地文件。设计系统禁止临床严重程度 / 风险等级类组件（TGA）。只启用 ADLC 的任务文件部分，未实现阶段管理与 `adlc.py`。评审人 ≠ 执行者（AS-2），默认 Terry
+- **检查**：`check_rules.py` 通过（exit 0；其余 3 份 PRD 未分配 WARN）；`work_items.py` 显示 9 个任务与 SPEC-003 均在 Dave 名下；skill 已同步
+- **待确认**：Terry 审阅 SPEC-003 正文；H-17、H-18 待 Clinical Lead；设计工具选型；移动端技术栈 DR；Dave 一人承担 9 个任务，截止日是否需要放宽（WIP 上限 3）
+
+---
+
 ## 2026-10-11 · Claude Code · 初始化 git 仓库
 
 - **请求人**：Terry

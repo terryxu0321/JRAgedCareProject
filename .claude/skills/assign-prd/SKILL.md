@@ -5,7 +5,7 @@ description: Assign a CareKind AI PRD (docs/PRD.md or a feature spec in company-
 
 # assign-prd
 
-每个 PRD **有且仅有一个** Assignee（负责推进该 PRD 落地的人）。Assignee 写在 PRD 文件头部，这一行是唯一来源；不另建登记表（DRY）。`check_rules.py` 的 `ASSIGN` 检查自动保证"最多一行、只有一个名字、且是名册成员"。
+每个 PRD **有且仅有一个** Assignee（负责推进该 PRD 落地的人），并且**整份 PRD 归这一人**：它拆出的全部任务（`06-app-development/adlc/tasks/`）的负责人与执行者都是 Assignee（`prd-assignment-rules.md` §3a）。Assignee 写在 PRD 文件头部，这一行是唯一来源；不另建登记表（DRY）。`check_rules.py` 的 `ASSIGN` 检查自动保证"最多一行、只有一个名字、且是名册成员"。
 
 - **PRD 的范围**：`docs/PRD.md` 与 `company-os/06-app-development/specs/*.md`（`README.md` 除外）
 - **Assignee ≠ Owner**：Owner 是对产品决策负责的人（目前都是 Terry）；Assignee 是负责实现与推进的那一个人，可以是 Terry、Ahmad、Matt 或 Dave
@@ -31,18 +31,24 @@ description: Assign a CareKind AI PRD (docs/PRD.md or a feature spec in company-
 	- 人**已指定** Assignee：检查级别门槛与负荷上限，不满足时在 🛑 确认前明确提示（如"Junior 担任 L3，违反 prd-assignment-rules §1"）；Junior 担任 L2 须写明导师 / 必审人（§4）
 4. 🛑 人工确认：Product Owner（Terry）确认 Assignee（分配与改派都要确认）。非交互运行时在此停止，把待确认项写在输出顶部
 5. 确认后用文件编辑工具写入或替换那**一行** Assignee；不得新增第二行，不得写多个名字（如 `Ahmad, Matt`、`Ahmad/Matt`），不得写"待定"之类占位
-6. 运行 `python company-os/11-rules/check_rules.py`，必须通过（`ASSIGN` 无失败）
-7. 按 `changelog-rules.md` 在 `changelog/CHANGELOG.md` 顶部追加记录（写明 PRD、Assignee、是否改派）
+6. **同步任务**（§3a）：找出 `adlc/tasks/T-*.md` 中 `prd` 为该 PRD、状态不是 `done` / `cancelled` 的任务：
+	- `owner` 改为 Assignee（小写，如 `dave`）
+	- `executor` 为人类的改为 Assignee；为 AI（`claude-code` / `codex`）的保留
+	- `reviewer` 若因此与执行者相同（AS-2）或 safety 任务与负责人相同（AS-3），改为另一位人类（默认 `terry`；Assignee 是 Terry 时改为一位 Developer，并在 🛑 中让 Terry 选）
+	- 更新 `updated` 日期；在 PRD 的任务分配表中同步执行者 / 评审人
+7. 运行 `python company-os/11-rules/check_rules.py`，必须通过（`ASSIGN` 无失败）；运行 `python company-os/11-rules/work_items.py` 确认任务已出现在 Assignee 名下
+8. 按 `changelog-rules.md` 在 `changelog/CHANGELOG.md` 顶部追加记录（写明 PRD、Assignee、是否改派、改动了哪些任务）
 
 ## 查看一览
 不改文件：列出每份 PRD 的路径与 Assignee，未分配的标"⚠️ 未分配"，并统计每人负责数量。
 
 ## 输出
-- 被修改的 PRD 文件头部的一行 `Assignee`
-- 回复中给出：PRD、难度（L1/L2/L3 及命中条件）、Assignee 及其级别/主方向（改派时含原 Assignee）、各成员当前负责数量
+- 被修改的 PRD 文件头部的一行 `Assignee`，以及同步后的任务文件
+- 回复中给出：PRD、难度（L1/L2/L3 及命中条件）、Assignee 及其级别/主方向（改派时含原 Assignee）、改派到 Assignee 的任务列表与各任务评审人、各成员当前负责数量
 
 ## 禁止
-- 一个 PRD 分给多人或"共同负责"—— 需要协作时，在 PRD 正文写协作者，Assignee 仍只有一人
+- 一个 PRD 分给多人或"共同负责"，或把同一 PRD 的任务分给不同成员 —— 一个人做不完时拆成多份 PRD，各自分配（§3a）
+- 让 Assignee 评审自己执行的任务（AS-2）
 - 自行决定 Assignee 而跳过 🛑 确认
 - 修改 PRD 的其他内容（范围、法律依据、Owner 等）
 - 对外通知被分配的人（邮件、Slack 等）—— 只在回复中给出可转发的通知草稿，由人发送

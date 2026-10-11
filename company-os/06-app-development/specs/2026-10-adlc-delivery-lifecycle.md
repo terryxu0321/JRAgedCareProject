@@ -227,6 +227,7 @@ backlog → ready → in-progress → in-review → done
 | AS-4 | 执行者为 AI 时，负责人 ≠ 评审人（一人布置、另一人验收），人手不足时由 Terry 在任务中写明例外理由 | 降低自动化偏见 |
 | AS-5 | 影响 AI 输出的任务，所属 PRD 进入 S7 前须 Clinical Lead 签字 | C-3.2；PRD F5 |
 | AS-6 | 任务文件、Agent brief、执行记录中**禁止**出现居民可识别信息、健康信息、密钥 | C-1.1、C-1.4 |
+| AS-7 | 同一 PRD 的全部任务：负责人 = 执行者 = 该 PRD 的 Assignee（AI 可代为执行）；不把一份 PRD 的任务分给不同成员 | [PRD 分配规范](../../11-rules/prd-assignment-rules.md) §3a（Terry 2026-10-11） |
 
 ### 6.4 分配流程（与周例会结合）
 

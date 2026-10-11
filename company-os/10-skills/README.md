@@ -34,7 +34,7 @@ python company-os/10-skills/sync_skills.py
 | [regulatory-watch](regulatory-watch/SKILL.md) | 扫描监管来源，报告法规变化，提出登记册更新建议 | `03-legal-compliance/regulatory-watch/` |
 | [refactor-large-file](refactor-large-file/SKILL.md) | 代码文件超过 1000 行时重构降行数（hook / check_rules 自动触发） | 被重构的代码 |
 | [onboard-team-member](onboard-team-member/SKILL.md) | 新成员档案 + 名册 + 入职清单 | `05-hr-teams/` |
-| [assign-prd](assign-prd/SKILL.md) | 把 PRD / spec 分配给**唯一一个** Assignee、改派、查看负责人一览 | PRD 头部的 `Assignee` 行 |
+| [assign-prd](assign-prd/SKILL.md) | 把 PRD / spec **整份**分配给唯一一个 Assignee（含它的全部任务）、改派、查看负责人一览 | PRD 头部的 `Assignee` 行；`adlc/tasks/` 中该 PRD 任务的负责人 / 执行者 |
 | [standup](standup/SKILL.md) | 在 AI 中提交每日站会：先提醒未完成 PRD、新分配 PRD、上次 Blocker；查看全队站会汇总 | `02-operating-rhythm/standups/` |
 | [work-status](work-status/SKILL.md) | 查看某位成员 / 全队的未完成工作、个人工作记录，起草提醒文字 | 不写入（只读） |
 

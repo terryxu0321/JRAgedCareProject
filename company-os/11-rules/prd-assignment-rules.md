@@ -47,10 +47,18 @@
 
 PRD 太大、找不到合适的单个 Assignee 时：把它拆成多份 spec，各自有 Assignee —— **不要**改成多人共同负责（DR-006）。
 
+## 3a. 整份 PRD 归一人（含它的全部任务）
+
+- PRD 拆出的**所有任务**（`adlc/tasks/`），`owner` 与 `executor` 都是该 PRD 的 Assignee；**不把同一份 PRD 的任务拆给不同成员**
+- AI（Claude Code、Codex）可以作为执行者"代 Assignee 执行"，`owner` 仍是 Assignee（AI 不能当负责人，ADLC AS-1）
+- 评审人必须是**另一位**人类（ADLC AS-2），默认 Terry；Terry 是 Assignee 时由一位 Developer 评审（§5）。评审不算"分配到的工作"
+- 改派 PRD 时，它的全部未完成任务一并改派给新 Assignee
+- 选人时（§3）把整份 PRD 的工作量当作一个单位来衡量；一个人做不完 → 拆 PRD（见上），而不是拆任务给别人
+
 ## 4. 成长任务（Junior 担任 L2）
 
 - 须 Terry 明确同意，并在 PRD 正文写明一位 Senior 或 Lead 作为**导师 / 必审人**；Assignee 仍只有 Junior 一人
-- L3 不作为成长任务；Junior、Mid 可在 L3 PRD 中作为协作者（写在正文）
+- L3 不作为成长任务。Junior、Mid 想参与 L3 工作 → 把可独立的部分拆成单独的 L1 / L2 spec 分给他们（§3a），而不是在 L3 PRD 里分任务
 
 ## 5. 制衡
 
@@ -66,7 +74,7 @@ PRD 太大、找不到合适的单个 Assignee 时：把它拆成多份 spec，�
 
 ## 7. 执行
 
-- 本规范只管 **PRD 级** Assignee；PRD 拆出的**任务**（执行者、评审人、WIP）按 [ADLC spec](../06-app-development/specs/2026-10-adlc-delivery-lifecycle.md) §6 分配，安排任务执行者时可参照本规范 §1–§2 的级别与难度
+- 本规范管 PRD 的 Assignee，并通过 §3a 决定它全部任务的负责人与执行者；任务文件格式、状态流转、WIP 与评审规则按 [ADLC spec](../06-app-development/specs/2026-10-adlc-delivery-lifecycle.md) §6
 - skill `assign-prd` 在"人没有指定 Assignee"时按 §3 给出**一个**建议，并写明 PRD 难度、命中的条件和理由
 - `check_rules.py`（ASSIGN）只校验"唯一 Assignee 且在名册中"，**不**自动校验级别匹配 —— 由 Terry 🛑 确认把关
 - 人指定的 Assignee 不满足 §1 门槛时，skill 须在确认前明确提示（例如"Junior 担任 L3，违反本规范 §1"），由 Terry 决定是否改人或拆分 PRD

@@ -36,3 +36,4 @@
 
 - [2026-10-shift-voice-to-resident-records.md](2026-10-shift-voice-to-resident-records.md) —— 核心 MVP：班次语音 → 按老人归属 → 草稿 → 审核（内容见 PRD）
 - [2026-10-adlc-delivery-lifecycle.md](2026-10-adlc-delivery-lifecycle.md) —— 内部研发流程：ADLC（AI 协作开发生命周期）—— 任务分配、PRD 阶段管理与状态记录（草稿，待 Terry 审阅）
+- [2026-10-design-system.md](2026-10-design-system.md) —— SPEC-003 Design System：tokens、基础组件、安全关键组件、文案与无障碍规范；任务 T-0001 至 T-0009 见 [adlc/tasks/](../adlc/tasks/README.md)（草稿，待 Terry 审阅）
