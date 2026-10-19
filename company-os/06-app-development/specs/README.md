@@ -43,4 +43,6 @@
 	- [2026-10-review-and-sign-off.md](2026-10-review-and-sign-off.md) —— SPEC-007 审核签字（HITL）
 	- [2026-10-incident-fast-track.md](2026-10-incident-fast-track.md) —— SPEC-008 事件快速通道与 SIRS 计时提醒
 	- [2026-10-consent-management.md](2026-10-consent-management.md) —— SPEC-009 居民同意管理
+	- [2026-10-super-admin-console.md](2026-10-super-admin-console.md) —— SPEC-010 Super Admin 控制台（独立 React JS，客户公司开通与配置）
+	- [2026-10-provider-admin-console.md](2026-10-provider-admin-console.md) —— SPEC-011 养老院管理端（公司 + 多家养老院：员工、老人、流程、总览）
 - [2026-10-design-system.md](2026-10-design-system.md) —— SPEC-003 Design System：tokens、基础组件、安全关键组件、文案与无障碍规范；任务 T-0001 至 T-0009 见 [adlc/tasks/](../adlc/tasks/README.md)（草稿，待 Terry 审阅）
