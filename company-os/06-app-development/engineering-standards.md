@@ -68,7 +68,7 @@
 | 部分 | 技术 | 状态 |
 |---|---|---|
 | 部署区域 | 澳洲境内（AWS Sydney） | 🟡 |
-| 数据库 | PostgreSQL（托管） | ⏳ |
+| 数据库 | PostgreSQL（托管）；M0 本地开发与测试用 PGlite + Drizzle，**不用 Docker**（[M0 技术设计](m0-admin-tech-design.md)） | ⏳ |
 | 多租户隔离 | 行级安全或 schema 隔离（技术 ADR-0002，待写） | ⏳ |
 | 对象存储 | S3：音频短期保留、到期自动删除；不用 CDN | ✅ |
 | 审计日志 | 只追加，不能修改 | ✅ |

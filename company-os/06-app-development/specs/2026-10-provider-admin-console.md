@@ -8,6 +8,8 @@
 | Owner | Terry（Product Owner + Tech Lead） |
 | 状态 | 🟡 **待 Terry 审阅**（🛑 人工确认） |
 | 难度 | **L3**：多地点权限模型、居民生命周期影响 AI 归属范围、员工个人信息与资质数据 |
+| 阶段 | **M0 第一个交付**（与 SPEC-010 一起，先于 AI 管线与护士端；PRD G2） |
+| 设计参考 | [DESIGN.md](../design-system/DESIGN.md)：通用 token 与组件 + `scope: admin-web` 组件（`side-nav`、`data-table`、`file-upload`、`button-dark-utility`）；预览 `design-system/design-system.html` |
 | 关联 | [docs/PRD.md](../../../docs/PRD.md) B2、B3、C1、C6、E6（PA-01–PA-06）；[SPEC-009 同意管理](2026-10-consent-management.md)；[SPEC-010 Super Admin](2026-10-super-admin-console.md)；[SPEC-008 事件快速通道](2026-10-incident-fast-track.md)；[上线清单模板](../../templates/paperwork/facility-go-live-checklist.md) |
 
 > ⚠️ 本文中的法律判断为内部工作底稿，不构成法律意见。本 spec 不改变 TGA、录音模式、HITL、数据驻留边界。范围决定（Terry 2026-10-19）：买单的是养老公司的 business owner；一家公司可能有多家、多地点的养老院；第一阶段包含完整员工名册与四个流程（老人生命周期、员工生命周期、记录审核与上报、新养老院上线）。

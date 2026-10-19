@@ -1,7 +1,7 @@
 ---
 name: CareKind Design System
-version: 0.2.0
-updated: 2026-10-11
+version: 0.3.0
+updated: 2026-10-20
 source_of_truth: true
 style_reference: "Terry 选定（2026-10-11）：以摄影为主、界面隐身的极简风格（参考 Apple 网站视觉语言）；按 CareKind 护理场景调整，见 §10"
 colors:
@@ -301,6 +301,14 @@ components:
 - **`date-time-input`** —— 澳洲格式：日期 DD/MM/YYYY，时间 24 小时制 HH:MM；用系统原生选择器；"现在"一键填入
 - **`file-upload`**（管理后台）—— 米白上传区、**实线**边框（虚线只留给 AI 草稿）、说明可接受的格式和大小；每个文件一行：文件名 + 进度 + 移除；失败用 `status-error` 图标 + 原因 + 重试。上传的文件可能含个人信息：只上传到澳洲区域存储
 
+**表单（v0.3.0，Terry 2026-10-20）**
+- **一个页面只有一个表单，一个表单只有一个 submit 按钮。** 不要在同一页面里放多个表单、各带自己的提交按钮
+- 内容较多时：放在同一个表单里分组（用留白、标题或 `accordion` 分组），最后只用一个 submit；或者拆成多个页面 / 分步流程，每一步一个表单、一个 submit
+- 列表中每一项都需要提交时（如按老人审核草稿、`data-table` 中的行编辑），每一项进入自己的详情页或 `dialog` 处理，不在列表页上并排放多个提交按钮
+- `dialog` / `bottom-sheet` 是叠在页面上的独立一层，内部同样只有一个表单、一个主操作按钮
+- 不算 submit 的控件：取消、返回、链接、立即生效的 `switch`、搜索与筛选（输入即生效）、分页。它们不能做成和 submit 一样的主按钮样式
+- submit 按钮文字写动作本身（"Save resident"、"Sign record"），不写 "Submit"
+
 **反馈**
 - **`toast`** —— `ink` 底、`on-dark` 文字，底部、位于 `action-bar` 之上；4 秒后消失，同时只显示一个。只用于**已经完成**的结果（"Draft saved"），可带一个 `primary-on-dark` 的 "Undo"。需要处理的错误用 `system-banner-error`，不用 toast
 - **`dialog`** —— `scrim` 遮罩 + `canvas` 卡片，`tagline` 标题，`body` 正文写清后果；手机上按钮纵向堆叠，主操作在上。删除等不可撤销操作必须用对话框确认，按钮文字写动作本身（"Delete draft"），不用红色按钮
@@ -341,6 +349,7 @@ components:
 - 不用 300 细体，不用 500 字重；App 中不出现小于 14px 的文字
 - 不把 `{colors.hairline}` 当作控件唯一边界
 - 不提供"全部一键确认"
+- 一个页面不出现多个表单 + 多个 submit 按钮：一页一个表单，一个表单一个 submit（见 §7.3 表单）
 - 虚线边框只用于 AI 草稿（`draft-card`），其他组件（包括上传区）一律实线
 - 错误不用 toast：需要用户处理的问题用 `system-banner-error` 或行内错误；不可撤销的操作用 `dialog` 确认，不用红色按钮
 - 设计稿、组件文档、截图中不出现真实居民信息（只用合成数据）

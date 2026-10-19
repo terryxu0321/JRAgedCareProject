@@ -16,7 +16,7 @@ CareKind 平台方使用的独立 React JS 应用（桌面浏览器）：管理�
 - 租户隔离由服务端强制，前端传入的租户 ID 不可信（SA-01a）
 - 用量只做养老院级汇总，不出现个人排名（PRD S-07）
 - 所有平台操作写审计；停用养老院需二次确认，不删除数据
-- UI 只用 `design-system/DESIGN.md` 的 token 与组件
+- UI 只用 `design-system/DESIGN.md` 的 token 与组件（含 `scope: admin-web` 组件：`side-nav`、`data-table`、`file-upload`、`button-dark-utility`）；M0 第一个交付（PRD G2）
 
 ## 相关临床 hazard
 - 租户隔离失效导致跨院看到居民记录（建议新增，见 SPEC-010 §6）

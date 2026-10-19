@@ -25,6 +25,7 @@
 - 同意状态变更立即生效并写审计
 - 名册照片只作人工核对，不做人脸识别
 - 不做排班、考勤、工资、绩效（PRD A7）
+- UI 只用 `design-system/DESIGN.md` 的 token 与组件（含 `scope: admin-web` 组件：`side-nav`、`data-table`、`file-upload`、`button-dark-utility`）；M0 第一个交付（PRD G2）
 
 ## 相关临床 hazard
 - 同意状态错误导致未同意老人被 AI 处理

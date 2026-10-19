@@ -248,7 +248,9 @@ H1 · 0–12 个月                      H2 · 12–24 个月                   
 | 加密 | 全部静态加密 + KMS；日志里不记健康信息 | ✅ |
 | 基础设施即代码 | CDK 或 Terraform | ⏳ |
 
-完整技术栈表见 [工程规范](../company-os/06-app-development/engineering-standards.md)。层级：平台 → 公司（租户）→ 养老院（地点）。挂绳设备与离线队列放到后续阶段。
+完整技术栈表见 [工程规范](../company-os/06-app-development/engineering-standards.md)。层级：平台 → 公司（租户）→ 养老院（地点）。
+
+**建设顺序（Terry 2026-10-20）**：先做管理端 —— Super Admin 与机构管理端（G2 M0），再做 AI 管线与护士端（M1）。所有界面以 [DESIGN.md](../company-os/06-app-development/design-system/DESIGN.md) 为设计参考：只用其 token 与组件；两个管理端使用通用组件加 `scope: admin-web` 组件（`side-nav`、`data-table`、`file-upload`、`button-dark-utility`）；离线预览见 `design-system/design-system.html`。挂绳设备与离线队列放到后续阶段。
 
 **MVP 基础设施、认证与转写供应商（Terry 2026-10-19 决定）**：
 - **产品代码统一用 TypeScript**：前端（React + TS）、后端 API 与 AI 管线 worker（Node.js + TS）、营销网站脚本；技术栈表见 [工程规范](../company-os/06-app-development/engineering-standards.md)
@@ -653,8 +655,8 @@ H2：集成适配器 → 写入机构护理系统对应老人与记录类型 →
 
 | 里程碑 | 内容 | 时间 |
 |---|---|---|
-| M0 原型 | 合成数据跑通：片段 → 转写 → 归属 → 草稿；评测集 v1；30 次访谈 | 2026-11 |
-| M1 MVP | 模式 A、全部 P0、导出、护士端 Web App、机构管理端 Web App（支持一家公司多家养老院）、Super Admin App、Demo 环境（虚构数据）、营销网站 P0 页面（英文，试点招募前上线）、后端 AI 管线；mobile app（React Native）列入路线图、PIA、律师意见 | 2027-01 |
+| M0 管理端 | **先做管理端**（Terry 2026-10-20）：Super Admin（[SPEC-010](../company-os/06-app-development/specs/2026-10-super-admin-console.md)）+ 机构管理端（[SPEC-011](../company-os/06-app-development/specs/2026-10-provider-admin-console.md)），用虚构数据跑通：开通公司 → 新增多家养老院 → 员工与老人名册 → 同意状态 → 审核与上报流程配置 → 上线清单；所需的后端部分（登录、多租户数据模型、审计日志）；`carekind-shared` 设计 token；UI 以 [DESIGN.md](../company-os/06-app-development/design-system/DESIGN.md) 为设计参考；实现细节见 [M0 管理端技术设计](../company-os/06-app-development/m0-admin-tech-design.md)；30 次访谈 | 2026-11 |
+| M1 MVP | 后端 AI 管线（转写 → 拆分 → 归属 → 起草 → 护栏）+ 评测集 v1、护士端 Web App（模式 A、全部 P0、导出）、Demo 环境（虚构数据）、营销网站 P0 页面（英文，试点招募前上线）；mobile app（React Native）列入路线图、PIA、律师意见 | 2027-01 |
 | M2 试点 | 2 家机构付费试点（[试点手册](../company-os/07-marketing-operations/pilot-playbook.md)） | 2027 Q1–Q2 |
 | M3 | P1：多语言、挂绳设备、PCW→RN 复核、交接、时间线增强 | 2027 Q2 |
 | M4 | P2：护理系统回写、限制性措施记录；DR-006 决策 | 2027 H2 |

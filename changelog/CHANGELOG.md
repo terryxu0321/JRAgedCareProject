@@ -5,6 +5,22 @@
 
 ---
 
+## 2026-10-20 · Claude Code · 先做管理端、表单设计规则、M0 管理端技术设计
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：PRD 规划先做 Super Admin 与机构管理端，以 design system 为设计参考；design system 增加规则"一个页面只有一个表单、一个 submit"；第一阶段只做管理端，PRD 没完成先补完再开发（可多 agent，不含护士端）；不用 Docker
+- **改动**：
+	- `docs/PRD.md`：G2 M0 改为管理端（SPEC-010 + SPEC-011），AI 管线与护士端移到 M1；C1 新增建设顺序与设计参考
+	- `design-system/DESIGN.md` v0.2.0 → v0.3.0：§7.3 新增"表单"规则、§8 Don't 新增一条；重新生成 `design-system.html`（安装了 PyYAML）
+	- 新增 `m0-admin-tech-design.md`（实施选择、角色与权限、数据模型、API、页面、种子数据、完成标准）；`06-app-development/README.md`、`AGENTS.md` 登记
+	- `specs/2026-10-super-admin-console.md`、`2026-10-provider-admin-console.md` 表头加阶段与设计参考；`src/super-admin/AGENTS.md`、`src/admin-web/AGENTS.md` 加设计组件说明
+	- `engineering-standards.md` 数据库行注明 M0 用 PGlite + Drizzle、不用 Docker
+- **原因与决策**：课程表中 ⏳ 的项（Vite、zod、认证、数据库、多租户）M0 先按技术设计实施，均放在接口后可替换；邀请不发邮件，只生成链接（硬规则 3）；多租户 M0 在 API 层隔离 + 跨租户测试，数据库层 RLS 待 ADR-0002；不用 Docker，本地数据库用 PGlite（曾短暂启动 Docker Desktop，已关闭）
+- **检查**：`check_rules.py` 通过（exit 0）
+- **待确认**：ADR-0002（多租户隔离）、托管身份服务、托管数据库；M0 技术设计待 Terry 审阅
+
+---
+
 ## 2026-10-19 · Claude Code · 删除产品文档中的 MFA；创建 6 个子仓库并加为 submodule
 
 - **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）

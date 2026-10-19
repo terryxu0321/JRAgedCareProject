@@ -8,6 +8,8 @@
 | Owner | Terry（Product Owner + Tech Lead） |
 | 状态 | 🟡 **待 Terry 审阅**（🛑 人工确认） |
 | 难度 | **L2**：不涉及 AI 输出与临床内容，但涉及多租户隔离与平台权限 |
+| 阶段 | **M0 第一个交付**（与 SPEC-011 一起，先于 AI 管线与护士端；PRD G2） |
+| 设计参考 | [DESIGN.md](../design-system/DESIGN.md)：通用 token 与组件 + `scope: admin-web` 组件（`side-nav`、`data-table`、`file-upload`、`button-dark-utility`）；预览 `design-system/design-system.html` |
 | 关联 | [docs/PRD.md](../../../docs/PRD.md) B2、C1、C6、E6（SA-01–SA-04）、D1 机构上线；[SPEC-011 养老院管理端](2026-10-provider-admin-console.md)；[SPEC-009 同意管理](2026-10-consent-management.md)；[product-feature-map.md](../product-feature-map.md) |
 
 > ⚠️ 本文中的法律判断为内部工作底稿，不构成法律意见。本 spec 不改变产品边界（TGA、录音模式、HITL、数据驻留）。前端形态与层级（平台 → 公司 → 养老院）由 Terry 于 2026-10-19 决定，已写入 PRD C1。

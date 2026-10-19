@@ -8,6 +8,7 @@
 ## 关键文件
 - `product-principles.md`
 - `product-feature-map.md` —— MVP 功能 → spec 映射与 best practice 汇总
+- `m0-admin-tech-design.md` —— M0 管理端（Super Admin + 机构管理端）技术设计：实施选择、角色、数据模型、API、页面、完成标准
 - `clinical-safety-framework.md` —— hazard log
 - `ai-governance.md`
 - `engineering-standards.md`
