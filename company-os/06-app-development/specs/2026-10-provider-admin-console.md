@@ -3,7 +3,7 @@
 | 项 | 内容 |
 |---|---|
 | 文档 ID | SPEC-011 |
-| 类型 | 客户管理端：养老院 Web App 中按角色显示的管理功能（`src/admin-web/`） |
+| 类型 | 机构管理端：**独立的** Web App，React + TypeScript（`src/admin-web/`） |
 | 版本 | v0.1 草稿 · 2026-10-19 |
 | Owner | Terry（Product Owner + Tech Lead） |
 | 状态 | 🟡 **待 Terry 审阅**（🛑 人工确认） |

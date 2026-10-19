@@ -5,6 +5,22 @@
 
 ---
 
+## 2026-10-19 · Claude Code · 技术栈与课程结果对齐（前端 + 后端与 AI），API 框架定为 NestJS
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：与老师的技术栈结果保持一致（前端表、后端与 AI 表）；API 框架用 NestJS
+- **改动**：
+	- `docs/PRD.md` C1：架构图改为四个独立前端；新增"前端"与"后端与 AI"两张技术栈表（含状态）；B2 改称机构管理端；G2 M1；版本说明
+	- `engineering-standards.md`：技术栈拆为前端 / 后端与 AI / 基础设施三张表；环境表新增 demo（只用虚构数据，独立部署）
+	- 护士端恢复为第一阶段完整 Web App（撤销"最小演示页"）：`specs/2026-10-shift-voice-capture.md`、`2026-10-review-and-sign-off.md`、`2026-10-incident-fast-track.md`、`src/mobile-app/`
+	- 机构管理端改为独立 Web App：`specs/2026-10-provider-admin-console.md`、`src/admin-web/`、`src/README.md`、`src/AGENTS.md`、`06-app-development/README.md`、根 `AGENTS.md`
+	- 营销网站只做英文、token 以 CSS 变量引入：`specs/2026-10-marketing-website.md`、`src/marketing-site/`
+- **原因与决策**：Terry 要求以课程结果为准；Demo 环境作为独立部署环境记录，不新建代码模块；Vite、zod、实时推送、认证服务保持"待定"；LLM 方向已定（云厂商澳洲区域、零保留、锁定版本），供应商待选
+- **检查**：`check_rules.py` 通过（exit 0）
+- **待确认**：Vite、zod、Tier 3 实时推送（WebSocket / Web Push）、托管身份服务、LLM 具体供应商
+
+---
+
 ## 2026-10-19 · Claude Code · ElevenLabs 数据在澳洲、统一 TypeScript、护士端第一阶段只做最小演示页
 
 - **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）

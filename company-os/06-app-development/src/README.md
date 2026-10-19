@@ -10,8 +10,8 @@
 | [review-service/](review-service/README.md) | 记录状态机、复核、事件快速通道、提醒与升级 | C4, C5, S-* |
 | [record-store/](record-store/README.md) | 签字记录（只追加）、时间线、保留与删除 | C7, L-*, S-08 |
 | [integrations/](integrations/README.md) | 导出、护理系统回写 | E-01, E-02 |
-| [admin-web/](admin-web/README.md) | 养老院管理端：公司总览、多家养老院、完整员工名册、老人生命周期、同意、流程配置、上线清单（第一阶段合并进养老院 Web App） | PA-*, M-*, D8 |
+| [admin-web/](admin-web/README.md) | 养老院管理端：公司总览、多家养老院、完整员工名册、老人生命周期、同意、流程配置、上线清单（独立 Web App） | PA-*, M-*, D8 |
 | [super-admin/](super-admin/README.md) | Super Admin App（独立 React JS）：CareKind 平台方开通与配置客户公司；不接触居民健康信息 | SA-* |
 | [marketing-site/](marketing-site/README.md) | 营销网站：纯 HTML + CSS 静态站点（不用框架），与产品数据分离 | MW-*（SPEC-012） |
 
-**第一阶段前端**：养老院 Web App（`admin-web/` 管理端 + `mobile-app/` 护士端**最小演示页**，浏览器 / PWA，按角色进入）与 Super Admin App（`super-admin/`）两个前端；护士端完整 Web App 与 mobile app 只规划。层级：平台 → 公司（租户）→ 养老院（PRD C1）。
+**第一阶段前端**（均为 React + TypeScript）：护士端 Web App（`mobile-app/`）、独立的机构管理端 Web App（`admin-web/`）、独立的 Super Admin App（`super-admin/`）、独立部署的 Demo 环境（只用虚构数据）；React Native mobile app 列入路线图；营销网站为纯 HTML + CSS（`marketing-site/`）。层级：平台 → 公司（租户）→ 养老院（PRD C1）。

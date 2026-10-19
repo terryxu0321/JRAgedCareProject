@@ -66,7 +66,8 @@ flowchart TD
 |---|---|
 | 技术 | **纯 HTML + CSS，少量脚本**（只用于导航菜单、表单校验与提交），脚本按全栈统一用 TypeScript 编写、`tsc` 编译为 JS；不用 Next.js、React 或其他框架（Terry 2026-10-19 决定）。每页一个 `.html` 文件，共用一个 `styles.css`（由 DESIGN.md 中 `scope: web` 的 token 写成 CSS 变量）；页头页脚在各页中保持一致 |
 | 部署 | S3 静态网站托管（悉尼区域），**不做 CDN**（Terry 2026-10-19）；与产品环境、产品数据完全分离；表单只接 CareKind 自己的接口 |
-| 视觉 | 只用 [DESIGN.md](../design-system/DESIGN.md) token；logo 作为图片放置（品牌色不进网站 token）；**考拉吉祥物不用于网站**（品牌规则：只用于护士端与内部）；不用真实居民照片 |
+| 语言 | **只做英文**（Terry 2026-10-19）；不做多语言版本 |
+| 视觉 | 只用 [DESIGN.md](../design-system/DESIGN.md) token，以 CSS 变量引入；logo 作为图片放置（品牌色不进网站 token）；**考拉吉祥物不用于网站**（品牌规则：只用于护士端与内部）；不用真实居民照片 |
 | 可访问性 | WCAG 2.2 AA；移动端优先 |
 | SEO | 每页标题与描述；不在 meta 中使用 detects / predicts / diagnoses 等词 |
 | 分析 | 隐私友好、不跨站追踪；如用 cookie，提供告知 |

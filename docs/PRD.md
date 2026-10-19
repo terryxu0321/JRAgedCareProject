@@ -3,7 +3,7 @@
 | 项 | 内容 |
 |---|---|
 | 产品 | CareKind AI —— 养老护理 AI 记录助手 |
-| 版本 | v0.2 草稿 · 2026-10-19（第一阶段前端改为养老院 Web App + Super Admin App；层级 平台 → 公司 → 养老院，见 C1） |
+| 版本 | v0.2 草稿 · 2026-10-19（第一阶段前端：护士端、机构管理端、Super Admin、Demo 环境、营销网站；层级 平台 → 公司 → 养老院，见 C1） |
 | Owner | Terry（Product Owner + Tech Lead） |
 | 开发 | Ahmad、Matt、Dave |
 | 状态 | 🟡 **待 Terry 审阅**（🛑 人工确认）；临床部分待 Clinical Lead（待招）审阅 |
@@ -127,8 +127,8 @@ H1 · 0–12 个月                      H2 · 12–24 个月                   
 | **PCW / AIN（护理员）** | 不打字、不怕英文写作、下班准时 | 口述日常护理（ADL、饮食饮水、如厕、睡眠、情绪），审核自己的草稿；按机构政策提交 RN 复核 |
 | **RN / EN** | 快速完成记录与复核；事件不遗漏 | 口述、审核、签字；复核 PCW 记录；处理事件草稿 |
 | **DON / Clinical Care Manager** | 记录质量、审核就绪、事件及时 | 配置模板与复核规则；看完整性看板；处理事件升级 |
-| **公司管理员（养老公司老板 / 运营负责人）—— 买单者** | 一处管理旗下多家、多地点养老院；看各院记录工作是否跟得上 | 跨院总览、新增养老院、任命院长、公司级流程默认值；可进入任一院管理（养老院管理端，[SPEC-011](../company-os/06-app-development/specs/2026-10-provider-admin-console.md)） |
-| **院长 / 机构管理员 / IT** | 安全、隐私、易部署 | 本院员工名册（含非 App 员工与资质到期）、老人名册与生命周期、同意状态、审核与上报流程、上线清单、审计（养老院管理端） |
+| **公司管理员（养老公司老板 / 运营负责人）—— 买单者** | 一处管理旗下多家、多地点养老院；看各院记录工作是否跟得上 | 跨院总览、新增养老院、任命院长、公司级流程默认值；可进入任一院管理（机构管理端，[SPEC-011](../company-os/06-app-development/specs/2026-10-provider-admin-console.md)） |
+| **院长 / 机构管理员 / IT** | 安全、隐私、易部署 | 本院员工名册（含非 App 员工与资质到期）、老人名册与生命周期、同意状态、审核与上报流程、上线清单、审计（机构管理端） |
 | **CareKind 平台管理员（Super Admin）** | 开通和配置客户公司 | 公司（租户）开通/停用、功能配置、公司管理员账号、去标识用量（Super Admin App）；**不接触居民健康信息** |
 | **居民 / 家属**（间接） | 隐私、尊严、知情 | 通过机构的同意流程知情；可拒绝 AI 处理 |
 
@@ -172,12 +172,13 @@ H1 · 0–12 个月                      H2 · 12–24 个月                   
 ## C1. 系统架构
 
 ```
-┌──── 养老院 Web App（浏览器，PWA）──────────┐   ┌──── Super Admin App（React，CareKind 内部）────┐
-│ 护士端：开班 · 按键录音 · 待审核 · 签字      │   │ 公司（租户）开通/停用 · 功能与配置上限         │
-│ 管理端：公司总览 · 养老院 · 员工 · 老人 · 流程│   │ 公司管理员账号 · 去标识用量 · 平台审计         │
-└──────────────────────┬──────────────────────┘   └──────────────────────┬──────────────────────┘
-                       │ TLS · 登录 · 每个请求带公司与养老院范围               │ TLS · 平台角色
-                       └───────────────────────────┬───────────────────────────┘
+┌─ 护士端 Web App ─────┐ ┌─ 机构管理端 Web App ─┐ ┌─ Super Admin App ────┐ ┌─ Demo 环境 ──────────┐
+│ React + TS           │ │ React + TS（独立）   │ │ React + TS（独立）   │ │ 独立部署 React + TS  │
+│ 开班 · 按键录音      │ │ 公司总览 · 养老院    │ │ 公司开通 / 配置上限  │ │ 只用虚构数据         │
+│ 待审核 · 签字 · 导出 │ │ 员工 · 老人 · 流程   │ │ 去标识用量 · 审计    │ │ 销售演示 / 培训      │
+└──────────┬───────────┘ └──────────┬───────────┘ └──────────┬───────────┘ └──────────┬───────────┘
+           │ TLS · 登录 · 每个请求带公司与养老院范围            │ 平台角色               │ 独立后端与数据
+           └───────────────────────┬───────────────────────────┘                        （不连生产）
 ┌───────────────────────────────▼──────────────── 澳洲区域云 ──────────────┐
 │ API 网关                                                                 │
 │   ├─ 采集服务 ──► 原音存储（加密，按保留策略自动删除）                    │
@@ -199,9 +200,33 @@ H1 · 0–12 个月                      H2 · 12–24 个月                   
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-**第一阶段前端（Terry 2026-10-19 决定）**：只做两个前端 —— **养老院 Web App**（浏览器/PWA，不做原生 mobile app；按角色进入**护士端**或**养老院管理端**）和 **Super Admin App**（独立 React JS 应用，CareKind 平台方管理客户公司）。层级：平台 → 公司（租户）→ 养老院（地点）。原生 App、挂绳设备与离线队列放到后续阶段。养老院管理端详见 [SPEC-011](../company-os/06-app-development/specs/2026-10-provider-admin-console.md)，Super Admin 详见 [SPEC-010](../company-os/06-app-development/specs/2026-10-super-admin-console.md)。另有对外**营销网站**（纯 HTML + CSS 静态站点，不用框架，与产品数据完全分离），详见 [SPEC-012](../company-os/06-app-development/specs/2026-10-marketing-website.md)。
+**第一阶段前端（Terry 2026-10-19，与课程结果一致）**：
 
-**第一阶段护士端范围（Terry 2026-10-19 决定）**：护士端完整 Web App 与 mobile app **都只规划、第一阶段不做**（SPEC-004–SPEC-009 保留为规划）；mobile app 的方案为 **React Native + TypeScript**。第一阶段只在养老院 Web App 中做一个**护士端最小演示页**：选择养老院与班次 → 录音或上传音频 → 查看按老人整理的草稿（含待归属）→ 逐条确认并签字 → 导出。演示页必须保留安全底线：第二标识、关键项逐项确认、人工签字、未同意老人丢弃。第一阶段的重点是养老院管理端、Super Admin、营销网站与后端 AI 管线。
+| 部分 | 技术 | 状态 |
+|---|---|---|
+| 护士端 | Web App，React + TypeScript（SPEC-004–SPEC-009） | ✅ |
+| 机构管理端 | **独立的** Web App，React + TypeScript（[SPEC-011](../company-os/06-app-development/specs/2026-10-provider-admin-console.md)） | ✅ |
+| Super Admin | 独立的 React JS app，TypeScript；不用 MFA，不做 IP allowlist（[SPEC-010](../company-os/06-app-development/specs/2026-10-super-admin-console.md)） | ✅ |
+| Demo 环境 | 独立部署，React + TypeScript，只用虚构数据（不连生产后端与数据） | ✅ |
+| Mobile App | React Native + TypeScript，列入路线图，第一阶段不做 | ✅ |
+| Marketing website | 纯 HTML + CSS，不用 Next.js；页面脚本用 TypeScript 写、`tsc` 编译；只做英文（[SPEC-012](../company-os/06-app-development/specs/2026-10-marketing-website.md)） | ✅ |
+| 设计系统 | `06-app-development/design-system` 的 token，以 CSS 变量引入 | ✅ |
+| 构建工具 | Vite | ⏳ 待定 |
+
+**后端与 AI（同上）**：
+
+| 部分 | 技术 | 状态 |
+|---|---|---|
+| 语言 | 全部 TypeScript（Node.js） | ✅ |
+| API 框架 | NestJS | ✅ |
+| 数据校验 | zod，类型和校验共用一份定义 | ⏳ |
+| 语音转写 | ElevenLabs，数据在澳洲 | ✅ |
+| 起草用的 LLM | 云厂商托管、澳洲区域（如 AWS Bedrock Sydney），零保留，锁定模型版本 | 🟡 |
+| 模型调用 | 客户端不直接调用模型，全部经过后端 | ✅ |
+| Tier 3 实时推送 | WebSocket 或 Web Push | ⏳ |
+| 认证 | 托管身份服务 | ⏳ |
+
+完整技术栈表见 [工程规范](../company-os/06-app-development/engineering-standards.md)。层级：平台 → 公司（租户）→ 养老院（地点）。挂绳设备与离线队列放到后续阶段。
 
 **MVP 基础设施、认证与转写供应商（Terry 2026-10-19 决定）**：
 - **产品代码统一用 TypeScript**：前端（React + TS）、后端 API 与 AI 管线 worker（Node.js + TS）、营销网站脚本；技术栈表见 [工程规范](../company-os/06-app-development/engineering-standards.md)
@@ -607,7 +632,7 @@ H2：集成适配器 → 写入机构护理系统对应老人与记录类型 →
 | 里程碑 | 内容 | 时间 |
 |---|---|---|
 | M0 原型 | 合成数据跑通：片段 → 转写 → 归属 → 草稿；评测集 v1；30 次访谈 | 2026-11 |
-| M1 MVP | 模式 A、全部 P0、导出、养老院 Web App（养老院管理端 + 护士端最小演示页，支持一家公司多家养老院）、Super Admin App、营销网站 P0 页面（试点招募前上线）、后端 AI 管线；护士端完整 Web App / mobile app 只规划、PIA、律师意见 | 2027-01 |
+| M1 MVP | 模式 A、全部 P0、导出、护士端 Web App、机构管理端 Web App（支持一家公司多家养老院）、Super Admin App、Demo 环境（虚构数据）、营销网站 P0 页面（英文，试点招募前上线）、后端 AI 管线；mobile app（React Native）列入路线图、PIA、律师意见 | 2027-01 |
 | M2 试点 | 2 家机构付费试点（[试点手册](../company-os/07-marketing-operations/pilot-playbook.md)） | 2027 Q1–Q2 |
 | M3 | P1：多语言、挂绳设备、PCW→RN 复核、交接、时间线增强 | 2027 Q2 |
 | M4 | P2：护理系统回写、限制性措施记录；DR-006 决策 | 2027 H2 |

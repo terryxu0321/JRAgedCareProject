@@ -2,7 +2,7 @@
 
 > AI 助手在本目录工作前必读。全局规则：根目录 `AGENTS.md` 与 `company-os/11-rules/`。人类说明：同目录 `README.md`。完成任务后按 `changelog-rules.md` 写 `changelog/CHANGELOG.md`。
 
-> **第一阶段（Terry 2026-10-19）**：本模块不单独部署，作为养老院 Web App（与 `mobile-app/` 护士端同一应用）中按角色显示的功能模块实现。CareKind 平台方的客户开通在 `super-admin/`，不在这里。
+> **第一阶段（Terry 2026-10-19）**：**独立的** Web App（React + TypeScript），与护士端（`mobile-app/`）分开部署。CareKind 平台方的客户开通在 `super-admin/`，不在这里。
 
 ## 职责
 客户方的管理端：公司管理员（老板）、院长、DON、行政与质量经理。层级：公司（租户）→ 多家养老院（地点）。员工属于公司，可分配到多家院。

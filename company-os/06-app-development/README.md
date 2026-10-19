@@ -24,7 +24,7 @@ company-os/06-app-development/
     ├── review-service/           审核状态机、事件快速通道
     ├── record-store/             签字记录、时间线、保留与删除
     ├── integrations/             导出与护理系统回写
-    ├── admin-web/                养老院管理端（公司 + 多家养老院；第一阶段合并进养老院 Web App）
+    ├── admin-web/                机构管理端（独立 Web App；公司 + 多家养老院）
     ├── super-admin/              Super Admin App（独立 React JS，客户公司管理）
     └── marketing-site/           营销网站（纯 HTML + CSS，不用框架）
 ```

@@ -5,23 +5,42 @@
 
 ## 技术栈（MVP）
 
-> ✅ = Terry 2026-10-19 已决定；其余为建议，待技术栈 DR 确认。**产品代码统一使用 TypeScript**（Company OS 内部工具脚本如 `check_rules.py` 仍为 Python，不属于产品代码）。
+> 状态：✅ 已决定（Terry 2026-10-19，与课程结果一致）｜ 🟡 方向已定、供应商待选 ｜ ⏳ 待定。**产品代码统一使用 TypeScript**（Company OS 内部工具脚本如 `check_rules.py` 仍为 Python，不属于产品代码）。
 
-| 层 | MVP 选型 | 理由 |
+### 前端
+
+| 部分 | 技术 | 说明 |
 |---|---|---|
-| 语言 | ✅ **TypeScript**（前端、后端、worker 统一） | 一种语言贯穿全栈，类型共享，团队只学一套 |
-| 养老院 Web App（管理端 + 护士端最小演示页） | ✅ React + TypeScript，浏览器 / PWA（构建工具建议 Vite） | PRD C1 |
-| 护士端 mobile app（规划，第一阶段不做） | ✅ **React Native + TypeScript**（iOS / Android） | 与 Web 共用 TS 类型与业务逻辑；Terry 2026-10-19 |
-| Super Admin App | ✅ 独立 React + TypeScript 应用 | PRD C1、SPEC-010 |
-| 营销网站 | ✅ 纯 HTML + CSS；少量脚本用 TypeScript 写、`tsc` 编译为 JS；不用框架 | SPEC-012 |
-| 后端 API | Node.js + TypeScript，模块化单体（框架建议 Fastify 或 NestJS，待 DR） | 与前端共享类型；MVP 不拆微服务 |
+| 护士端 | ✅ Web App，React + TypeScript | PRD C1、SPEC-004–009 |
+| 机构管理端 | ✅ **独立的** Web App，React + TypeScript | SPEC-011 |
+| Super Admin | ✅ 独立的 React JS app，TypeScript；不用 MFA，不做 IP allowlist | SPEC-010 |
+| Demo 环境 | ✅ 独立部署，React + TypeScript，只用虚构数据 | 销售演示与培训；不连生产 |
+| Mobile App | ✅ React Native + TypeScript，列入路线图，第一阶段不做 | |
+| Marketing website | ✅ 纯 HTML + CSS，不用 Next.js；页面脚本用 TypeScript 写、`tsc` 编译；只做英文 | SPEC-012 |
+| 设计系统 | ✅ `06-app-development/design-system` 的 token，以 CSS 变量引入 | DESIGN.md |
+| 构建工具 | ⏳ Vite（待定） | |
+
+### 后端与 AI
+
+| 部分 | 技术 | 说明 |
+|---|---|---|
+| 语言 | ✅ 全部 TypeScript（Node.js） | 前后端共享类型 |
+| API 框架 | ✅ **NestJS**（Terry 2026-10-19） | 模块化单体，按 `src/` 模块分 module |
+| 数据校验 | ⏳ zod，类型和校验共用一份定义 | 只在边界校验（code-rules CORE-07） |
+| 语音转写 | ✅ ElevenLabs，数据在澳洲（零保留、不训练；真实录音前 DPA 书面确认） | PRD C1、G4 #10 |
+| 起草用的 LLM | 🟡 云厂商托管、澳洲区域（如 AWS Bedrock Sydney），零保留，锁定模型版本 | 见 [AI 治理](ai-governance.md)；换版本须跑评测集 |
+| 模型调用 | ✅ 客户端不直接调用模型，全部经过后端 | 密钥不出后端；护栏统一执行 |
+| Tier 3 实时推送 | ⏳ WebSocket 或 Web Push | 如事件草稿立即提醒（SPEC-008） |
+| 认证 | ⏳ 托管身份服务；MVP 不做 MFA（仅虚构 / 合成数据阶段，真实数据前加回） | PRD C1、G4 #11 |
+
+### 基础设施
+
+| 部分 | 技术 | 说明 |
+|---|---|---|
 | 后台任务 / AI 管线 | Node.js + TypeScript worker + 队列（如 SQS） | 转写与起草耗时，不阻塞接口 |
 | 数据库 | PostgreSQL，按 `organisation_id` 隔离 + 行级安全 | SPEC-010 / 011 多租户 |
-| 对象存储 | ✅ **S3**（原音加密，7 天生命周期删除；营销网站静态托管）；✅ **不做 CDN** | PRD C1 |
-| 语音转写 | ✅ **ElevenLabs**（数据在澳洲、零保留、不训练；DPA 书面确认前只用合成数据） | PRD C1、G4 #10 |
-| LLM | 澳洲区域托管（待选），不训练、零保留 | 见 [AI 治理](ai-governance.md) |
+| 对象存储 | ✅ S3（原音加密，7 天生命周期删除；营销网站静态托管）；✅ 不做 CDN | PRD C1 |
 | 云 | AWS ap-southeast-2（Sydney） | 澳洲数据驻留 |
-| 身份认证 | ✅ MVP：邮件邀请 + 密码，**不做 MFA**（仅合成数据阶段）；接入真实数据前加回 SSO（Entra ID / SAML / OIDC）+ MFA | PRD C1、G4 #11 |
 | 代码托管 | GitHub，分支保护；monorepo（`apps/`、`packages/`、`services/`） | |
 
 ## 环境
@@ -30,6 +49,7 @@
 |---|---|---|
 | local / dev | **仅合成数据** | 开发者 |
 | staging | 合成数据 / 经批准的去标识化数据 | 开发者 |
+| demo | **只用虚构数据**；独立部署（独立前端、后端与数据库），不连 staging / production | 销售演示、培训、试点前展示 |
 | production | 真实数据 | 最小权限、MFA、即时授权（JIT）、全量审计 |
 
 ## 开发流程

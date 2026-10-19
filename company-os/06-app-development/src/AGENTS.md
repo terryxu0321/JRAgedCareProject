@@ -12,7 +12,7 @@ CareKind 产品代码。按 PRD C1 架构划分模块；每个模块目录有 RE
 - `review-service/` —— 审核状态机、事件快速通道
 - `record-store/` —— 签字记录、时间线、保留与删除
 - `integrations/` —— 导出与护理系统回写
-- `admin-web/` —— 养老院管理端（公司 + 多家养老院；第一阶段合并进养老院 Web App）
+- `admin-web/` —— 机构管理端（独立 Web App；公司 + 多家养老院）
 - `super-admin/` —— Super Admin App（独立 React JS，CareKind 平台方管理客户公司）
 - `marketing-site/` —— 营销网站（纯 HTML + CSS，不用框架）
 

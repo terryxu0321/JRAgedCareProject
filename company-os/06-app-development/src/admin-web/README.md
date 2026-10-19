@@ -2,7 +2,7 @@
 
 养老公司老板（公司管理员）、院长、DON、行政与质量经理使用的管理功能。一家公司可有多家、多地点的养老院。
 
-> **第一阶段**：作为养老院 Web App 中按角色显示的页面实现，不单独部署（PRD C1）。CareKind 平台方的客户开通见 [super-admin/](../super-admin/README.md)。需求详见 [SPEC-011](../../specs/2026-10-provider-admin-console.md)。
+> **第一阶段**：独立的 Web App（React + TypeScript），与护士端分开部署（PRD C1）。CareKind 平台方的客户开通见 [super-admin/](../super-admin/README.md)。需求详见 [SPEC-011](../../specs/2026-10-provider-admin-console.md)。
 
 ## 功能
 - 公司总览：按养老院汇总记录运营指标，可进入单院（PA-06）
