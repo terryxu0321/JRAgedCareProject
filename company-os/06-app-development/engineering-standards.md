@@ -10,7 +10,8 @@
 | 层 | MVP 选型 | 理由 |
 |---|---|---|
 | 语言 | ✅ **TypeScript**（前端、后端、worker 统一） | 一种语言贯穿全栈，类型共享，团队只学一套 |
-| 养老院 Web App（护士端 + 管理端） | ✅ React + TypeScript，浏览器 / PWA；不做原生 mobile app（构建工具建议 Vite） | PRD C1 |
+| 养老院 Web App（管理端 + 护士端最小演示页） | ✅ React + TypeScript，浏览器 / PWA（构建工具建议 Vite） | PRD C1 |
+| 护士端 mobile app（规划，第一阶段不做） | ✅ **React Native + TypeScript**（iOS / Android） | 与 Web 共用 TS 类型与业务逻辑；Terry 2026-10-19 |
 | Super Admin App | ✅ 独立 React + TypeScript 应用 | PRD C1、SPEC-010 |
 | 营销网站 | ✅ 纯 HTML + CSS；少量脚本用 TypeScript 写、`tsc` 编译为 JS；不用框架 | SPEC-012 |
 | 后端 API | Node.js + TypeScript，模块化单体（框架建议 Fastify 或 NestJS，待 DR） | 与前端共享类型；MVP 不拆微服务 |

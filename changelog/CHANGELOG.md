@@ -13,6 +13,7 @@
 - **原因与决策**：ElevenLabs 按 Terry 确认视为澳洲存储与处理，不再需要数据驻留 DR；公开文档截至当日未列澳洲区域，故保留"真实录音前在 DPA 书面确认（含处理环节）"的条件。Company OS 内部脚本仍为 Python，不属于产品代码。护士端演示页保留安全底线（第二标识、逐项确认、人工签字、未同意丢弃）
 - **检查**：`check_rules.py` 通过（exit 0）
 - **待确认**：ElevenLabs DPA / 合同条款；后端框架（Fastify / NestJS）与 LLM 供应商待技术栈 DR
+- **补充**：Terry 同日决定规划中的 mobile app 用 React Native + TypeScript（`engineering-standards.md`、PRD C1、`src/mobile-app/`、`specs/2026-10-design-system.md` 已同步）
 
 ---
 

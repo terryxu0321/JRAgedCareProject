@@ -201,7 +201,7 @@ H1 · 0–12 个月                      H2 · 12–24 个月                   
 
 **第一阶段前端（Terry 2026-10-19 决定）**：只做两个前端 —— **养老院 Web App**（浏览器/PWA，不做原生 mobile app；按角色进入**护士端**或**养老院管理端**）和 **Super Admin App**（独立 React JS 应用，CareKind 平台方管理客户公司）。层级：平台 → 公司（租户）→ 养老院（地点）。原生 App、挂绳设备与离线队列放到后续阶段。养老院管理端详见 [SPEC-011](../company-os/06-app-development/specs/2026-10-provider-admin-console.md)，Super Admin 详见 [SPEC-010](../company-os/06-app-development/specs/2026-10-super-admin-console.md)。另有对外**营销网站**（纯 HTML + CSS 静态站点，不用框架，与产品数据完全分离），详见 [SPEC-012](../company-os/06-app-development/specs/2026-10-marketing-website.md)。
 
-**第一阶段护士端范围（Terry 2026-10-19 决定）**：护士端完整 Web App 与原生 mobile app **都只规划、第一阶段不做**（SPEC-004–SPEC-009 保留为规划）。第一阶段只在养老院 Web App 中做一个**护士端最小演示页**：选择养老院与班次 → 录音或上传音频 → 查看按老人整理的草稿（含待归属）→ 逐条确认并签字 → 导出。演示页必须保留安全底线：第二标识、关键项逐项确认、人工签字、未同意老人丢弃。第一阶段的重点是养老院管理端、Super Admin、营销网站与后端 AI 管线。
+**第一阶段护士端范围（Terry 2026-10-19 决定）**：护士端完整 Web App 与 mobile app **都只规划、第一阶段不做**（SPEC-004–SPEC-009 保留为规划）；mobile app 的方案为 **React Native + TypeScript**。第一阶段只在养老院 Web App 中做一个**护士端最小演示页**：选择养老院与班次 → 录音或上传音频 → 查看按老人整理的草稿（含待归属）→ 逐条确认并签字 → 导出。演示页必须保留安全底线：第二标识、关键项逐项确认、人工签字、未同意老人丢弃。第一阶段的重点是养老院管理端、Super Admin、营销网站与后端 AI 管线。
 
 **MVP 基础设施、认证与转写供应商（Terry 2026-10-19 决定）**：
 - **产品代码统一用 TypeScript**：前端（React + TS）、后端 API 与 AI 管线 worker（Node.js + TS）、营销网站脚本；技术栈表见 [工程规范](../company-os/06-app-development/engineering-standards.md)
