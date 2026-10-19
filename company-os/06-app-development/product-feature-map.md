@@ -21,7 +21,8 @@
 | AI 记录的责任与可信度 | HITL 多为"一句话" | 逐居民审核、关键项逐项确认、签字后只追加、逐句回听 | [SPEC-007 审核签字](specs/2026-10-review-and-sign-off.md) |
 | 事件记录不全、SIRS 时限 | 通用 incident 表单或"flag" | 事件草稿按 Rules s 164-25 字段 + 自观察起计时，只提醒不判定 | [SPEC-008 事件快速通道](specs/2026-10-incident-fast-track.md) |
 | 录音与 AI 处理的同意 | 多数推给机构（PCC 合同最极端） | 居民级同意状态、替代决策人来源、未同意即丢弃 | [SPEC-009 同意管理](specs/2026-10-consent-management.md) |
-| 第一阶段就要服务多家养老院，平台方不能接触居民数据 | — | 独立 Super Admin App：开通/配置养老院、机构管理员账号、去标识用量 | [SPEC-010 Super Admin](specs/2026-10-super-admin-console.md) |
+| 买单的是养老公司老板，旗下多家、多地点养老院；要管员工、老人和流程 | 澳洲 CMS 各管各院，AI 记录工具不管多院运营 | 养老院管理端：公司总览、多院管理、完整员工名册、老人生命周期、审核与上报流程、上线闸门 | [SPEC-011 养老院管理端](specs/2026-10-provider-admin-console.md) |
+| 平台方要开通多家客户公司，但不能接触居民数据 | — | 独立 Super Admin App：开通/配置客户公司、公司管理员账号、去标识用量 | [SPEC-010 Super Admin](specs/2026-10-super-admin-console.md) |
 | 双录、记录不在正式系统 | 澳洲 CMS 均无 AI 记录 | MVP 导出（复制/PDF）+"已转入机构系统"标记；回写放 H2 | PRD E6 E-01、S-08（暂不单独 spec） |
 
 暂不做（P1/P2，见 PRD G2）：多语言回译、PCW→RN 复核队列、交接摘要、时间线增强、CMS 回写、限制性措施记录。

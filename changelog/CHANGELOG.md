@@ -5,6 +5,24 @@
 
 ---
 
+## 2026-10-19 · Claude Code · 养老院管理端：公司 → 多家养老院、员工与老人管理、四个流程
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：养老院管理端要能管理护士、老人和本院全部员工；一家公司可能有多家、多地点养老院；要有流程管理，因为买单的是养老院 business owner。Terry 确认：四个流程都做（老人生命周期、员工生命周期、记录审核与上报、新养老院上线）；完整员工名册；老板看跨院汇总并可进入单院
+- **改动**：
+	- 新增 `specs/2026-10-provider-admin-console.md`（SPEC-011）
+	- `docs/PRD.md`：层级改为 平台 → 公司（租户）→ 养老院；B2 新增公司管理员（买单者）与院长；B3 新增公司、养老院概念；C1 图与说明；C6 公司管理员说明；E6 新增 PA-01–PA-06，SA-01–SA-03 改为按公司；A7 注明员工名册不做排班/工资/绩效；G2 M1
+	- 重写 `specs/2026-10-super-admin-console.md`（SPEC-010 改为开通客户公司，删除"不做集团层级"）
+	- 修改 `src/admin-web/`、`src/super-admin/` 的 README 与 AGENTS，`src/api/AGENTS.md`、`src/README.md`、`src/AGENTS.md`、`06-app-development/README.md`、`specs/README.md`、`product-feature-map.md`、根 `AGENTS.md`
+- **原因与决策**：租户 = 公司，养老院为其下地点，员工属于公司可多院分配，老人属于一家院；老人状态决定 AI 归属候选范围（降低错误老人风险）；总览只到养老院级、不做个人排名（员工监控合规）、不展示临床风险指标（TGA）；资质到期只提醒不判定
+- **检查**：`check_rules.py` 通过（exit 0；仅 ASSIGN 警告）
+- **待确认**：
+	- 完整员工名册引入**员工个人信息与资质**这一新数据类型 → 需更新 PIA；也让产品向 HR 方向扩展，与 PRD A7 的边界需持续把关
+	- 同公司内转院时旧院记录对新院员工的可见范围 —— Clinical Lead 与律师
+	- SPEC-011 待 Terry 审阅与 `assign-prd`
+
+---
+
 ## 2026-10-19 · Claude Code · 第一阶段前端：护士 Web App + 独立 Super Admin App（多养老院）
 
 - **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）

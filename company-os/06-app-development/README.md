@@ -24,8 +24,8 @@ company-os/06-app-development/
     ├── review-service/           审核状态机、事件快速通道
     ├── record-store/             签字记录、时间线、保留与删除
     ├── integrations/             导出与护理系统回写
-    ├── admin-web/                机构管理（第一阶段合并进护士 Web App）
-    └── super-admin/              Super Admin App（独立 React JS，多养老院管理）
+    ├── admin-web/                养老院管理端（公司 + 多家养老院；第一阶段合并进养老院 Web App）
+    └── super-admin/              Super Admin App（独立 React JS，客户公司管理）
 ```
 
 每个目录都有 `README.md`（人）、`AGENTS.md`（AI）、`CLAUDE.md`（导入 AGENTS.md）。从 [src/README.md](src/README.md) 开始。
