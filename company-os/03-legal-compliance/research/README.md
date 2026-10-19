@@ -8,6 +8,10 @@
 |---|---|
 | [`federal-law-summary.md`](federal-law-summary.md) | 交付物 A：Aged Care Act 2024 / Rules 2025（记录保存、Statement of Rights、Quality Standards、SIRS、restrictive practices / BSP、AN-ACC、care minutes / 24/7 RN、QI、Support at Home）、Privacy Act / NDB / 2024 修订 / Tranche 2、TGA、Ahpra/NMBA、ACSQHC |
 | [`state-by-state-comparison.md`](state-by-state-comparison.md) | 交付物 C：8 个州/领地的健康记录与隐私法、监听设备与工作场所监控法、RN/配比法、监护与 ACD、成人保护、记录保存、VAD 等；按主题对比表 + 分州摘要 |
+| [`state-deep-dive-nsw-vic-act.md`](state-deep-dive-nsw-vic-act.md) | 2026-10-19 补充：NSW / VIC / ACT 健康隐私、录音法、药品记录、监护与同意的深挖与纠错建议 |
+| [`state-deep-dive-qld-wa-sa-tas-nt.md`](state-deep-dive-qld-wa-sa-tas-nt.md) | 2026-10-19 补充：QLD / WA / SA / TAS / NT 同上；含五辖区对比表与对 `state-by-state-comparison.md` 的 15 条纠错建议（待人工采纳） |
+| [`aged-care-documentation-workflows.md`](aged-care-documentation-workflows.md) | 2026-10-19 交付物 D：真实文档流程（入住、班次、事件/SIRS、care plan、限制性措施、恶化、QI、临终、投诉）Mermaid 流程图 + CareKind 介入点 + 临床/AI 文档 best practice |
+| [`aged-care-paperwork-checklist.md`](aged-care-paperwork-checklist.md) | 2026-10-19 交付物 D 附表：约 60 种文档 × 时机 × 填写人 × 保存年限 × 依据 × 模板 × CareKind 能否起草 |
 | [`paperwork-templates-index.md`](paperwork-templates-index.md) | 交付物 B：59 个已下载官方表格/模板/指南（约 80 MB）索引及下载失败的 URL |
 | [`downloads/`](downloads/) | federal-aged-care、sirs-incidents、restrictive-practices、care-planning-assessment、quality-indicators、clinical-handover、privacy、ai-digital-scribes、state-specific |
 | [`sources.md`](sources.md) | 来源汇总 |

@@ -2,6 +2,8 @@
 
 > 研究日期：2026-10-10｜范围：澳洲 aged care 护理管理系统、AI scribe / AI 初创（澳洲 + 国际）｜方法：公开网络资料（2025–2026 优先），每条结论附来源；厂商数据为 vendor claim；未找到的标为“未公开/未找到”。
 
+> **2026-10-19 更新**：[how-competitors-solve-it.md](how-competitors-solve-it.md) —— 竞品如何解决"文档负担 + 合规"、行业通行做法、市场空白、应避免的做法；新增 voize、Notive、Regis 自建、Telstra Smart Scribe、TGA scribe 审查（12 款中 8 款可能属器械）。其 §7 列出对 `competitor-matrix.md` 的建议更新（待人工确认）。
+
 ## 一页摘要（Executive Summary）
 
 1. **最大威胁是 Heidi Health，不是传统系统。** Heidi（墨尔本）2026-09 获 US$340M 融资，估值约 US$0.9–1.2B，已上线专门的 **Aged care 解决方案**（care notes、incident reports、care plans、family letters、挂绳录音器、母语输入→英文输出），并在新西兰 Metlifecare 从 1 家 care home 扩展到另外 3 家。但其 aged care 页**未列出与任何澳洲 aged care 系统的集成**，面向的是 RN/临床医生，而非 PCW。

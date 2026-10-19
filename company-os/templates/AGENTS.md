@@ -10,6 +10,7 @@
 - `weekly-update.md`
 - `meeting-notes.md`
 - `incident-postmortem.md`
+- `paperwork/` —— 养老护理 paperwork 模板（规则见其 `AGENTS.md`）
 
 ## 在这里工作的规则
 - 复制模板到目标位置后再填写，不直接修改模板

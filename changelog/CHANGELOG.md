@@ -5,6 +5,42 @@
 
 ---
 
+## 2026-10-19 · Claude Code · 多 agent 调研：各州法规、竞品解法、真实流程与 paperwork → MVP 功能 spec 与模板
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：启动多个 agent 并行调研澳洲各州 aged care 法规、竞争对手如何解决问题、best practice、真实流程图与所需 paperwork；再据此分析产品功能、写对应 PRD、把 paperwork 转成 Markdown 模板；学习项目 MVP，调研差不多即收尾；合并进 main
+- **改动**：
+	- 新增 `company-os/03-legal-compliance/research/`：`state-deep-dive-nsw-vic-act.md`、`state-deep-dive-qld-wa-sa-tas-nt.md`（州法深挖 + 对 `state-by-state-comparison.md` 的纠错建议）、`aged-care-documentation-workflows.md`（9 个流程 Mermaid 图 + 临床/AI 文档 best practice）、`aged-care-paperwork-checklist.md`（约 60 种文档总表）
+	- 新增 `company-os/07-marketing-operations/competitor-research/how-competitors-solve-it.md`（竞品解法、patterns、市场空白、应避免做法、对比表）
+	- 新增 `company-os/06-app-development/product-feature-map.md`（问题 → 解决方案 → 功能映射 + best practice 汇总）
+	- 新增 6 份 P0 spec：SPEC-004 班次语音采集、SPEC-005 居民归属、SPEC-006 草稿生成与护栏、SPEC-007 审核签字、SPEC-008 事件快速通道、SPEC-009 同意管理
+	- 新增 `company-os/templates/paperwork/`（README / AGENTS / CLAUDE + 8 个模板：progress note、事件记录、ISBAR、care plan 复审、限制性措施使用、居民 AI 同意书、员工监控通知、机构上线清单）
+	- 修改索引：`research/README.md`、`competitor-research/README.md`、`06-app-development/README.md` 与 `AGENTS.md`、`specs/README.md`、`templates/README.md` 与 `AGENTS.md`
+- **原因与决策**：按 Terry 要求缩为 MVP 规模（12 份 spec → 6 份 P0；模板 8 个）；spec 不改产品边界（按键口述、HITL、documentation-only、澳洲驻留），只细化 PRD；Assignee 未指定，待 `assign-prd`；纠错建议与 competitor-matrix 更新只列出，未改原文件、合规登记册和 hazard log
+- **检查**：`check_rules.py` 通过（exit 0；仅 ASSIGN 警告，含 6 份新 spec）；各 agent 已逐个核对相对链接
+- **待确认**：
+	- 法律：模式 A 单人口述不算"私人对话"需律师书面确认；NSW HPP 14 / VIC HPP 9 / TAS / NT 管"出州"，托管区域须写进合同；同意书与员工通知措辞；居民无能力时谁可代为同意
+	- TGA：2026-10-16 报道 TGA 审查 12 款 scribe 中 8 款可能属器械（官方原文未直接打开）；SPEC-008 计时与缺失字段提示的边界须监管顾问确认
+	- 竞品：voize（德国）已做"口述→自动归属居民"，归属不能宣称独有
+	- `federal-law-summary.md` §1.8 关于 care minutes 的表述与新指南不一致，建议修正
+	- SPEC-004/005/006 建议 hazard 编号 H-19–H-24，SPEC-007–009 未编号，待 Clinical Lead 统一
+
+---
+
+## 2026-10-19 · Claude Code · 新增 10 个用户画像（谁买 / 谁用 / 谁受益 / 谁审核）
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：总结产品的用户画像，设置 10 种常见画像，从谁买、谁用、谁受益、谁审核几个维度思考，写进项目
+- **改动**：
+  - 新增 `docs/user-personas.md` —— 四维定义、画像总览矩阵、P1–P10 画像卡、画像关系图、对产品/销售/设计的含义、待验证假设、法律依据
+  - 修改 `docs/PRD.md` —— B2 末尾加一行链接到画像文档（不改产品边界）
+  - 修改 `docs/README.md`、`docs/AGENTS.md` —— 文档索引加入 `user-personas.md`
+- **原因与决策**：放在 `docs/` 与 PRD 并列，因为画像供产品、销售、设计共用；画像以 PRD B2/C6/D1、ICP 和销售流程为依据；`08-feedback/raw/` 尚无原始反馈，所以全部标为待验证假设，不写姓名、代词，不编造数字；“审核”分为记录复核与采购把关两层；画像冲突时的取舍顺序为居民安全 > RN 复核责任 > 一线效率 > 管理需求
+- **检查**：`check_rules.py` 通过（exit 0，仅既有 ASSIGN 警告）；新文件相对链接均存在
+- **待确认**：画像与取舍顺序需 Terry 审阅；P4 质量与风险经理是否在中小机构与 DON 合并，待 M0 访谈验证
+
+---
+
 ## 2026-10-11 · Claude Code · 吉祥物「考拉小记」、透明 PNG、VI 手册与周边设计
 
 - **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
