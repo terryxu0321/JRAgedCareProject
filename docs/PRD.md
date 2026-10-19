@@ -226,6 +226,28 @@ H1 · 0–12 个月                      H2 · 12–24 个月                   
 | Tier 3 实时推送 | WebSocket 或 Web Push | ⏳ |
 | 认证 | 托管身份服务 | ⏳ |
 
+**工程流程（同上）**：
+
+| 部分 | 技术 | 状态 |
+|---|---|---|
+| 代码仓库 | GitHub：carekind（Company OS）+ carekind-app（submodule） | ✅ |
+| 仓库结构 | monorepo：apps/ 放各前端，packages/ 放共享逻辑，services/api 放后端 | ⏳ |
+| CI/CD | GitHub Actions，在云端运行，不在本机跑 | ✅ |
+| 环境 | dev / staging / production / demo；生产数据不进入其他环境 | ✅ |
+| 代码规范 | [code-rules](../company-os/11-rules/code-rules.md)：Tab 缩进 4、单文件不超过 1000 行、禁用 any、只用合成测试数据 | ✅ |
+
+**数据与基础设施（同上）**：
+
+| 部分 | 技术 | 状态 |
+|---|---|---|
+| 部署区域 | 澳洲境内（AWS Sydney） | 🟡 |
+| 数据库 | PostgreSQL（托管） | ⏳ |
+| 多租户隔离 | 行级安全或 schema 隔离（技术 ADR-0002，待写） | ⏳ |
+| 对象存储 | S3：音频短期保留、到期自动删除；不用 CDN | ✅ |
+| 审计日志 | 只追加，不能修改 | ✅ |
+| 加密 | 全部静态加密 + KMS；日志里不记健康信息 | ✅ |
+| 基础设施即代码 | CDK 或 Terraform | ⏳ |
+
 完整技术栈表见 [工程规范](../company-os/06-app-development/engineering-standards.md)。层级：平台 → 公司（租户）→ 养老院（地点）。挂绳设备与离线队列放到后续阶段。
 
 **MVP 基础设施、认证与转写供应商（Terry 2026-10-19 决定）**：

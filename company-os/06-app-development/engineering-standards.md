@@ -33,21 +33,36 @@
 | Tier 3 实时推送 | ⏳ WebSocket 或 Web Push | 如事件草稿立即提醒（SPEC-008） |
 | 认证 | ⏳ 托管身份服务；MVP 不做 MFA（仅虚构 / 合成数据阶段，真实数据前加回） | PRD C1、G4 #11 |
 
-### 基础设施
+### 工程流程
 
-| 部分 | 技术 | 说明 |
+| 部分 | 技术 | 状态 |
 |---|---|---|
-| 后台任务 / AI 管线 | Node.js + TypeScript worker + 队列（如 SQS） | 转写与起草耗时，不阻塞接口 |
-| 数据库 | PostgreSQL，按 `organisation_id` 隔离 + 行级安全 | SPEC-010 / 011 多租户 |
-| 对象存储 | ✅ S3（原音加密，7 天生命周期删除；营销网站静态托管）；✅ 不做 CDN | PRD C1 |
-| 云 | AWS ap-southeast-2（Sydney） | 澳洲数据驻留 |
-| 代码托管 | GitHub，分支保护；monorepo（`apps/`、`packages/`、`services/`） | |
+| 代码仓库 | GitHub：`carekind`（Company OS，即本仓库）+ `carekind-app`（产品代码，以 git submodule 引入） | ✅ |
+| 仓库结构 | monorepo：`apps/` 放各前端，`packages/` 放共享逻辑，`services/api` 放后端 | ⏳ |
+| CI/CD | GitHub Actions，在云端运行，不在本机跑 | ✅ |
+| 环境 | dev / staging / production / demo；生产数据不进入其他环境（见下方"环境"） | ✅ |
+| 代码规范 | [code-rules.md](../11-rules/code-rules.md)：Tab 缩进 4、单文件不超过 1000 行、禁用 `any`、只用合成测试数据 | ✅ |
+
+### 数据与基础设施
+
+| 部分 | 技术 | 状态 |
+|---|---|---|
+| 部署区域 | 澳洲境内（AWS Sydney） | 🟡 |
+| 数据库 | PostgreSQL（托管） | ⏳ |
+| 多租户隔离 | 行级安全或 schema 隔离（技术 ADR-0002，待写） | ⏳ |
+| 对象存储 | S3：音频短期保留、到期自动删除；不用 CDN | ✅ |
+| 审计日志 | 只追加，不能修改 | ✅ |
+| 加密 | 全部静态加密 + KMS；日志里不记健康信息 | ✅ |
+| 基础设施即代码 | CDK 或 Terraform | ⏳ |
+| 后台任务 / AI 管线 | Node.js + TypeScript worker + 队列（如 SQS） | 建议 |
 
 ## 环境
 
+**生产数据不进入其他任何环境。**
+
 | 环境 | 数据 | 访问 |
 |---|---|---|
-| local / dev | **仅合成数据** | 开发者 |
+| dev（含本地） | **仅合成数据** | 开发者 |
 | staging | 合成数据 / 经批准的去标识化数据 | 开发者 |
 | demo | **只用虚构数据**；独立部署（独立前端、后端与数据库），不连 staging / production | 销售演示、培训、试点前展示 |
 | production | 真实数据 | 最小权限、MFA、即时授权（JIT）、全量审计 |

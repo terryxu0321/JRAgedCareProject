@@ -5,6 +5,17 @@
 
 ---
 
+## 2026-10-19 · Claude Code · 工程流程与数据基础设施和课程结果对齐
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：按老师的"工程流程"和"数据与基础设施"两张表保持一致
+- **改动**：`docs/PRD.md` C1 新增两张表；`engineering-standards.md` 用两张表替换原"基础设施"表，环境表注明生产数据不进入其他环境；`06-app-development/README.md`、`src/AGENTS.md` 改为产品代码放在 `carekind-app` 仓库、以 git submodule 引入
+- **原因与决策**：照课程结果原样记录，包括状态（✅ / 🟡 / ⏳）；多租户隔离从"行级安全"改为"行级安全或 schema 隔离，待技术 ADR-0002"；未创建 `carekind-app` 仓库或 submodule（只记录决定）
+- **检查**：`check_rules.py` 通过（exit 0）
+- **待确认**：仓库结构、托管数据库、多租户隔离（ADR-0002 待写）、IaC（CDK / Terraform）
+
+---
+
 ## 2026-10-19 · Claude Code · 技术栈与课程结果对齐（前端 + 后端与 AI），API 框架定为 NestJS
 
 - **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
