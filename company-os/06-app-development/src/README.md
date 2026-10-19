@@ -12,5 +12,6 @@
 | [integrations/](integrations/README.md) | 导出、护理系统回写 | E-01, E-02 |
 | [admin-web/](admin-web/README.md) | 养老院管理端：公司总览、多家养老院、完整员工名册、老人生命周期、同意、流程配置、上线清单（第一阶段合并进养老院 Web App） | PA-*, M-*, D8 |
 | [super-admin/](super-admin/README.md) | Super Admin App（独立 React JS）：CareKind 平台方开通与配置客户公司；不接触居民健康信息 | SA-* |
+| [marketing-site/](marketing-site/README.md) | 营销网站：纯 HTML + CSS 静态站点（不用框架），与产品数据分离 | MW-*（SPEC-012） |
 
 **第一阶段前端**：养老院 Web App（`mobile-app/` 护士端 + `admin-web/` 管理端，浏览器 / PWA，按角色进入）与 Super Admin App（`super-admin/`）两个前端。层级：平台 → 公司（租户）→ 养老院（PRD C1）。

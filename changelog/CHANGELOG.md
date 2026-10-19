@@ -5,6 +5,17 @@
 
 ---
 
+## 2026-10-19 · Claude Code · 营销网站 SPEC-012（纯 HTML + CSS）
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：缺少一个用来宣传 CareKind 的 marketing website；技术栈用纯 HTML，不用 Next.js
+- **改动**：新增 `specs/2026-10-marketing-website.md`（SPEC-012）与模块 `src/marketing-site/`（README / AGENTS / CLAUDE）；`docs/PRD.md` C1 说明与 G2 M1；`src/README.md`、`src/AGENTS.md`、`06-app-development/README.md`、`specs/README.md` 索引
+- **原因与决策**：网站文案即 TGA 意义上的预期用途，所以按 spec 管理；规则沿用 `marketing-compliance.md` 与 `brand-and-messaging.md`（禁用医疗用途词、无证据不写数字、不点名比较、Spam Act 单独同意、考拉不上网站）；纯 HTML + CSS + 少量原生 JS，与产品数据完全分离
+- **检查**：`check_rules.py` 通过（exit 0；仅 ASSIGN 警告）
+- **待确认**：隐私政策、使用条款、intended purpose 对外措辞 —— 律师；表单后台 / 分析工具选定后登记子处理方；SPEC-012 待 `assign-prd`
+
+---
+
 ## 2026-10-19 · Claude Code · 养老院管理端：公司 → 多家养老院、员工与老人管理、四个流程
 
 - **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）

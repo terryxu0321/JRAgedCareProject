@@ -199,7 +199,7 @@ H1 · 0–12 个月                      H2 · 12–24 个月                   
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-**第一阶段前端（Terry 2026-10-19 决定）**：只做两个前端 —— **养老院 Web App**（浏览器/PWA，不做原生 mobile app；按角色进入**护士端**或**养老院管理端**）和 **Super Admin App**（独立 React JS 应用，CareKind 平台方管理客户公司）。层级：平台 → 公司（租户）→ 养老院（地点）。原生 App、挂绳设备与离线队列放到后续阶段。养老院管理端详见 [SPEC-011](../company-os/06-app-development/specs/2026-10-provider-admin-console.md)，Super Admin 详见 [SPEC-010](../company-os/06-app-development/specs/2026-10-super-admin-console.md)。
+**第一阶段前端（Terry 2026-10-19 决定）**：只做两个前端 —— **养老院 Web App**（浏览器/PWA，不做原生 mobile app；按角色进入**护士端**或**养老院管理端**）和 **Super Admin App**（独立 React JS 应用，CareKind 平台方管理客户公司）。层级：平台 → 公司（租户）→ 养老院（地点）。原生 App、挂绳设备与离线队列放到后续阶段。养老院管理端详见 [SPEC-011](../company-os/06-app-development/specs/2026-10-provider-admin-console.md)，Super Admin 详见 [SPEC-010](../company-os/06-app-development/specs/2026-10-super-admin-console.md)。另有对外**营销网站**（纯 HTML + CSS 静态站点，不用框架，与产品数据完全分离），详见 [SPEC-012](../company-os/06-app-development/specs/2026-10-marketing-website.md)。
 
 ## C2. AI 管线逻辑（每个片段）
 
@@ -599,7 +599,7 @@ H2：集成适配器 → 写入机构护理系统对应老人与记录类型 →
 | 里程碑 | 内容 | 时间 |
 |---|---|---|
 | M0 原型 | 合成数据跑通：片段 → 转写 → 归属 → 草稿；评测集 v1；30 次访谈 | 2026-11 |
-| M1 MVP | 模式 A、全部 P0、导出、养老院 Web App（护士端 + 养老院管理端，支持一家公司多家养老院）、Super Admin App、PIA、律师意见 | 2027-01 |
+| M1 MVP | 模式 A、全部 P0、导出、养老院 Web App（护士端 + 养老院管理端，支持一家公司多家养老院）、Super Admin App、营销网站 P0 页面（试点招募前上线）、PIA、律师意见 | 2027-01 |
 | M2 试点 | 2 家机构付费试点（[试点手册](../company-os/07-marketing-operations/pilot-playbook.md)） | 2027 Q1–Q2 |
 | M3 | P1：多语言、挂绳设备、PCW→RN 复核、交接、时间线增强 | 2027 Q2 |
 | M4 | P2：护理系统回写、限制性措施记录；DR-006 决策 | 2027 H2 |
