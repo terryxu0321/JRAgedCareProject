@@ -1,6 +1,6 @@
 # mobile-app — 护理人员 App
 
-> **第一阶段**：以护士 Web App（浏览器 / PWA）实现，机构管理员页面按角色合并在同一个 Web App 中；原生 App 后续再做（PRD C1）。
+> **第一阶段**：护士端 Web App（React + TypeScript）；React Native mobile app 列入路线图，第一阶段不做（PRD C1）。
 
 护理人员手机/平板 App：开班选择负责老人、按键录音、离线加密队列、按老人分组的待审核与签字、老人时间线、交接摘要。只负责界面与采集，**不实现**归属/起草逻辑（属于 ai-pipeline，经 api 调用）。
 

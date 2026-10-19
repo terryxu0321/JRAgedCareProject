@@ -5,6 +5,69 @@
 
 ---
 
+## 2026-10-19 · Claude Code · 工程流程与数据基础设施和课程结果对齐
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：按老师的"工程流程"和"数据与基础设施"两张表保持一致
+- **改动**：`docs/PRD.md` C1 新增两张表；`engineering-standards.md` 用两张表替换原"基础设施"表，环境表注明生产数据不进入其他环境；`06-app-development/README.md`、`src/AGENTS.md` 改为产品代码放在 `carekind-app` 仓库、以 git submodule 引入
+- **原因与决策**：照课程结果原样记录，包括状态（✅ / 🟡 / ⏳）；多租户隔离从"行级安全"改为"行级安全或 schema 隔离，待技术 ADR-0002"；未创建 `carekind-app` 仓库或 submodule（只记录决定）
+- **检查**：`check_rules.py` 通过（exit 0）
+- **待确认**：仓库结构、托管数据库、多租户隔离（ADR-0002 待写）、IaC（CDK / Terraform）
+
+---
+
+## 2026-10-19 · Claude Code · 技术栈与课程结果对齐（前端 + 后端与 AI），API 框架定为 NestJS
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：与老师的技术栈结果保持一致（前端表、后端与 AI 表）；API 框架用 NestJS
+- **改动**：
+	- `docs/PRD.md` C1：架构图改为四个独立前端；新增"前端"与"后端与 AI"两张技术栈表（含状态）；B2 改称机构管理端；G2 M1；版本说明
+	- `engineering-standards.md`：技术栈拆为前端 / 后端与 AI / 基础设施三张表；环境表新增 demo（只用虚构数据，独立部署）
+	- 护士端恢复为第一阶段完整 Web App（撤销"最小演示页"）：`specs/2026-10-shift-voice-capture.md`、`2026-10-review-and-sign-off.md`、`2026-10-incident-fast-track.md`、`src/mobile-app/`
+	- 机构管理端改为独立 Web App：`specs/2026-10-provider-admin-console.md`、`src/admin-web/`、`src/README.md`、`src/AGENTS.md`、`06-app-development/README.md`、根 `AGENTS.md`
+	- 营销网站只做英文、token 以 CSS 变量引入：`specs/2026-10-marketing-website.md`、`src/marketing-site/`
+- **原因与决策**：Terry 要求以课程结果为准；Demo 环境作为独立部署环境记录，不新建代码模块；Vite、zod、实时推送、认证服务保持"待定"；LLM 方向已定（云厂商澳洲区域、零保留、锁定版本），供应商待选
+- **检查**：`check_rules.py` 通过（exit 0）
+- **待确认**：Vite、zod、Tier 3 实时推送（WebSocket / Web Push）、托管身份服务、LLM 具体供应商
+
+---
+
+## 2026-10-19 · Claude Code · ElevenLabs 数据在澳洲、统一 TypeScript、护士端第一阶段只做最小演示页
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：ElevenLabs 可以用，数据在澳洲；统一 TypeScript；护士端 Web App 与 mobile app 可以规划但可以不做（Terry 选择：只做最小演示页）
+- **改动**：`docs/PRD.md`（C1 护士端范围、TS、ElevenLabs 说明、架构图、G4 #10、G2 M1）；`engineering-standards.md` 技术栈表改为 MVP 选型（TS 全栈、S3 不做 CDN、ElevenLabs、不做 MFA）；`specs/2026-10-shift-voice-capture.md`、`2026-10-review-and-sign-off.md`、`2026-10-incident-fast-track.md`（第一阶段范围说明）、`2026-10-marketing-website.md`（脚本用 TS）、`2026-10-design-system.md`（移动端 DR 待决项关闭）；`src/mobile-app/`、`src/marketing-site/`、`src/ai-pipeline/transcription/` 的 README 与 AGENTS、`src/README.md`；`security/vendors-and-subprocessors.md`（ElevenLabs 区域改为澳洲）
+- **原因与决策**：ElevenLabs 按 Terry 确认视为澳洲存储与处理，不再需要数据驻留 DR；公开文档截至当日未列澳洲区域，故保留"真实录音前在 DPA 书面确认（含处理环节）"的条件。Company OS 内部脚本仍为 Python，不属于产品代码。护士端演示页保留安全底线（第二标识、逐项确认、人工签字、未同意丢弃）
+- **检查**：`check_rules.py` 通过（exit 0）
+- **待确认**：ElevenLabs DPA / 合同条款；后端框架（Fastify / NestJS）与 LLM 供应商待技术栈 DR
+- **补充**：Terry 同日决定规划中的 mobile app 用 React Native + TypeScript（`engineering-standards.md`、PRD C1、`src/mobile-app/`、`specs/2026-10-design-system.md` 已同步）
+
+---
+
+## 2026-10-19 · Claude Code · MVP 决定：去掉 MFA、转写用 ElevenLabs、S3 不做 CDN
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：MFA（含 super admin 的 IP allowlist）去掉；语音转写只用 Terry 已有的 ElevenLabs，不用别的；对象存储用 S3，不做 CDN
+- **改动**：`docs/PRD.md`（C1 决定说明与架构图、M-01、SA-03、G4 #10 #11）；`specs/2026-10-super-admin-console.md`、`2026-10-provider-admin-console.md`、`2026-10-shift-voice-capture.md`、`2026-10-marketing-website.md`；`src/api/`、`src/super-admin/`、`src/ai-pipeline/transcription/` 的 README 与 AGENTS、`src/README.md`；`security/vendors-and-subprocessors.md`（ElevenLabs 行，按 Terry 指示登记）
+- **原因与决策**：按 Terry 决定执行，并加上前提条件 —— MVP 只处理合成数据；接入真实居民或员工数据前须加回 MFA，并解决 ElevenLabs 的数据驻留问题
+- **检查**：`check_rules.py` 通过（exit 0）；ElevenLabs 官方数据驻留文档 2026-10-19 核查：区域为美国（默认）、欧盟、印度、新加坡，未列澳洲，驻留主要指存储
+- **待确认**：
+	- ⚠️ **ElevenLabs 与产品边界"数据与 AI 处理留在澳洲"冲突**（AGENTS 硬规则 4）：处理真实居民录音前须确认澳洲处理，或先写 DR 变更数据驻留边界并取得律师意见（APP 8、NSW HPP 14、VIC HPP 9）
+	- ⚠️ 不做 MFA 与 `information-security-policy.md`（Essential Eight）不一致；本次未修改该政策，试点前须由 Terry 决定加回 MFA 或修订政策
+
+---
+
+## 2026-10-19 · Claude Code · 营销网站 SPEC-012（纯 HTML + CSS）
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：缺少一个用来宣传 CareKind 的 marketing website；技术栈用纯 HTML，不用 Next.js
+- **改动**：新增 `specs/2026-10-marketing-website.md`（SPEC-012）与模块 `src/marketing-site/`（README / AGENTS / CLAUDE）；`docs/PRD.md` C1 说明与 G2 M1；`src/README.md`、`src/AGENTS.md`、`06-app-development/README.md`、`specs/README.md` 索引
+- **原因与决策**：网站文案即 TGA 意义上的预期用途，所以按 spec 管理；规则沿用 `marketing-compliance.md` 与 `brand-and-messaging.md`（禁用医疗用途词、无证据不写数字、不点名比较、Spam Act 单独同意、考拉不上网站）；纯 HTML + CSS + 少量原生 JS，与产品数据完全分离
+- **检查**：`check_rules.py` 通过（exit 0；仅 ASSIGN 警告）
+- **待确认**：隐私政策、使用条款、intended purpose 对外措辞 —— 律师；表单后台 / 分析工具选定后登记子处理方；SPEC-012 待 `assign-prd`
+
+---
+
 ## 2026-10-19 · Claude Code · 养老院管理端：公司 → 多家养老院、员工与老人管理、四个流程
 
 - **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）

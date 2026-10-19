@@ -3,7 +3,7 @@
 | 项 | 内容 |
 |---|---|
 | 文档 ID | SPEC-011 |
-| 类型 | 客户管理端：养老院 Web App 中按角色显示的管理功能（`src/admin-web/`） |
+| 类型 | 机构管理端：**独立的** Web App，React + TypeScript（`src/admin-web/`） |
 | 版本 | v0.1 草稿 · 2026-10-19 |
 | Owner | Terry（Product Owner + Tech Lead） |
 | 状态 | 🟡 **待 Terry 审阅**（🛑 人工确认） |
@@ -45,7 +45,7 @@ CareKind 平台（Super Admin，SPEC-010）
 
 ```mermaid
 flowchart TD
-	SA["Super Admin 开通公司，邀请公司管理员"] --> OA["公司管理员登录（MFA）"]
+	SA["Super Admin 开通公司，邀请公司管理员"] --> OA["公司管理员登录"]
 	OA --> NF["新增养老院：名称、地址、所在州、床位"]
 	NF --> GL["上线流程：逐项完成清单"]
 	GL --> ST["员工名册：导入全部员工，分配院与角色，开通 App 账号"]
@@ -89,7 +89,7 @@ stateDiagram-v2
 	direction LR
 	[*] --> 已录入: 加入员工名册
 	已录入 --> 已邀请: 开通 App 账号
-	已邀请 --> 待培训: 接受邀请（MFA）
+	已邀请 --> 待培训: 接受邀请（设置密码）
 	待培训 --> 在岗: 培训完成确认
 	在岗 --> 在岗: 调院 / 增加兼职院
 	在岗 --> 已停用: 离职或暂停

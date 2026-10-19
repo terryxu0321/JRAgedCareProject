@@ -17,15 +17,16 @@ company-os/06-app-development/
 │   └── vendors-and-subprocessors.md     子处理方清单（含 LLM 供应商）
 ├── specs/                        功能需求文档（PRD），每个功能一份
 ├── rnd-log/                      R&D 实验记录（R&D Tax Incentive 证据）
-└── src/                          代码仓库（模块说明已就位，代码尚未开始；正式代码将迁入独立 GitHub 私有仓库）
+└── src/                          代码仓库（模块说明已就位，代码尚未开始；产品代码将放在独立仓库 carekind-app，以 git submodule 引入）
     ├── mobile-app/               护理人员 App
     ├── api/                      网关、认证授权、审计
     ├── ai-pipeline/              转写 → 拆分 → 归属 → 分类 → 抽取 → 起草 → 护栏（7 个子模块）
     ├── review-service/           审核状态机、事件快速通道
     ├── record-store/             签字记录、时间线、保留与删除
     ├── integrations/             导出与护理系统回写
-    ├── admin-web/                养老院管理端（公司 + 多家养老院；第一阶段合并进养老院 Web App）
-    └── super-admin/              Super Admin App（独立 React JS，客户公司管理）
+    ├── admin-web/                机构管理端（独立 Web App；公司 + 多家养老院）
+    ├── super-admin/              Super Admin App（独立 React JS，客户公司管理）
+    └── marketing-site/           营销网站（纯 HTML + CSS，不用框架）
 ```
 
 每个目录都有 `README.md`（人）、`AGENTS.md`（AI）、`CLAUDE.md`（导入 AGENTS.md）。从 [src/README.md](src/README.md) 开始。

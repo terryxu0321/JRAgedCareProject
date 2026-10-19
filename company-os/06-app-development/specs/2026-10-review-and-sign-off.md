@@ -11,6 +11,8 @@
 | 关联 | [docs/PRD.md](../../../docs/PRD.md) C4 记录状态机、C6 权限、C7 数据与保留、D2 步骤 7–10、D4、E5 S-01~S-08；[临床安全框架](../clinical-safety-framework.md) H-01/H-02/H-03/H-08；[Design System](2026-10-design-system.md) §5.3；[核心 MVP spec](2026-10-shift-voice-to-resident-records.md) |
 
 > ⚠️ 本文中的法律判断为内部工作底稿，不构成法律意见。本 spec 落实 PRD 已定的 HITL 边界，不改变产品边界，无需新 DR。
+>
+> **第一阶段范围（Terry 2026-10-19）**：在护士端 Web App（React + TypeScript）中实现，见 PRD C1。
 
 ## 1. 问题
 

@@ -3,10 +3,10 @@
 > AI 助手在本目录工作前必读。全局规则：根目录 `AGENTS.md` 与 `company-os/11-rules/`。人类说明：同目录 `README.md`。完成任务后按 `changelog-rules.md` 写 `changelog/CHANGELOG.md`。
 
 ## 职责
-所有客户端请求的入口：认证（SSO + MFA）、服务端权限校验（PRD C6）、请求边界校验、审计日志、限流。业务逻辑交给各服务。
+所有客户端请求的入口：认证（MVP：邮件邀请 + 密码，不做 MFA；真实数据前加回 SSO + MFA）、服务端权限校验（PRD C6）、请求边界校验、审计日志、限流。业务逻辑交给各服务。
 
 ## 负责的功能（PRD 编号）
-- SSO / MFA 与会话管理（M-01）
+- 登录与会话管理（M-01；MVP 不做 MFA）
 - 权限矩阵 C6，服务端执行（P-6）
 - 审计日志 M-04（P-7）
 - 请求与响应 schema 校验（CORE-07、TY-3）
