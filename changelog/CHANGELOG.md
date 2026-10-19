@@ -5,6 +5,19 @@
 
 ---
 
+## 2026-10-19 · Claude Code · MVP 决定：去掉 MFA、转写用 ElevenLabs、S3 不做 CDN
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：MFA（含 super admin 的 IP allowlist）去掉；语音转写只用 Terry 已有的 ElevenLabs，不用别的；对象存储用 S3，不做 CDN
+- **改动**：`docs/PRD.md`（C1 决定说明与架构图、M-01、SA-03、G4 #10 #11）；`specs/2026-10-super-admin-console.md`、`2026-10-provider-admin-console.md`、`2026-10-shift-voice-capture.md`、`2026-10-marketing-website.md`；`src/api/`、`src/super-admin/`、`src/ai-pipeline/transcription/` 的 README 与 AGENTS、`src/README.md`；`security/vendors-and-subprocessors.md`（ElevenLabs 行，按 Terry 指示登记）
+- **原因与决策**：按 Terry 决定执行，并加上前提条件 —— MVP 只处理合成数据；接入真实居民或员工数据前须加回 MFA，并解决 ElevenLabs 的数据驻留问题
+- **检查**：`check_rules.py` 通过（exit 0）；ElevenLabs 官方数据驻留文档 2026-10-19 核查：区域为美国（默认）、欧盟、印度、新加坡，未列澳洲，驻留主要指存储
+- **待确认**：
+	- ⚠️ **ElevenLabs 与产品边界"数据与 AI 处理留在澳洲"冲突**（AGENTS 硬规则 4）：处理真实居民录音前须确认澳洲处理，或先写 DR 变更数据驻留边界并取得律师意见（APP 8、NSW HPP 14、VIC HPP 9）
+	- ⚠️ 不做 MFA 与 `information-security-policy.md`（Essential Eight）不一致；本次未修改该政策，试点前须由 Terry 决定加回 MFA 或修订政策
+
+---
+
 ## 2026-10-19 · Claude Code · 营销网站 SPEC-012（纯 HTML + CSS）
 
 - **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
