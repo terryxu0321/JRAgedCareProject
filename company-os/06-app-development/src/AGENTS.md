@@ -3,7 +3,7 @@
 > AI 助手在本目录工作前必读。全局规则：根目录 `AGENTS.md` 与 `company-os/11-rules/`。人类说明：同目录 `README.md`。完成任务后按 `changelog-rules.md` 写 `changelog/CHANGELOG.md`。
 
 ## 这个目录是什么
-CareKind 产品代码。按 PRD C1 架构划分模块；每个模块目录有 README / AGENTS / CLAUDE 说明其职责与边界。产品代码将放在独立的 GitHub 仓库 `carekind-app`（monorepo：`apps/` 前端、`packages/` 共享逻辑、`services/api` 后端），以 git submodule 引入本仓库（Company OS）；届时本目录保留这些模块说明（见 `engineering-standards.md` 工程流程）。
+CareKind 产品代码。按 PRD C1 架构划分模块；每个模块目录有 README / AGENTS / CLAUDE 说明其职责与边界。产品代码将放在 6 个独立的 GitHub 仓库（`carekind-nurse-web`、`carekind-admin-web`、`carekind-super-admin`、`carekind-marketing-site`、`carekind-api`、`carekind-shared`），以 git submodule 引入本 meta repo 的 `apps/`、`services/`、`packages/`。**所有文档只保存在 meta repo**：本目录的模块说明是需求与边界的唯一来源；子仓库只放代码、测试与配置，外加一个链接回来的简短 README（清单见 `engineering-standards.md` 工程流程）。
 
 ## 关键文件
 - `mobile-app/` —— 护理人员 App

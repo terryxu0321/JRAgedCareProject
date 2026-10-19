@@ -15,3 +15,5 @@
 | [marketing-site/](marketing-site/README.md) | 营销网站：纯 HTML + CSS 静态站点（不用框架），与产品数据分离 | MW-*（SPEC-012） |
 
 **第一阶段前端**（均为 React + TypeScript）：护士端 Web App（`mobile-app/`）、独立的机构管理端 Web App（`admin-web/`）、独立的 Super Admin App（`super-admin/`）、独立部署的 Demo 环境（只用虚构数据）；React Native mobile app 列入路线图；营销网站为纯 HTML + CSS（`marketing-site/`）。层级：平台 → 公司（租户）→ 养老院（PRD C1）。
+
+**代码仓库**：本目录只放模块说明。代码在独立仓库中，以 submodule 引入 meta repo：`mobile-app/` → `carekind-nurse-web`，`admin-web/` → `carekind-admin-web`，`super-admin/` → `carekind-super-admin`，`marketing-site/` → `carekind-marketing-site`，后端各模块 → `carekind-api`，共享代码 → `carekind-shared`（[工程规范](../engineering-standards.md)"仓库清单"）。

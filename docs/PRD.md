@@ -230,8 +230,8 @@ H1 · 0–12 个月                      H2 · 12–24 个月                   
 
 | 部分 | 技术 | 状态 |
 |---|---|---|
-| 代码仓库 | GitHub：carekind（Company OS）+ carekind-app（submodule） | ✅ |
-| 仓库结构 | monorepo：apps/ 放各前端，packages/ 放共享逻辑，services/api 放后端 | ⏳ |
+| 代码仓库 | GitHub：本仓库为 meta repo；护士端、机构管理端、Super Admin、营销网站、API 各为独立仓库，以 submodule 引入（Terry 2026-10-19 调整，取代单个 carekind-app） | ✅ |
+| 仓库结构 | 多仓库：carekind-nurse-web、carekind-admin-web、carekind-super-admin、carekind-marketing-site、carekind-api + 共享 carekind-shared（清单见工程规范）；**所有文档只保存在 meta repo**，子仓库只放代码 | ✅ |
 | CI/CD | GitHub Actions，在云端运行，不在本机跑 | ✅ |
 | 环境 | dev / staging / production / demo；生产数据不进入其他环境 | ✅ |
 | 代码规范 | [code-rules](../company-os/11-rules/code-rules.md)：Tab 缩进 4、单文件不超过 1000 行、禁用 any、只用合成测试数据 | ✅ |

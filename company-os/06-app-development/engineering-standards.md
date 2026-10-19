@@ -37,11 +37,31 @@
 
 | 部分 | 技术 | 状态 |
 |---|---|---|
-| 代码仓库 | GitHub：`carekind`（Company OS，即本仓库）+ `carekind-app`（产品代码，以 git submodule 引入） | ✅ |
-| 仓库结构 | monorepo：`apps/` 放各前端，`packages/` 放共享逻辑，`services/api` 放后端 | ⏳ |
+| 代码仓库 | GitHub：本仓库为 **meta repo**（Company OS + 规范 + spec），每个应用一个**独立仓库**，以 git submodule 引入（Terry 2026-10-19，取代课程表中的单个 `carekind-app` monorepo） | ✅ |
+| 仓库结构 | 多仓库：5 个应用仓库 + 1 个共享仓库 `carekind-shared`（见下方"仓库清单"） | ✅ |
 | CI/CD | GitHub Actions，在云端运行，不在本机跑 | ✅ |
 | 环境 | dev / staging / production / demo；生产数据不进入其他环境（见下方"环境"） | ✅ |
 | 代码规范 | [code-rules.md](../11-rules/code-rules.md)：Tab 缩进 4、单文件不超过 1000 行、禁用 `any`、只用合成测试数据 | ✅ |
+
+#### 仓库清单（规划，尚未创建）
+
+均为 `terryxu0321` 下的**公开**仓库（与 meta repo 一致：不得提交密钥、真实居民或个人数据、本地绝对路径）。每个仓库有自己的 GitHub Actions CI 和发布流程。
+
+**所有文档只保存在 meta repo**（Terry 2026-10-19）：PRD、spec、模块说明、规范、决策记录、CHANGELOG、设计系统文档都在本仓库。子仓库只放代码、测试和运行所需的配置；唯一例外是一个简短的 `README.md`，说明本仓库是什么并链接到 meta repo 中对应的模块说明。在子仓库工作的 AI 助手须先读 meta repo 的根 `AGENTS.md` 与对应模块的 `AGENTS.md`。
+
+| 仓库 | 内容 | 在 meta repo 中的 submodule 路径 | 对应模块说明 |
+|---|---|---|---|
+| `carekind-nurse-web` | 护士端 Web App（React + TS） | `apps/carekind-nurse-web` | [src/mobile-app/](src/mobile-app/README.md) |
+| `carekind-admin-web` | 机构管理端 Web App（React + TS） | `apps/carekind-admin-web` | [src/admin-web/](src/admin-web/README.md) |
+| `carekind-super-admin` | Super Admin App（React + TS） | `apps/carekind-super-admin` | [src/super-admin/](src/super-admin/README.md) |
+| `carekind-marketing-site` | 营销网站（HTML + CSS，脚本 TS） | `apps/carekind-marketing-site` | [src/marketing-site/](src/marketing-site/README.md) |
+| `carekind-api` | 后端：NestJS API + AI 管线 worker（含 ai-pipeline、review-service、record-store、integrations 等模块，模块化单体） | `services/carekind-api` | [src/api/](src/api/README.md) 等后端模块 |
+| `carekind-shared` | 共享代码：设计 token（CSS 变量）、zod schema 与 TS 类型、API 客户端 | `packages/carekind-shared` | [design-system/](design-system/DESIGN.md) |
+
+- 各应用通过 git 依赖或包管理引用 `carekind-shared` 的**固定版本**（不直接引用 meta repo 路径）；类型和校验只在 `carekind-shared` 定义一份
+- meta repo 只记录每个 submodule 的提交指针；功能开发在各自仓库完成，meta repo 定期更新指针
+- `company-os/06-app-development/src/` 下的模块说明是需求与边界的唯一来源；子仓库不复制这些说明，只在 README 中链接回来
+- Mobile App（React Native）以后单独建 `carekind-mobile`；Demo 环境是同一批仓库的独立部署（虚构数据），不另建仓库
 
 ### 数据与基础设施
 

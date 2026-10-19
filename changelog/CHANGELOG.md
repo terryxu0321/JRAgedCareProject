@@ -5,6 +5,17 @@
 
 ---
 
+## 2026-10-19 · Claude Code · 本仓库改为 meta repo，应用代码拆为独立仓库（文档全部留在 meta repo）
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：护士端、机构管理端、Super Admin、营销网站、API 都是单独的独立 repo，本 repo 变成 meta repo，独立 repo 作为 submodule 加入；所有文档就保存在 meta repo 里。Terry 确认：`carekind-` 前缀、公开、另建 `carekind-shared`、本次只更新文档
+- **改动**：`engineering-standards.md`（工程流程表 + 仓库清单与文档规则）；`docs/PRD.md` C1 工程流程表；根 `AGENTS.md`（meta repo 说明）；`06-app-development/README.md`、`src/README.md`、`src/AGENTS.md`
+- **原因与决策**：按 Terry 决定取代课程表中的单个 `carekind-app` monorepo；后端各模块合并在 `carekind-api` 一个仓库（模块化单体）；类型与校验只在 `carekind-shared` 定义一份；Demo 环境是同批仓库的独立部署，不另建仓库；子仓库只放代码、测试、配置和一个链接回 meta repo 的简短 README
+- **检查**：`check_rules.py` 通过（exit 0）
+- **待确认**：仓库尚未创建，submodule 尚未添加（Terry 选择只更新文档）；`carekind-shared` 的引用方式（git 依赖或包管理）待定
+
+---
+
 ## 2026-10-19 · Claude Code · 工程流程与数据基础设施和课程结果对齐
 
 - **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
