@@ -5,6 +5,21 @@
 
 ---
 
+## 2026-10-19 · Claude Code · 第一阶段前端：护士 Web App + 独立 Super Admin App（多养老院）
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：第一阶段也要做 super admin 管理多个养老院、可配置，单独的 React JS app；护士端先做 web app，不做 mobile app。Terry 确认：super admin = CareKind 平台方；机构管理员页面放进护士 Web App
+- **改动**：
+	- `docs/PRD.md` → v0.2：C1 架构图与"第一阶段前端"说明；B2 新增平台管理员角色；C6 权限表加 Super Admin 列（不可见居民记录）；E6 新增 SA-01–SA-04；R-02 完整离线队列降为 P1（重试不丢失仍必须）；E7 设备；G2 M1
+	- 新增 `specs/2026-10-super-admin-console.md`（SPEC-010）
+	- 新增模块 `src/super-admin/`（README / AGENTS / CLAUDE）
+	- 修改 `src/mobile-app/`、`src/admin-web/` 的 README 与 AGENTS（第一阶段实现方式）、`src/api/AGENTS.md`（多租户隔离）、`src/README.md`、`src/AGENTS.md`、`06-app-development/README.md`、`specs/README.md`、`product-feature-map.md`、`specs/2026-10-shift-voice-capture.md`（R-02）、根 `AGENTS.md`（架构说明）
+- **原因与决策**：不改文件夹名（避免 20+ 处链接失效）——`mobile-app/` 第一阶段以 Web App 实现，`admin-web/` 作为其中按角色显示的模块；Super Admin 不接触居民健康信息，满足最小必要与处理方角色；未改变 TGA、录音模式、HITL、数据驻留边界，故不需 DR
+- **检查**：`check_rules.py` 通过（exit 0；仅 ASSIGN 警告）
+- **待确认**：SPEC-010 待 Terry 审阅与 `assign-prd`；DPA 中"不访问居民数据"与运维排障（break-glass）的平衡、用量数据去标识粒度 —— 律师；集团层级（平台 → 集团 → 养老院）留到后续
+
+---
+
 ## 2026-10-19 · Claude Code · 多 agent 调研：各州法规、竞品解法、真实流程与 paperwork → MVP 功能 spec 与模板
 
 - **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）

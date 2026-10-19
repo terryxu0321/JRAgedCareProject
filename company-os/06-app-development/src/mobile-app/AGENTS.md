@@ -2,6 +2,8 @@
 
 > AI 助手在本目录工作前必读。全局规则：根目录 `AGENTS.md` 与 `company-os/11-rules/`。人类说明：同目录 `README.md`。完成任务后按 `changelog-rules.md` 写 `changelog/CHANGELOG.md`。
 
+> **第一阶段（Terry 2026-10-19）**：本模块以**护士 Web App**（浏览器 / PWA）实现，不做原生 iOS/Android；机构管理员页面（`admin-web/` 的功能）在本 Web App 中按角色显示。离线加密队列 R-02、挂绳设备 R-05、共享设备 R-06 放后续阶段。见 PRD C1。
+
 ## 职责
 护理人员手机/平板 App：开班选择负责老人、按键录音、离线加密队列、按老人分组的待审核与签字、老人时间线、交接摘要。只负责界面与采集，**不实现**归属/起草逻辑（属于 ai-pipeline，经 api 调用）。
 
