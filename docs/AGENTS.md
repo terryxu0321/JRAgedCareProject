@@ -7,6 +7,7 @@
 
 ## 关键文件
 - `PRD.md` —— 总 PRD（Part A 战略 … Part G 路线图）
+- `user-personas.md` —— 10 个用户画像（买 / 用 / 受益 / 审核）；画像变化不改变 PRD 产品边界，访谈后修订须引用 raw 原话
 
 ## 在这里工作的规则
 - 修改 PRD 中的产品边界（TGA、录音模式、HITL、数据驻留、未同意老人处理）前先写 DR（`company-os/02-operating-rhythm/decision-log.md`）

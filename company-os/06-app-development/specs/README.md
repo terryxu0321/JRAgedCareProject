@@ -36,4 +36,11 @@
 
 - [2026-10-shift-voice-to-resident-records.md](2026-10-shift-voice-to-resident-records.md) —— 核心 MVP：班次语音 → 按老人归属 → 草稿 → 审核（内容见 PRD）
 - [2026-10-adlc-delivery-lifecycle.md](2026-10-adlc-delivery-lifecycle.md) —— 内部研发流程：ADLC（AI 协作开发生命周期）—— 任务分配、PRD 阶段管理与状态记录（草稿，待 Terry 审阅）
+- MVP P0 功能 spec（2026-10-19，草稿，待 Terry 审阅与 `assign-prd` 分配；总览见 [product-feature-map.md](../product-feature-map.md)）：
+	- [2026-10-shift-voice-capture.md](2026-10-shift-voice-capture.md) —— SPEC-004 班次语音采集与转写
+	- [2026-10-resident-attribution.md](2026-10-resident-attribution.md) —— SPEC-005 居民归属引擎
+	- [2026-10-draft-generation-guardrails.md](2026-10-draft-generation-guardrails.md) —— SPEC-006 草稿生成与护栏
+	- [2026-10-review-and-sign-off.md](2026-10-review-and-sign-off.md) —— SPEC-007 审核签字（HITL）
+	- [2026-10-incident-fast-track.md](2026-10-incident-fast-track.md) —— SPEC-008 事件快速通道与 SIRS 计时提醒
+	- [2026-10-consent-management.md](2026-10-consent-management.md) —— SPEC-009 居民同意管理
 - [2026-10-design-system.md](2026-10-design-system.md) —— SPEC-003 Design System：tokens、基础组件、安全关键组件、文案与无障碍规范；任务 T-0001 至 T-0009 见 [adlc/tasks/](../adlc/tasks/README.md)（草稿，待 Terry 审阅）

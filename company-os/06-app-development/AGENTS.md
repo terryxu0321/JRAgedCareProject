@@ -7,6 +7,7 @@
 
 ## 关键文件
 - `product-principles.md`
+- `product-feature-map.md` —— MVP 功能 → spec 映射与 best practice 汇总
 - `clinical-safety-framework.md` —— hazard log
 - `ai-governance.md`
 - `engineering-standards.md`

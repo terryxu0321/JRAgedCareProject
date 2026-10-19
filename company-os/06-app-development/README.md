@@ -8,6 +8,7 @@
 company-os/06-app-development/
 ├── README.md                     ← 你在这里
 ├── product-principles.md         产品原则（HITL、边界）
+├── product-feature-map.md        MVP 功能与解决方案地图 + best practice 汇总（2026-10-19 调研）
 ├── clinical-safety-framework.md  临床安全框架 + hazard log
 ├── ai-governance.md              AI 治理（对齐澳洲 Guidance for AI Adoption 6 项实践）
 ├── engineering-standards.md      技术栈、开发流程、PR 检查清单
