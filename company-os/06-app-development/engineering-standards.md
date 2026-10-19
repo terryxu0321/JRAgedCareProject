@@ -13,7 +13,7 @@
 |---|---|---|
 | 护士端 | ✅ Web App，React + TypeScript | PRD C1、SPEC-004–009 |
 | 机构管理端 | ✅ **独立的** Web App，React + TypeScript | SPEC-011 |
-| Super Admin | ✅ 独立的 React JS app，TypeScript；不用 MFA，不做 IP allowlist | SPEC-010 |
+| Super Admin | ✅ 独立的 React JS app，TypeScript；不做 IP allowlist | SPEC-010 |
 | Demo 环境 | ✅ 独立部署，React + TypeScript，只用虚构数据 | 销售演示与培训；不连生产 |
 | Mobile App | ✅ React Native + TypeScript，列入路线图，第一阶段不做 | |
 | Marketing website | ✅ 纯 HTML + CSS，不用 Next.js；页面脚本用 TypeScript 写、`tsc` 编译；只做英文 | SPEC-012 |
@@ -31,7 +31,7 @@
 | 起草用的 LLM | 🟡 云厂商托管、澳洲区域（如 AWS Bedrock Sydney），零保留，锁定模型版本 | 见 [AI 治理](ai-governance.md)；换版本须跑评测集 |
 | 模型调用 | ✅ 客户端不直接调用模型，全部经过后端 | 密钥不出后端；护栏统一执行 |
 | Tier 3 实时推送 | ⏳ WebSocket 或 Web Push | 如事件草稿立即提醒（SPEC-008） |
-| 认证 | ⏳ 托管身份服务；MVP 不做 MFA（仅虚构 / 合成数据阶段，真实数据前加回） | PRD C1、G4 #11 |
+| 认证 | ⏳ 托管身份服务（邮件邀请 + 密码登录） | PRD C1 |
 
 ### 工程流程
 
@@ -43,7 +43,7 @@
 | 环境 | dev / staging / production / demo；生产数据不进入其他环境（见下方"环境"） | ✅ |
 | 代码规范 | [code-rules.md](../11-rules/code-rules.md)：Tab 缩进 4、单文件不超过 1000 行、禁用 `any`、只用合成测试数据 | ✅ |
 
-#### 仓库清单（规划，尚未创建）
+#### 仓库清单（2026-10-19 已创建并加为 submodule）
 
 均为 `terryxu0321` 下的**公开**仓库（与 meta repo 一致：不得提交密钥、真实居民或个人数据、本地绝对路径）。每个仓库有自己的 GitHub Actions CI 和发布流程。
 
@@ -85,7 +85,7 @@
 | dev（含本地） | **仅合成数据** | 开发者 |
 | staging | 合成数据 / 经批准的去标识化数据 | 开发者 |
 | demo | **只用虚构数据**；独立部署（独立前端、后端与数据库），不连 staging / production | 销售演示、培训、试点前展示 |
-| production | 真实数据 | 最小权限、MFA、即时授权（JIT）、全量审计 |
+| production | 真实数据 | 最小权限、即时授权（JIT）、全量审计 |
 
 ## 开发流程
 

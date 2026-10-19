@@ -1,0 +1,18 @@
+[submodule "apps/carekind-nurse-web"]
+	path = apps/carekind-nurse-web
+	url = https://github.com/terryxu0321/carekind-nurse-web.git
+[submodule "apps/carekind-admin-web"]
+	path = apps/carekind-admin-web
+	url = https://github.com/terryxu0321/carekind-admin-web.git
+[submodule "apps/carekind-super-admin"]
+	path = apps/carekind-super-admin
+	url = https://github.com/terryxu0321/carekind-super-admin.git
+[submodule "apps/carekind-marketing-site"]
+	path = apps/carekind-marketing-site
+	url = https://github.com/terryxu0321/carekind-marketing-site.git
+[submodule "services/carekind-api"]
+	path = services/carekind-api
+	url = https://github.com/terryxu0321/carekind-api.git
+[submodule "packages/carekind-shared"]
+	path = packages/carekind-shared
+	url = https://github.com/terryxu0321/carekind-shared.git

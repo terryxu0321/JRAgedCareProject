@@ -49,7 +49,7 @@ flowchart TD
 | SA-01a | 每个 API 请求在服务端按公司过滤；公司 ID 来自登录凭证，不信任前端传入 | P0 |
 | SA-02 | 每家公司的配置上限（公司与院可在上限内自行调整，见 SPEC-011 PA-04）：启用的记录类型（MVP：progress note、ADL）、PCW 记录是否需 RN 复核（默认值）、原音保留期上限（≤ 7 天）、AI 处理总开关、养老院数量上限 | P0 |
 | SA-02a | 平台默认配置：新建公司时自动套用，可逐个公司覆盖；配置变更写审计 | P0 |
-| SA-03 | 邀请、重发邀请、停用公司管理员；平台角色：Super Admin / 只读支持。MVP 不做 MFA 与 IP allowlist（Terry 2026-10-19；仅限合成数据阶段，接入真实数据前重新评估，见 PRD C1） | P0 |
+| SA-03 | 邀请、重发邀请、停用公司管理员；平台角色：Super Admin / 只读支持。邮件邀请 + 密码登录，不做 IP allowlist（Terry 2026-10-19，见 PRD C1） | P0 |
 | SA-04 | 用量看板（按公司、按养老院、按周）：片段数、签字数、活跃用户数、待归属比例 —— 只汇总数字，**不出现个人排名**（PRD S-07） | P0 |
 | SA-04a | 平台审计日志：谁、何时、对哪家公司做了什么；只追加 | P0 |
 | SA-05 | Super Admin 界面与 API **不提供**居民名册、员工名册明细、记录、原音、转写的查看入口 | P0 |
@@ -60,7 +60,7 @@ flowchart TD
 - 不做计费与发票（手工处理）
 - 不代客户新增养老院、录入员工、老人或同意状态（都在养老院管理端完成，见 SPEC-009、SPEC-011）
 - 不做 break-glass 访问居民数据
-- 不做 SSO 与 MFA（公司管理员用邮件邀请 + 密码；SSO 与 MFA 在接入真实数据前加回）
+- 不做 SSO（公司管理员用邮件邀请 + 密码登录）
 
 ## 6. 失败与安全
 
@@ -78,7 +78,7 @@ flowchart TD
 | 隐私、最小必要、处理方角色 | [privacy-program.md](../../03-legal-compliance/privacy-program.md)；[federal-law-summary.md](../../03-legal-compliance/research/federal-law-summary.md) §2（APP 6、APP 11） | 平台方不可见居民健康信息与员工明细（SA-05）；用量只给去标识汇总（SA-04） |
 | 州健康隐私法与跨州数据 | [state-deep-dive-nsw-vic-act.md](../../03-legal-compliance/research/state-deep-dive-nsw-vic-act.md)；[state-deep-dive-qld-wa-sa-tas-nt.md](../../03-legal-compliance/research/state-deep-dive-qld-wa-sa-tas-nt.md) | 养老院"所在州"由客户在 SPEC-011 PA-01 中录入，用于确定适用州法；VIC、TAS、NT 客户的出州限制写入合同 |
 | 记录保存与删除 | [privacy-program.md](../../03-legal-compliance/privacy-program.md) §2；[state-by-state-comparison.md](../../03-legal-compliance/research/state-by-state-comparison.md) §6 | 停用不删除数据；原音保留期设平台上限（SA-02） |
-| 网络安全 | [compliance-register.md](../../03-legal-compliance/compliance-register.md) §6 | 平台审计只追加（SA-04a）；MVP 不做 MFA —— 与 Essential Eight 的差距须在接入真实数据前解决 |
+| 网络安全 | [compliance-register.md](../../03-legal-compliance/compliance-register.md) §6 | 平台审计只追加（SA-04a） |
 | 员工监控 | [state-by-state-comparison.md](../../03-legal-compliance/research/state-by-state-comparison.md) §2 | 用量看板不做个人排名、不用于绩效 |
 | TGA | [tga-samd-assessment.md](../../03-legal-compliance/tga-samd-assessment.md) | 平台管理不涉及临床功能，非器械 |
 
