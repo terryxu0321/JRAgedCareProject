@@ -206,7 +206,7 @@ H1 · 0–12 个月                      H2 · 12–24 个月                   
 |---|---|---|
 | 护士端 | Web App，React + TypeScript（SPEC-004–SPEC-009） | ✅ |
 | 机构管理端 | **独立的** Web App，React + TypeScript（[SPEC-011](../company-os/06-app-development/specs/2026-10-provider-admin-console.md)） | ✅ |
-| Super Admin | 独立的 React JS app，TypeScript；不用 MFA，不做 IP allowlist（[SPEC-010](../company-os/06-app-development/specs/2026-10-super-admin-console.md)） | ✅ |
+| Super Admin | 独立的 React JS app，TypeScript；不做 IP allowlist（[SPEC-010](../company-os/06-app-development/specs/2026-10-super-admin-console.md)） | ✅ |
 | Demo 环境 | 独立部署，React + TypeScript，只用虚构数据（不连生产后端与数据） | ✅ |
 | Mobile App | React Native + TypeScript，列入路线图，第一阶段不做 | ✅ |
 | Marketing website | 纯 HTML + CSS，不用 Next.js；页面脚本用 TypeScript 写、`tsc` 编译；只做英文（[SPEC-012](../company-os/06-app-development/specs/2026-10-marketing-website.md)） | ✅ |
@@ -230,8 +230,8 @@ H1 · 0–12 个月                      H2 · 12–24 个月                   
 
 | 部分 | 技术 | 状态 |
 |---|---|---|
-| 代码仓库 | GitHub：carekind（Company OS）+ carekind-app（submodule） | ✅ |
-| 仓库结构 | monorepo：apps/ 放各前端，packages/ 放共享逻辑，services/api 放后端 | ⏳ |
+| 代码仓库 | GitHub：本仓库为 meta repo；护士端、机构管理端、Super Admin、营销网站、API 各为独立仓库，以 submodule 引入（Terry 2026-10-19 调整，取代单个 carekind-app） | ✅ |
+| 仓库结构 | 多仓库：carekind-nurse-web、carekind-admin-web、carekind-super-admin、carekind-marketing-site、carekind-api + 共享 carekind-shared（清单见工程规范）；**所有文档只保存在 meta repo**，子仓库只放代码 | ✅ |
 | CI/CD | GitHub Actions，在云端运行，不在本机跑 | ✅ |
 | 环境 | dev / staging / production / demo；生产数据不进入其他环境 | ✅ |
 | 代码规范 | [code-rules](../company-os/11-rules/code-rules.md)：Tab 缩进 4、单文件不超过 1000 行、禁用 any、只用合成测试数据 | ✅ |
@@ -253,7 +253,7 @@ H1 · 0–12 个月                      H2 · 12–24 个月                   
 **MVP 基础设施、认证与转写供应商（Terry 2026-10-19 决定）**：
 - **产品代码统一用 TypeScript**：前端（React + TS）、后端 API 与 AI 管线 worker（Node.js + TS）、营销网站脚本；技术栈表见 [工程规范](../company-os/06-app-development/engineering-standards.md)
 - **对象存储用 S3**（原音加密存储、7 天生命周期删除；营销网站也用 S3 静态托管）；**不做 CDN**
-- **不做 MFA**（含 Super Admin 与 IP allowlist）：MVP 只用邮件邀请 + 密码登录。⚠️ 前提：MVP 只处理**合成数据**；接入任何真实居民或员工数据（M2 试点）之前，须重新评估并加回 MFA —— 与[信息安全政策](../company-os/06-app-development/security/information-security-policy.md)（Essential Eight）的差异须在试点前解决
+- **登录方式**：邮件邀请 + 密码登录（托管身份服务待定）；Super Admin 不做 IP allowlist
 - **语音转写供应商：ElevenLabs**（Terry 已有账号），不评估其他 ASR。Terry 确认 ElevenLabs 可将数据放在澳洲，符合"数据与 AI 处理留在澳洲"的边界。接入真实居民录音前，须在 DPA / 合同中书面写明**存储与处理**均在澳洲（含支持与内容审核环节）、零保留、不训练（G4 #10）。注：截至 2026-10-19 其公开文档未列澳洲区域，以合同为准
 
 ## C2. AI 管线逻辑（每个片段）
@@ -532,13 +532,13 @@ H2：集成适配器 → 写入机构护理系统对应老人与记录类型 →
 | H-01 | 交接摘要（仅已签字记录，风险信息置顶） | P1 |
 | E-01 | 复制 / PDF 导出 | P0 |
 | E-02 | 护理系统回写（Leecare、Telstra Health 优先，待商务确认） | P2 |
-| M-01 | 名册、用户与角色、邮件邀请 + 密码登录（MVP 不做 MFA，仅限合成数据阶段；SSO + MFA 在接入真实数据前加回） | P0 |
+| M-01 | 名册、用户与角色、邮件邀请 + 密码登录 | P0 |
 | M-02 | 同意状态管理 | P0 |
 | M-03 | 保留策略配置 | P0 |
 | M-04 | 审计日志 | P0 |
 | SA-01 | Super Admin：公司（租户）开通、编辑、停用；租户数据隔离 | P0 |
 | SA-02 | Super Admin：每家公司的功能开关与配置上限（记录类型、复核规则默认值、保留期上限、AI 处理开关、养老院数量上限） | P0 |
-| SA-03 | Super Admin：邀请/停用公司管理员（MVP 不做 MFA 与 IP allowlist） | P0 |
+| SA-03 | Super Admin：邀请/停用公司管理员（不做 IP allowlist） | P0 |
 | SA-04 | Super Admin：去标识用量（片段数、签字数、活跃用户数）与平台审计日志；**不可查看居民记录、原音、转写** | P0 |
 | PA-01 | 养老院管理端：公司与养老院（多地点、所在州）管理；公司级 / 院级角色范围 | P0 |
 | PA-02 | 完整员工名册（含非 App 员工）、多院分配、资质与筛查到期提醒（只提醒）、员工生命周期 | P0 |
@@ -684,8 +684,6 @@ H2：集成适配器 → 写入机构护理系统对应老人与记录类型 →
 | 8 | 首个回写集成对象（Leecare / Telstra Health） | Terry |
 | 9 | 定价（按床位）具体数字 | 试点验证 |
 | 10 | ElevenLabs DPA / 合同书面写明澳洲存储与处理、零保留、不训练（处理真实居民录音前完成） | Terry |
-| 11 | 试点前加回 MFA 的范围与方式 | Terry |
-
 ## G5. 检查清单
 
 - [x] TGA：核心功能不生成诊断/治疗/用药建议；灰区见 F1

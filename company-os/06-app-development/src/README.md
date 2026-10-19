@@ -5,7 +5,7 @@
 | 模块 | 职责 | 主要 PRD 需求 |
 |---|---|---|
 | [mobile-app/](mobile-app/README.md) | 护理人员 App：开班、按键录音、离线队列、审核签字、时间线、交接 | R-*, S-*, L-*, H-01 |
-| [api/](api/README.md) | API 网关、登录（MVP 不做 MFA）、权限、边界校验、审计日志 | C6, M-04 |
+| [api/](api/README.md) | API 网关、登录、权限、边界校验、审计日志 | C6, M-04 |
 | [ai-pipeline/](ai-pipeline/README.md) | AI 管线 7 步 | C2, C3, T-*, A-*, D-* |
 | [review-service/](review-service/README.md) | 记录状态机、复核、事件快速通道、提醒与升级 | C4, C5, S-* |
 | [record-store/](record-store/README.md) | 签字记录（只追加）、时间线、保留与删除 | C7, L-*, S-08 |
@@ -15,3 +15,5 @@
 | [marketing-site/](marketing-site/README.md) | 营销网站：纯 HTML + CSS 静态站点（不用框架），与产品数据分离 | MW-*（SPEC-012） |
 
 **第一阶段前端**（均为 React + TypeScript）：护士端 Web App（`mobile-app/`）、独立的机构管理端 Web App（`admin-web/`）、独立的 Super Admin App（`super-admin/`）、独立部署的 Demo 环境（只用虚构数据）；React Native mobile app 列入路线图；营销网站为纯 HTML + CSS（`marketing-site/`）。层级：平台 → 公司（租户）→ 养老院（PRD C1）。
+
+**代码仓库**：本目录只放模块说明。代码在独立仓库中，以 submodule 引入 meta repo：`mobile-app/` → `carekind-nurse-web`，`admin-web/` → `carekind-admin-web`，`super-admin/` → `carekind-super-admin`，`marketing-site/` → `carekind-marketing-site`，后端各模块 → `carekind-api`，共享代码 → `carekind-shared`（[工程规范](../engineering-standards.md)"仓库清单"）。

@@ -21,7 +21,9 @@ Company material lives under `company-os/`:
 | `11-rules` | **Mandatory rules** — company, operations, code, product/PRD legal references, AI context files, changelog |
 | `templates` | DR, weekly update, meeting notes, postmortem |
 
-Root-level folders besides `company-os/`: `docs/` (PRD) and `changelog/` (AI change records).
+Root-level folders besides `company-os/`: `docs/` (PRD), `changelog/` (AI change records), and `apps/`, `services/`, `packages/` (git submodules only — see below).
+
+**This repo is the meta repo** (Terry, 2026-10-19): product code lives in six separate public repos added here as git submodules — `apps/carekind-nurse-web`, `apps/carekind-admin-web`, `apps/carekind-super-admin`, `apps/carekind-marketing-site`, `services/carekind-api`, `packages/carekind-shared` (created 2026-10-19; list in `company-os/06-app-development/engineering-standards.md`). After cloning run `git submodule update --init --recursive`. Commit code inside the sub-repo; in this repo only update the submodule pointer. **All documentation stays in this meta repo** — PRD, specs, module docs, rules, decisions, changelog; sub-repos hold only code, tests and config plus a short README linking back here. When working inside a sub-repo, read this file and the matching module `AGENTS.md` under `company-os/06-app-development/src/` first.
 
 ## Commands
 

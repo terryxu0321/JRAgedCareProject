@@ -13,7 +13,7 @@
 |---|---|---|
 | 护士端 | ✅ Web App，React + TypeScript | PRD C1、SPEC-004–009 |
 | 机构管理端 | ✅ **独立的** Web App，React + TypeScript | SPEC-011 |
-| Super Admin | ✅ 独立的 React JS app，TypeScript；不用 MFA，不做 IP allowlist | SPEC-010 |
+| Super Admin | ✅ 独立的 React JS app，TypeScript；不做 IP allowlist | SPEC-010 |
 | Demo 环境 | ✅ 独立部署，React + TypeScript，只用虚构数据 | 销售演示与培训；不连生产 |
 | Mobile App | ✅ React Native + TypeScript，列入路线图，第一阶段不做 | |
 | Marketing website | ✅ 纯 HTML + CSS，不用 Next.js；页面脚本用 TypeScript 写、`tsc` 编译；只做英文 | SPEC-012 |
@@ -31,17 +31,37 @@
 | 起草用的 LLM | 🟡 云厂商托管、澳洲区域（如 AWS Bedrock Sydney），零保留，锁定模型版本 | 见 [AI 治理](ai-governance.md)；换版本须跑评测集 |
 | 模型调用 | ✅ 客户端不直接调用模型，全部经过后端 | 密钥不出后端；护栏统一执行 |
 | Tier 3 实时推送 | ⏳ WebSocket 或 Web Push | 如事件草稿立即提醒（SPEC-008） |
-| 认证 | ⏳ 托管身份服务；MVP 不做 MFA（仅虚构 / 合成数据阶段，真实数据前加回） | PRD C1、G4 #11 |
+| 认证 | ⏳ 托管身份服务（邮件邀请 + 密码登录） | PRD C1 |
 
 ### 工程流程
 
 | 部分 | 技术 | 状态 |
 |---|---|---|
-| 代码仓库 | GitHub：`carekind`（Company OS，即本仓库）+ `carekind-app`（产品代码，以 git submodule 引入） | ✅ |
-| 仓库结构 | monorepo：`apps/` 放各前端，`packages/` 放共享逻辑，`services/api` 放后端 | ⏳ |
+| 代码仓库 | GitHub：本仓库为 **meta repo**（Company OS + 规范 + spec），每个应用一个**独立仓库**，以 git submodule 引入（Terry 2026-10-19，取代课程表中的单个 `carekind-app` monorepo） | ✅ |
+| 仓库结构 | 多仓库：5 个应用仓库 + 1 个共享仓库 `carekind-shared`（见下方"仓库清单"） | ✅ |
 | CI/CD | GitHub Actions，在云端运行，不在本机跑 | ✅ |
 | 环境 | dev / staging / production / demo；生产数据不进入其他环境（见下方"环境"） | ✅ |
 | 代码规范 | [code-rules.md](../11-rules/code-rules.md)：Tab 缩进 4、单文件不超过 1000 行、禁用 `any`、只用合成测试数据 | ✅ |
+
+#### 仓库清单（2026-10-19 已创建并加为 submodule）
+
+均为 `terryxu0321` 下的**公开**仓库（与 meta repo 一致：不得提交密钥、真实居民或个人数据、本地绝对路径）。每个仓库有自己的 GitHub Actions CI 和发布流程。
+
+**所有文档只保存在 meta repo**（Terry 2026-10-19）：PRD、spec、模块说明、规范、决策记录、CHANGELOG、设计系统文档都在本仓库。子仓库只放代码、测试和运行所需的配置；唯一例外是一个简短的 `README.md`，说明本仓库是什么并链接到 meta repo 中对应的模块说明。在子仓库工作的 AI 助手须先读 meta repo 的根 `AGENTS.md` 与对应模块的 `AGENTS.md`。
+
+| 仓库 | 内容 | 在 meta repo 中的 submodule 路径 | 对应模块说明 |
+|---|---|---|---|
+| `carekind-nurse-web` | 护士端 Web App（React + TS） | `apps/carekind-nurse-web` | [src/mobile-app/](src/mobile-app/README.md) |
+| `carekind-admin-web` | 机构管理端 Web App（React + TS） | `apps/carekind-admin-web` | [src/admin-web/](src/admin-web/README.md) |
+| `carekind-super-admin` | Super Admin App（React + TS） | `apps/carekind-super-admin` | [src/super-admin/](src/super-admin/README.md) |
+| `carekind-marketing-site` | 营销网站（HTML + CSS，脚本 TS） | `apps/carekind-marketing-site` | [src/marketing-site/](src/marketing-site/README.md) |
+| `carekind-api` | 后端：NestJS API + AI 管线 worker（含 ai-pipeline、review-service、record-store、integrations 等模块，模块化单体） | `services/carekind-api` | [src/api/](src/api/README.md) 等后端模块 |
+| `carekind-shared` | 共享代码：设计 token（CSS 变量）、zod schema 与 TS 类型、API 客户端 | `packages/carekind-shared` | [design-system/](design-system/DESIGN.md) |
+
+- 各应用通过 git 依赖或包管理引用 `carekind-shared` 的**固定版本**（不直接引用 meta repo 路径）；类型和校验只在 `carekind-shared` 定义一份
+- meta repo 只记录每个 submodule 的提交指针；功能开发在各自仓库完成，meta repo 定期更新指针
+- `company-os/06-app-development/src/` 下的模块说明是需求与边界的唯一来源；子仓库不复制这些说明，只在 README 中链接回来
+- Mobile App（React Native）以后单独建 `carekind-mobile`；Demo 环境是同一批仓库的独立部署（虚构数据），不另建仓库
 
 ### 数据与基础设施
 
@@ -65,7 +85,7 @@
 | dev（含本地） | **仅合成数据** | 开发者 |
 | staging | 合成数据 / 经批准的去标识化数据 | 开发者 |
 | demo | **只用虚构数据**；独立部署（独立前端、后端与数据库），不连 staging / production | 销售演示、培训、试点前展示 |
-| production | 真实数据 | 最小权限、MFA、即时授权（JIT）、全量审计 |
+| production | 真实数据 | 最小权限、即时授权（JIT）、全量审计 |
 
 ## 开发流程
 

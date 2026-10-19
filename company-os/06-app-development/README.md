@@ -17,7 +17,7 @@ company-os/06-app-development/
 │   └── vendors-and-subprocessors.md     子处理方清单（含 LLM 供应商）
 ├── specs/                        功能需求文档（PRD），每个功能一份
 ├── rnd-log/                      R&D 实验记录（R&D Tax Incentive 证据）
-└── src/                          代码仓库（模块说明已就位，代码尚未开始；产品代码将放在独立仓库 carekind-app，以 git submodule 引入）
+└── src/                          代码仓库（模块说明已就位，代码尚未开始；产品代码将放在 6 个独立仓库，以 git submodule 引入本 meta repo，见工程规范"仓库清单"）
     ├── mobile-app/               护理人员 App
     ├── api/                      网关、认证授权、审计
     ├── ai-pipeline/              转写 → 拆分 → 归属 → 分类 → 抽取 → 起草 → 护栏（7 个子模块）
