@@ -7,7 +7,7 @@
 | 供应商 | 服务 | 数据类型 | 处理/存储区域 | 不训练/零保留条款 | 认证 | DPA 已签 | 状态 |
 |---|---|---|---|---|---|---|---|
 | `[云平台]` | 托管、数据库、存储 | 全部 | 澳洲 | N/A | ISO 27001 / SOC 2 / IRAP | ⬜ | 评估中 |
-| ElevenLabs（Terry 2026-10-19 选定） | 语音转文字（Speech-to-Text） | 录音 | ⚠️ 公开驻留区域：美国（默认）、欧盟、印度、新加坡；**未列澳洲**；驻留主要指存储（2026-10-19 核查 [官方文档](https://elevenlabs.io/docs/overview/administration/data-residency)） | Zero Retention Mode 覆盖 speech-to-text（企业功能）⬜ | | ⬜ | 评估中 —— **仅限合成数据**；真实居民录音前须澳洲处理或 DR |
+| ElevenLabs（Terry 2026-10-19 选定） | 语音转文字（Speech-to-Text） | 录音 | 澳洲（Terry 2026-10-19 确认；公开 [文档](https://elevenlabs.io/docs/overview/administration/data-residency) 截至当日未列澳洲，以合同为准；须写明处理也在澳洲） | Zero Retention Mode 覆盖 speech-to-text ⬜ | | ⬜ | 评估中 —— DPA 书面确认前只用合成数据 |
 | `[LLM]` | 记录起草 | 转写文本 | 澳洲 | ⬜ | | ⬜ | 评估中 |
 | `[邮件服务]` | 系统通知 | 用户邮箱 | `[确认]` | N/A | | ⬜ | 评估中 |
 | `[错误监控]` | 错误日志 | **必须脱敏，不含健康信息** | `[确认]` | N/A | | ⬜ | 评估中 |

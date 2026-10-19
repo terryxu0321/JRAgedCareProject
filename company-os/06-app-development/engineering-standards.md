@@ -3,17 +3,25 @@
 > Owner: Terry（Tech Lead）｜ 复审: 每季度
 > 本文件描述技术栈、环境与开发流程。**代码层面的硬性规范（SOLID、DRY、KISS、格式：Tab 缩进宽度 4、安全失败、隐私、测试、评审清单）见 [代码规范](../11-rules/code-rules.md)**，两者冲突时以代码规范为准。
 
-## 技术栈（建议，待 DR 确认）
+## 技术栈（MVP）
 
-| 层 | 建议 | 理由 |
+> ✅ = Terry 2026-10-19 已决定；其余为建议，待技术栈 DR 确认。**产品代码统一使用 TypeScript**（Company OS 内部工具脚本如 `check_rules.py` 仍为 Python，不属于产品代码）。
+
+| 层 | MVP 选型 | 理由 |
 |---|---|---|
-| 云 | AWS ap-southeast-2（Sydney），灾备 ap-southeast-4（Melbourne）；或 Azure Australia East/Southeast | 澳洲数据驻留；健康行业常见 |
-| 移动端 | React Native / Flutter（护士手机/平板） | 一套代码覆盖 iOS/Android |
-| Web 管理端 | React + TypeScript | |
-| 后端 | TypeScript (Node) 或 Python | Python 便于 AI 管线 |
-| AI | 澳洲区域托管的语音转写与 LLM 服务 | 见 [AI 治理](ai-governance.md) |
-| 身份认证 | 支持客户 SSO（Entra ID / SAML / OIDC）+ MFA | 养老机构普遍使用 Microsoft 365 |
-| 代码托管 | GitHub（私有），分支保护 | |
+| 语言 | ✅ **TypeScript**（前端、后端、worker 统一） | 一种语言贯穿全栈，类型共享，团队只学一套 |
+| 养老院 Web App（护士端 + 管理端） | ✅ React + TypeScript，浏览器 / PWA；不做原生 mobile app（构建工具建议 Vite） | PRD C1 |
+| Super Admin App | ✅ 独立 React + TypeScript 应用 | PRD C1、SPEC-010 |
+| 营销网站 | ✅ 纯 HTML + CSS；少量脚本用 TypeScript 写、`tsc` 编译为 JS；不用框架 | SPEC-012 |
+| 后端 API | Node.js + TypeScript，模块化单体（框架建议 Fastify 或 NestJS，待 DR） | 与前端共享类型；MVP 不拆微服务 |
+| 后台任务 / AI 管线 | Node.js + TypeScript worker + 队列（如 SQS） | 转写与起草耗时，不阻塞接口 |
+| 数据库 | PostgreSQL，按 `organisation_id` 隔离 + 行级安全 | SPEC-010 / 011 多租户 |
+| 对象存储 | ✅ **S3**（原音加密，7 天生命周期删除；营销网站静态托管）；✅ **不做 CDN** | PRD C1 |
+| 语音转写 | ✅ **ElevenLabs**（数据在澳洲、零保留、不训练；DPA 书面确认前只用合成数据） | PRD C1、G4 #10 |
+| LLM | 澳洲区域托管（待选），不训练、零保留 | 见 [AI 治理](ai-governance.md) |
+| 云 | AWS ap-southeast-2（Sydney） | 澳洲数据驻留 |
+| 身份认证 | ✅ MVP：邮件邀请 + 密码，**不做 MFA**（仅合成数据阶段）；接入真实数据前加回 SSO（Entra ID / SAML / OIDC）+ MFA | PRD C1、G4 #11 |
+| 代码托管 | GitHub，分支保护；monorepo（`apps/`、`packages/`、`services/`） | |
 
 ## 环境
 

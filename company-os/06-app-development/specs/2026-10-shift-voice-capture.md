@@ -11,6 +11,8 @@
 | 关联 | [docs/PRD.md](../../../docs/PRD.md) B3 核心概念、B4 模式 A、C2 ①、D2 一个班次、D9 异常与失败、E1 R-01~R-04、E2 T-01/T-03、E7；下游：[SPEC-005 居民归属](2026-10-resident-attribution.md)、[SPEC-006 草稿生成与护栏](2026-10-draft-generation-guardrails.md) |
 
 > ⚠️ 本文中的法律判断为内部工作底稿，不构成法律意见。本 spec 只细化 PRD 已定范围，**不改变产品边界**（录音模式仍为 B4 模式 A 按键口述，DR-004），无需新 DR。
+>
+> **第一阶段范围（Terry 2026-10-19）**：本 spec 的护士端界面为规划；第一阶段只在护士端最小演示页中实现录音 / 上传与转写（R-01、R-03、R-04、T-01、T-03），见 PRD C1。
 
 ---
 
@@ -61,7 +63,7 @@ flowchart TD
 | R-02a | "待上传 N"常驻显示；上传失败自动重试，不静默丢弃 | P0 |
 | R-03 | 同班次所有片段汇入班次会话，按录音开始时间排序；保留"观察 / 口述时间"供 SPEC-006 区分签字时间 | P0 |
 | R-04 | 开班检查负责名单的同意状态（M-02 只读）；未同意者提示手动记录，不阻止开班 | P0 |
-| T-01 | 澳洲口音与养老环境噪音下转写；护理 / 药品术语表；本机构名册姓名、常用名、房号作热词；ASR 供应商为 **ElevenLabs**（Terry 2026-10-19 决定），开启零数据保留、不训练。⚠️ ElevenLabs 未列澳洲驻留区域：合成数据阶段可用，处理真实居民录音前须确认澳洲处理或经 DR 变更边界（PRD C1、G4 #10） | P0 |
+| T-01 | 澳洲口音与养老环境噪音下转写；护理 / 药品术语表；本机构名册姓名、常用名、房号作热词；ASR 供应商为 **ElevenLabs**（Terry 2026-10-19 决定），数据在澳洲、零数据保留、不训练；真实居民录音前在 DPA 中书面确认（PRD C1、G4 #10） | P0 |
 | T-03 | 低置信词（药名、剂量、数字、姓名）高亮并标"[请确认]"，置信度随转写传给下游 | P0 |
 | T-03a | 转写结果保留词级时间戳，供审核时"一键回听"（D-03） | P0 |
 
@@ -92,7 +94,7 @@ flowchart TD
 | 话题 | 本地文件（章节） | 对设计的影响 |
 |---|---|---|
 | 录音同意 | [recording-consent.md](../../03-legal-compliance/recording-consent.md)（DR-004 默认值）；[state-by-state-comparison.md](../../03-legal-compliance/research/state-by-state-comparison.md) §2、§9 | 只做按键口述；UI 提示离开房间后口述（R-01a）；不做环境录音 |
-| 隐私、健康信息、数据驻留 | [privacy-program.md](../../03-legal-compliance/privacy-program.md) §2、§3；[federal-law-summary.md](../../03-legal-compliance/research/federal-law-summary.md) §2 | 原音为健康信息：设备端加密、ASR 不训练且零保留；原音按 C7 保留后删除；ElevenLabs 境外处理须在真实数据前解决（APP 8、NSW HPP 14、VIC HPP 9） |
+| 隐私、健康信息、数据驻留 | [privacy-program.md](../../03-legal-compliance/privacy-program.md) §2、§3；[federal-law-summary.md](../../03-legal-compliance/research/federal-law-summary.md) §2 | 原音为健康信息：设备端加密、ASR 不训练且零保留；原音按 C7 保留后删除；ElevenLabs 在澳洲存储与处理，DPA 书面确认后再处理真实录音（APP 8、NSW HPP 14、VIC HPP 9） |
 | AI 透明与同意 | [federal-law-summary.md](../../03-legal-compliance/research/federal-law-summary.md) §4、§5；[aged-care-documentation-workflows.md](../../03-legal-compliance/research/aged-care-documentation-workflows.md) §12 第 5、7、11 条 | 开班同意检查（R-04）；数据在澳洲处理 |
 | 记录及时与准确 | [aged-care-alignment.md](../../03-legal-compliance/aged-care-alignment.md)；[aged-care-documentation-workflows.md](../../03-legal-compliance/research/aged-care-documentation-workflows.md) §11 第 1–2 条 | 随时口述 + 保留观察时间戳（R-03） |
 | 员工监控（NSW） | [compliance-register.md](../../03-legal-compliance/compliance-register.md)；[state-by-state-comparison.md](../../03-legal-compliance/research/state-by-state-comparison.md) §2 | 录音元数据不用于个人绩效；上线前员工书面通知（PRD D1） |
@@ -108,7 +110,7 @@ flowchart TD
 - [x] TGA 判定：是否生成诊断 / 治疗 / 用药建议？**否**（只采集与转写）
 - [ ] 临床 hazard：建议 H-19、H-20，待 Clinical Lead 审阅后由人加入
 - [ ] 隐私：原音与转写已在 PRD F2 范围内；PIA（PIA-2026-001）须覆盖离线缓存
-- [ ] 新子处理方：ASR 为 ElevenLabs（已登记到子处理方清单，状态"评估中"）；须确认零保留、不训练，以及澳洲处理或 DR
+- [ ] 新子处理方：ASR 为 ElevenLabs（已登记到子处理方清单，状态"评估中"）；须在 DPA 中书面确认澳洲存储与处理、零保留、不训练
 - [ ] 可访问性：大按钮、单手、触感反馈（DESIGN.md）；多语言为 P1
 
 ## 9. 评测计划

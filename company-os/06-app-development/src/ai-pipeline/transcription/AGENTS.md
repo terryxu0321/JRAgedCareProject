@@ -3,7 +3,7 @@
 > AI 助手在本目录工作前必读。全局规则：根目录 `AGENTS.md` 与 `company-os/11-rules/`。人类说明：同目录 `README.md`。完成任务后按 `changelog-rules.md` 写 `changelog/CHANGELOG.md`。
 
 ## 职责
-把原音转为文字，输出词级时间戳与置信度。通过 `TranscriptionProvider` 接口接入 ASR 服务，换供应商不改调用方（SOLID L/D）。MVP 供应商为 **ElevenLabs**（Terry 2026-10-19），开启零保留；⚠️ 未列澳洲驻留区域 → 只用于合成数据，处理真实居民录音前须解决（PRD C1、G4 #10）。
+把原音转为文字，输出词级时间戳与置信度。通过 `TranscriptionProvider` 接口接入 ASR 服务，换供应商不改调用方（SOLID L/D）。MVP 供应商为 **ElevenLabs**（Terry 2026-10-19），数据在澳洲、开启零保留、不训练；处理真实居民录音前须在 DPA 中书面确认（PRD C1、G4 #10）。
 
 ## 负责的功能（PRD 编号）
 - 名册姓名/常用名/房号热词、护理与药品术语表（T-01）

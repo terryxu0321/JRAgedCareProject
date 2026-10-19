@@ -182,7 +182,7 @@ H1 · 0–12 个月                      H2 · 12–24 个月                   
 │ API 网关                                                                 │
 │   ├─ 采集服务 ──► 原音存储（加密，按保留策略自动删除）                    │
 │   ├─ AI 管线（全部澳洲区域，零数据保留，不训练）                         │
-│   │    ① 转写 ASR：ElevenLabs（名册热词、护理术语表；驻留见 C1 说明）    │
+│   │    ① 转写 ASR：ElevenLabs，澳洲（名册热词、护理术语表）              │
 │   │    ② 语句拆分                                                       │
 │   │    ③ 归属引擎（名册匹配 + 规则 + 置信度）                            │
 │   │    ④ 分类（记录类型）                                               │
@@ -201,10 +201,13 @@ H1 · 0–12 个月                      H2 · 12–24 个月                   
 
 **第一阶段前端（Terry 2026-10-19 决定）**：只做两个前端 —— **养老院 Web App**（浏览器/PWA，不做原生 mobile app；按角色进入**护士端**或**养老院管理端**）和 **Super Admin App**（独立 React JS 应用，CareKind 平台方管理客户公司）。层级：平台 → 公司（租户）→ 养老院（地点）。原生 App、挂绳设备与离线队列放到后续阶段。养老院管理端详见 [SPEC-011](../company-os/06-app-development/specs/2026-10-provider-admin-console.md)，Super Admin 详见 [SPEC-010](../company-os/06-app-development/specs/2026-10-super-admin-console.md)。另有对外**营销网站**（纯 HTML + CSS 静态站点，不用框架，与产品数据完全分离），详见 [SPEC-012](../company-os/06-app-development/specs/2026-10-marketing-website.md)。
 
+**第一阶段护士端范围（Terry 2026-10-19 决定）**：护士端完整 Web App 与原生 mobile app **都只规划、第一阶段不做**（SPEC-004–SPEC-009 保留为规划）。第一阶段只在养老院 Web App 中做一个**护士端最小演示页**：选择养老院与班次 → 录音或上传音频 → 查看按老人整理的草稿（含待归属）→ 逐条确认并签字 → 导出。演示页必须保留安全底线：第二标识、关键项逐项确认、人工签字、未同意老人丢弃。第一阶段的重点是养老院管理端、Super Admin、营销网站与后端 AI 管线。
+
 **MVP 基础设施、认证与转写供应商（Terry 2026-10-19 决定）**：
+- **产品代码统一用 TypeScript**：前端（React + TS）、后端 API 与 AI 管线 worker（Node.js + TS）、营销网站脚本；技术栈表见 [工程规范](../company-os/06-app-development/engineering-standards.md)
 - **对象存储用 S3**（原音加密存储、7 天生命周期删除；营销网站也用 S3 静态托管）；**不做 CDN**
 - **不做 MFA**（含 Super Admin 与 IP allowlist）：MVP 只用邮件邀请 + 密码登录。⚠️ 前提：MVP 只处理**合成数据**；接入任何真实居民或员工数据（M2 试点）之前，须重新评估并加回 MFA —— 与[信息安全政策](../company-os/06-app-development/security/information-security-policy.md)（Essential Eight）的差异须在试点前解决
-- **语音转写供应商：ElevenLabs**（Terry 已有账号），不评估其他 ASR。⚠️ ElevenLabs 公开的数据驻留区域为美国（默认）、欧盟、印度、新加坡，**未列澳洲**，且驻留主要指存储（2026-10-19 核查官方文档）。这与产品边界"数据与 AI 处理留在澳洲"冲突：合成数据阶段可用；**处理真实居民录音前**，须确认 ElevenLabs 可在澳洲处理，或写 DR 变更数据驻留边界并取得律师意见（APP 8、NSW HPP 14、VIC HPP 9），见 G4 #10
+- **语音转写供应商：ElevenLabs**（Terry 已有账号），不评估其他 ASR。Terry 确认 ElevenLabs 可将数据放在澳洲，符合"数据与 AI 处理留在澳洲"的边界。接入真实居民录音前，须在 DPA / 合同中书面写明**存储与处理**均在澳洲（含支持与内容审核环节）、零保留、不训练（G4 #10）。注：截至 2026-10-19 其公开文档未列澳洲区域，以合同为准
 
 ## C2. AI 管线逻辑（每个片段）
 
@@ -604,7 +607,7 @@ H2：集成适配器 → 写入机构护理系统对应老人与记录类型 →
 | 里程碑 | 内容 | 时间 |
 |---|---|---|
 | M0 原型 | 合成数据跑通：片段 → 转写 → 归属 → 草稿；评测集 v1；30 次访谈 | 2026-11 |
-| M1 MVP | 模式 A、全部 P0、导出、养老院 Web App（护士端 + 养老院管理端，支持一家公司多家养老院）、Super Admin App、营销网站 P0 页面（试点招募前上线）、PIA、律师意见 | 2027-01 |
+| M1 MVP | 模式 A、全部 P0、导出、养老院 Web App（养老院管理端 + 护士端最小演示页，支持一家公司多家养老院）、Super Admin App、营销网站 P0 页面（试点招募前上线）、后端 AI 管线；护士端完整 Web App / mobile app 只规划、PIA、律师意见 | 2027-01 |
 | M2 试点 | 2 家机构付费试点（[试点手册](../company-os/07-marketing-operations/pilot-playbook.md)） | 2027 Q1–Q2 |
 | M3 | P1：多语言、挂绳设备、PCW→RN 复核、交接、时间线增强 | 2027 Q2 |
 | M4 | P2：护理系统回写、限制性措施记录；DR-006 决策 | 2027 H2 |
@@ -633,7 +636,7 @@ H2：集成适配器 → 写入机构护理系统对应老人与记录类型 →
 | 7 | AI 错误的合同责任划分 | 律师 |
 | 8 | 首个回写集成对象（Leecare / Telstra Health） | Terry |
 | 9 | 定价（按床位）具体数字 | 试点验证 |
-| 10 | **ElevenLabs 转写的数据驻留**：是否可在澳洲处理；如不能，是否写 DR 变更数据驻留边界（处理真实居民录音前必须解决） | Terry + 律师 |
+| 10 | ElevenLabs DPA / 合同书面写明澳洲存储与处理、零保留、不训练（处理真实居民录音前完成） | Terry |
 | 11 | 试点前加回 MFA 的范围与方式 | Terry |
 
 ## G5. 检查清单

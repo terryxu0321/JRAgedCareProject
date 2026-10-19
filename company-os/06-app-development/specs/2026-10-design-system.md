@@ -157,6 +157,6 @@
 |---|---|---|
 | 1 | 🛑 审阅本 spec 正文（Assignee 与 §9 任务分配已于 2026-10-11 确认） | Terry |
 | 2 | 设计工具选型（是否引入新 SaaS） | Terry |
-| 3 | 移动端技术栈 DR（React Native / Flutter）—— 决定组件代码形态 | Terry |
+| 3 | ~~移动端技术栈 DR（React Native / Flutter）~~ —— 已定（Terry 2026-10-19）：第一阶段为 React + TypeScript Web App，不做原生 App；组件代码按 React + TS 实现 | Terry |
 | 4 | H-17、H-18 是否加入 hazard log | Clinical Lead（待招） |
 | 5 | Matt 的级别（影响能否承担更多任务） | Terry |

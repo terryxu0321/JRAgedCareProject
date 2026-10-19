@@ -5,6 +5,17 @@
 
 ---
 
+## 2026-10-19 · Claude Code · ElevenLabs 数据在澳洲、统一 TypeScript、护士端第一阶段只做最小演示页
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：ElevenLabs 可以用，数据在澳洲；统一 TypeScript；护士端 Web App 与 mobile app 可以规划但可以不做（Terry 选择：只做最小演示页）
+- **改动**：`docs/PRD.md`（C1 护士端范围、TS、ElevenLabs 说明、架构图、G4 #10、G2 M1）；`engineering-standards.md` 技术栈表改为 MVP 选型（TS 全栈、S3 不做 CDN、ElevenLabs、不做 MFA）；`specs/2026-10-shift-voice-capture.md`、`2026-10-review-and-sign-off.md`、`2026-10-incident-fast-track.md`（第一阶段范围说明）、`2026-10-marketing-website.md`（脚本用 TS）、`2026-10-design-system.md`（移动端 DR 待决项关闭）；`src/mobile-app/`、`src/marketing-site/`、`src/ai-pipeline/transcription/` 的 README 与 AGENTS、`src/README.md`；`security/vendors-and-subprocessors.md`（ElevenLabs 区域改为澳洲）
+- **原因与决策**：ElevenLabs 按 Terry 确认视为澳洲存储与处理，不再需要数据驻留 DR；公开文档截至当日未列澳洲区域，故保留"真实录音前在 DPA 书面确认（含处理环节）"的条件。Company OS 内部脚本仍为 Python，不属于产品代码。护士端演示页保留安全底线（第二标识、逐项确认、人工签字、未同意丢弃）
+- **检查**：`check_rules.py` 通过（exit 0）
+- **待确认**：ElevenLabs DPA / 合同条款；后端框架（Fastify / NestJS）与 LLM 供应商待技术栈 DR
+
+---
+
 ## 2026-10-19 · Claude Code · MVP 决定：去掉 MFA、转写用 ElevenLabs、S3 不做 CDN
 
 - **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）

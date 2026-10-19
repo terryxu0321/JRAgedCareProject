@@ -3,7 +3,7 @@
 > AI 助手在本目录工作前必读。全局规则：根目录 `AGENTS.md` 与 `company-os/11-rules/`。人类说明：同目录 `README.md`。完成任务后按 `changelog-rules.md` 写 `changelog/CHANGELOG.md`。
 
 ## 职责
-对外宣传网站：纯 HTML + CSS，少量原生 JavaScript（导航、表单校验与提交）；**不用 Next.js、React 或其他框架**（Terry 2026-10-19）。每页一个 `.html`，共用 `styles.css`（DESIGN.md token 写成 CSS 变量）。不调用产品 API，不读写产品数据库；联系表单只提交到 CareKind 自己的线索接口。
+对外宣传网站：纯 HTML + CSS，少量脚本（导航、表单校验与提交）用 TypeScript 编写、`tsc` 编译；**不用 Next.js、React 或其他框架**（Terry 2026-10-19）。每页一个 `.html`，共用 `styles.css`（DESIGN.md token 写成 CSS 变量）。不调用产品 API，不读写产品数据库；联系表单只提交到 CareKind 自己的线索接口。
 
 ## 负责的功能（SPEC-012 编号）
 - 页面 MW-01 至 MW-07（P0）；MW-08 关于我们（P1）；MW-09、MW-10（P2）
