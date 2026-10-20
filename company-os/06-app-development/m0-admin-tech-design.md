@@ -19,7 +19,7 @@
 | 邀请 | **不发邮件**（AGENTS 硬规则 3）：API 生成一次性邀请链接，界面显示给邀请人复制 | 有效期 7 天 |
 | 共享代码引用 | `carekind-shared` 以 `file:` 依赖引用（meta repo 内相对路径 `../../packages/carekind-shared`），先 `npm run build` | M0 本地开发；发布方式待定 |
 | 设计 | `carekind-shared` 从 [DESIGN.md](design-system/DESIGN.md) 生成 `tokens.css`（CSS 变量）；组件按 DESIGN.md 实现，管理端用 `scope: admin-web` 组件 | 一页一个表单、一个 submit（DESIGN §7.3） |
-| 测试 | 前端与 shared：Vitest；API：Jest（NestJS 默认），每个测试文件用内存 PGlite 实例跑迁移 | 只用合成数据 |
+| 测试 | 全部用 Vitest（API 原定 Jest，因 ESM + 装饰器元数据改用 Vitest + SWC）；API 每个测试文件用内存 PGlite 实例跑迁移 | 只用合成数据 |
 | 代码规范 | [code-rules.md](../11-rules/code-rules.md)：Tab 缩进 4、单文件 ≤ 1000 行、禁用 `any`、导出写明类型、无 TODO | ESLint + Prettier（`useTabs: true, tabWidth: 4`） |
 | 端口 | API 3000；Super Admin 5173；机构管理端 5174 | CORS 只放行这两个本地源 |
 | Git | 每个子仓库在分支 `m0-admin` 上本地提交；**不 push**；meta repo 只更新 submodule 指针 | AGENTS"Never push automatically" |
@@ -125,3 +125,23 @@
 - [ ] 两个前端：上述页面，连真实 API 可走通；Vitest 覆盖表单校验与权限显示
 - [ ] 所有子仓库 `npm run lint`、`npm run typecheck`、`npm test` 通过；meta repo `check_rules.py` 通过
 - [ ] 各子仓库只有代码、测试、配置和一个简短 README；文档写在 meta repo
+
+## 8. 实现记录（2026-10-20）
+
+**结果**：shared `c572345`（111 个测试）、super-admin `9cf6011`（27）、admin-web `ba1b872`（36）、api `ae68da2`（59），均在各仓库 `m0-admin` 分支。联调脚本（合成数据）22/22 通过：两个前端可访问、CORS 只放行 5173 / 5174、平台登录、创建公司、邀请公司管理员（返回链接、不发邮件）、平台响应不含居民与同意数据、接受邀请、新建养老院 / 员工 / 老人、同意记录、生命周期（含非法事件被拒）、上线闸门、总览无个人数据、审计写入、跨公司读取被拒。
+
+**实现中的补充规则**（待 Terry 确认）：
+- 临时离院的老人可直接记录离院或去世（放宽 SPEC-011 §3.1 图）
+- 新密码至少 14 位（不做 MFA 的补偿）
+- 只有公司管理员能授予或修改公司管理员身份；不能停用自己；院级角色只能改本院分配；转院接收后清空房号
+- 默认值：平台默认养老院上限 10、原音保留 7 天；新养老院未审核提醒 60 分钟、记录转入机构系统 7 天（PRD 未给默认值）
+- 数据模型增加：`staff.last_login_at`（用量统计）、`audit_log.facility_id`（院级查看审计）
+- PGlite 只有一个连接：所有查询必须在同一个事务里进行；开发数据库要用 Ctrl+C 正常停止，强制结束可能损坏 `.data/`（删除后重新 seed 即可）
+
+**合同缺口**（下一轮补）：
+1. 没有"重发邀请"接口（现为重新邀请，旧链接作废）；Super Admin 只有一种平台角色，"只读支持"角色未实现
+2. 用量没有按周统计、没有待归属比例（护士端上线后才有数据）
+3. 机构用户读不到公司上限：流程配置表单无法预先限制可选记录类型，靠服务端报错
+4. DON 不能调用员工列表：流程配置里的"记录转入负责人"对 DON 不可选
+5. 老人列表不含同意状态；事件历史只有养老院 ID
+6. 平台修改 AI 开关或保留期上限时，"通知公司管理员"尚未实现（不发邮件，需站内通知方案）

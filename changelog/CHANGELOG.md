@@ -5,6 +5,18 @@
 
 ---
 
+## 2026-10-20 · Claude Code · M0 管理端完成：API 完成并联调通过
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：电脑恢复后继续开发（未使用云端任务，API agent 在本地续做）
+- **改动**：
+	- `carekind-api` `ae68da2`（`m0-admin`，agent 已 push）：全部接口、迁移（审计只追加触发器）、合成种子数据、59 个测试；修复 PGlite 单连接死锁与强制结束损坏数据库的问题
+	- meta repo：更新 `services/carekind-api` submodule 指针；`m0-admin-tech-design.md` 测试行改为 Vitest，新增 §8 实现记录（补充规则、默认值、合同缺口）
+- **检查**：本地启动 API（3000）、Super Admin（5173）、机构管理端（5174），用临时目录中的联调脚本调用共享 API 客户端，22/22 通过；`check_rules.py` 通过
+- **待确认**：§8 中的补充规则与默认值；6 项合同缺口排入下一轮
+
+---
+
 ## 2026-10-20 · Claude Code · M0 管理端开发（多 agent）：shared、Super Admin、机构管理端完成；API 转云端继续
 
 - **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
