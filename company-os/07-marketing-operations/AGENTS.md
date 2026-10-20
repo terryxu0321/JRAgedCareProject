@@ -10,6 +10,7 @@
 - `sales-process.md`
 - `pilot-playbook.md`
 - `competitor-research/`
+- `blog-editorial-guide.md` —— Blog 写作规范；`carekind-blog/` 是 submodule（独立公开仓库，只放文章：`drafts/` 待审、`posts/` 已发布）。AI 只写 `drafts/`，从不写 `posts/`
 - `feedback-insights/` —— 反馈分析（skill feedback-synthesis 输出）
 
 ## 在这里工作的规则

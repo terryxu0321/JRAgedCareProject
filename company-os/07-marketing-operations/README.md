@@ -13,6 +13,8 @@ company-os/07-marketing-operations/
 ├── pilot-playbook.md            付费试点手册（6–8 周）
 ├── customer-success.md          上线、培训、支持、续约
 ├── channels-and-events.md       渠道、行业协会、展会
+├── blog-editorial-guide.md      Blog 写作规范（每日 8:00 自动起草、审核后发布）
+├── carekind-blog/               Blog 文章（git submodule：terryxu0321/carekind-blog，只放文章）
 ├── brand-assets/                Logo SVG 与使用规则
 └── competitor-research/         竞争对手与 AI 方案调研（调研 agent 生成）
 ```

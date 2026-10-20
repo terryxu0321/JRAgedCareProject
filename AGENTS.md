@@ -23,7 +23,19 @@ Company material lives under `company-os/`:
 
 Root-level folders besides `company-os/`: `docs/` (PRD), `changelog/` (AI change records), and `apps/`, `services/`, `packages/` (git submodules only — see below).
 
-**This repo is the meta repo** (Terry, 2026-10-19): product code lives in six separate public repos added here as git submodules — `apps/carekind-nurse-web`, `apps/carekind-admin-web`, `apps/carekind-super-admin`, `apps/carekind-marketing-site`, `services/carekind-api`, `packages/carekind-shared` (created 2026-10-19; list in `company-os/06-app-development/engineering-standards.md`). After cloning run `git submodule update --init --recursive`. Commit code inside the sub-repo; in this repo only update the submodule pointer. **All documentation stays in this meta repo** — PRD, specs, module docs, rules, decisions, changelog; sub-repos hold only code, tests and config plus a short README linking back here. When working inside a sub-repo, read this file and the matching module `AGENTS.md` under `company-os/06-app-development/src/` first.
+**This repo is the meta repo** (Terry, 2026-10-19): code and blog content live in separate public repos added here as git submodules. After cloning run `git submodule update --init --recursive`.
+
+| Submodule path | Repo | Content | Read first |
+|---|---|---|---|
+| `apps/carekind-nurse-web` | terryxu0321/carekind-nurse-web | Nurse web app (React + TS) | `company-os/06-app-development/src/mobile-app/AGENTS.md` |
+| `apps/carekind-admin-web` | terryxu0321/carekind-admin-web | Facility admin web app (React + TS) | `company-os/06-app-development/src/admin-web/AGENTS.md` |
+| `apps/carekind-super-admin` | terryxu0321/carekind-super-admin | Super Admin app (React + TS) | `company-os/06-app-development/src/super-admin/AGENTS.md` |
+| `apps/carekind-marketing-site` | terryxu0321/carekind-marketing-site | Marketing site (HTML + CSS, English) | `company-os/06-app-development/src/marketing-site/AGENTS.md` |
+| `services/carekind-api` | terryxu0321/carekind-api | Backend API + AI pipeline (NestJS) | `company-os/06-app-development/src/api/AGENTS.md` and other backend modules |
+| `packages/carekind-shared` | terryxu0321/carekind-shared | Shared zod schemas/types, rules, API client, design tokens | `company-os/06-app-development/m0-admin-tech-design.md` |
+| `company-os/07-marketing-operations/carekind-blog` | terryxu0321/carekind-blog | Blog articles: `drafts/` (AI, pending review), `posts/` (human-approved) | `company-os/07-marketing-operations/blog-editorial-guide.md` |
+
+Commit code or articles inside the sub-repo; in this repo only update the submodule pointer (`git add <path>`). **All documentation stays in this meta repo** — PRD, specs, module docs, rules, decisions, changelog; sub-repos hold only code, tests, config (or articles) plus a short README linking back here. When working inside a sub-repo, read this file and the "Read first" file above. AI never writes to `carekind-blog/posts/` — only `drafts/`.
 
 ## Commands
 

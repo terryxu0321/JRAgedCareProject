@@ -5,6 +5,21 @@
 
 ---
 
+## 2026-10-20 · Claude Code · carekind-blog 仓库与每日 8:00 草稿任务；根目录列出全部 submodule
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：在 marketing ops 建立单独的 blog 仓库，每天早上 8 点查找澳洲本地养老行业新闻并撰写文章，保存成 md；把新增的 repo submodule 更新到根目录 README、CLAUDE.md、AGENTS.md。Terry 确认：`carekind-blog` 挂在 07 下、Claude 云端定时任务、公开仓库 + 草稿待审、英文
+- **改动**：
+	- GitHub（外部）：新建公开仓库 `terryxu0321/carekind-blog`（README、`drafts/`、`posts/`、格式配置），已推送初始提交；本仓库新增 submodule `company-os/07-marketing-operations/carekind-blog`
+	- Claude 云端 routine "CareKind daily aged care blog draft"（`trig_014iJYD41XExw8fWTUMsZiby`）：cron `0 21 * * *` UTC（悉尼 08:00 AEDT），Sonnet 5.5，只写 `drafts/` 并 push；创建后清除了服务端自动挂上的 Gmail 等连接器
+	- 新增 `07-marketing-operations/blog-editorial-guide.md`（每日草稿规则、格式、内容规则、发布前审核清单）；`07-marketing-operations/README.md`、`AGENTS.md` 登记
+	- 根 `README.md`（新增"代码与内容仓库"表）、`AGENTS.md`（submodule 表与"先读"文件）、`CLAUDE.md`（submodule 与 hook 说明）；`engineering-standards.md` 仓库清单加 blog
+- **原因与决策**：blog 文章是内容而非文档，放子仓库；写作规则是文档，留 meta repo。仓库公开，草稿一推送即公开可见，所以草稿也按市场合规规则写，标 `draft-pending-review`，AI 从不写 `posts/`；定时任务不挂连接器，避免对外发送（硬规则 3）
+- **检查**：`check_rules.py` 通过；routine 创建成功，下次运行 2026-10-20T21:07Z（悉尼 10-21 08:07）
+- **待确认**：⚠️ 2027-04-04 夏令时结束后 cron 改为 `0 22 * * *`；云端运行须能 push 到 `carekind-blog`（如首次运行报权限错误，需在 GitHub 上授权 Claude 访问该仓库）；草稿是否公开可见可接受，Terry 已选择公开
+
+---
+
 ## 2026-10-20 · Claude Code · 先做管理端、表单设计规则、M0 管理端技术设计
 
 - **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）

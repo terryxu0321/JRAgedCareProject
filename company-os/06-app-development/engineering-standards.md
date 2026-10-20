@@ -61,6 +61,7 @@
 - 各应用通过 git 依赖或包管理引用 `carekind-shared` 的**固定版本**（不直接引用 meta repo 路径）；类型和校验只在 `carekind-shared` 定义一份
 - meta repo 只记录每个 submodule 的提交指针；功能开发在各自仓库完成，meta repo 定期更新指针
 - `company-os/06-app-development/src/` 下的模块说明是需求与边界的唯一来源；子仓库不复制这些说明，只在 README 中链接回来
+- 另有内容仓库 `carekind-blog`（blog 文章），挂在 `company-os/07-marketing-operations/carekind-blog`，规则见 [blog 写作规范](../07-marketing-operations/blog-editorial-guide.md)
 - Mobile App（React Native）以后单独建 `carekind-mobile`；Demo 环境是同一批仓库的独立部署（虚构数据），不另建仓库
 
 ### 数据与基础设施

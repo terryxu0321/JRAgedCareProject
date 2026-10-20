@@ -16,3 +16,6 @@
 [submodule "packages/carekind-shared"]
 	path = packages/carekind-shared
 	url = https://github.com/terryxu0321/carekind-shared.git
+[submodule "company-os/07-marketing-operations/carekind-blog"]
+	path = company-os/07-marketing-operations/carekind-blog
+	url = https://github.com/terryxu0321/carekind-blog.git
