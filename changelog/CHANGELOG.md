@@ -5,6 +5,21 @@
 
 ---
 
+## 2026-10-20 · Claude Code · M0 管理端开发（多 agent）：shared、Super Admin、机构管理端完成；API 转云端继续
+
+- **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
+- **请求**：按 PRD 开发第一阶段管理端（不含护士端），可多 agent 并行；电脑没电前改为云端继续，下次打开时更新本地仓库
+- **改动**（子仓库，均在 `m0-admin` 分支，已按 Terry 要求 push 到 GitHub；未合并 main）：
+	- `carekind-shared` `c572345`：zod schema 与类型、业务规则纯函数、类型化 API 客户端、从 DESIGN.md 生成的 `tokens.css`；111 个测试通过
+	- `carekind-super-admin` `9cf6011`：8 个页面，27 个测试通过
+	- `carekind-admin-web` `ba1b872`：公司总览、养老院（上线清单、流程配置）、员工、老人（生命周期、同意）、审计；36 个测试通过
+	- `carekind-api` `bbf7b28`：**未完成（WIP）**，NestJS + Drizzle + PGlite；本地 agent 因断电停止，交由一次性云端会话继续；Claude 把测试中 3 处被 SECRET 检查误报的测试值（伪造 token、错误密码）改为命名常量
+	- meta repo：更新 4 个 submodule 指针
+- **检查**：各子仓库 agent 报告 build / typecheck / lint / test 通过（API 除外，未完成）；`check_rules.py` 通过
+- **待确认**：shared 与两个前端 agent 列出的合同缺口（重发邀请、按周用量、机构用户读取公司上限、DON 读取员工、居民列表显示同意状态等）待联调后汇总给 Terry；API 完成后需联调
+
+---
+
 ## 2026-10-20 · Claude Code · carekind-blog 仓库与每日 8:00 草稿任务；根目录列出全部 submodule
 
 - **请求人**：Terry（`CAREKIND_MEMBER` 未设置，待确认）
